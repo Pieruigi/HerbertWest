@@ -110,10 +110,12 @@ namespace UnityStandardAssets.CrossPlatformInput
 
 		void Update()
 		{
+			
 			if (!m_Dragging)
 			{
 				return;
 			}
+			
 			if (Input.touchCount >= m_Id + 1 && m_Id != -1)
 			{
 #if !UNITY_EDITOR
@@ -132,6 +134,7 @@ namespace UnityStandardAssets.CrossPlatformInput
 				pointerDelta.y = Input.mousePosition.y - m_PreviousMouse.y;
 				m_PreviousMouse = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f);
 #endif
+				
 				UpdateVirtualAxes(new Vector3(pointerDelta.x, pointerDelta.y, 0));
 			}
 		}
