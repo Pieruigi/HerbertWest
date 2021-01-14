@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Zom.Pie.Collections;
 
 namespace Zom.Pie.UI
 {
     public class ExitButtonUI : MonoBehaviour
     {
+
 
         private void Awake()
         {
@@ -28,8 +30,16 @@ namespace Zom.Pie.UI
 
         public void Exit()
         {
+            // Get message to show.
+            int id = 1;
+            if (!GameManager.Instance.InGame)
+                id = 2;
+
+            //string text = UIMessageFactory.Instance.GetText(id);
+            string text = TextFactory.Instance.GetText(TextFactory.Type.UIMessage, id);
+
             // Show a message box to ask the player if he really want to exit.
-            MessageBox.Show(MessageBox.Type.YesNo, "Sei sicuro di voler uscire dal gioco?", CallbackYes, CallbackNo);
+            MessageBox.Show(MessageBox.Type.YesNo, text, CallbackYes, CallbackNo);
 
 
         }

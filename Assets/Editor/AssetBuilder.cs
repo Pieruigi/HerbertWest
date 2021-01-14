@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using Zom.Pie.Collections;
 
 namespace Zom.Pie.Editor
 {
@@ -21,27 +22,27 @@ namespace Zom.Pie.Editor
 
         }
 
-        //[MenuItem("Assets/Create/HW/MessageCollection")]
-        //public static void CreateMessageCollection()
-        //{
-        //    MessageCollection asset = ScriptableObject.CreateInstance<MessageCollection>();
+        [MenuItem("Assets/Create/Collections/TextCollection")]
+        public static void CreateTextCollection()
+        {
+            TextCollection asset = ScriptableObject.CreateInstance<TextCollection>();
 
-        //    string name = "messageCollection.asset";
-        //    string folder = "Assets/Resources/MessageCollection/";
+            string name = "/empty.asset";
+            string folder = System.IO.Path.Combine("Assets/Resources", TextFactory.ResourceFolder);
 
-        //    if (!System.IO.Directory.Exists(folder))
-        //        System.IO.Directory.CreateDirectory(folder);
+            if (!System.IO.Directory.Exists(folder))
+                System.IO.Directory.CreateDirectory(folder);
 
-        //    AssetDatabase.CreateAsset(asset, folder + name);
-        //    AssetDatabase.SaveAssets();
+            AssetDatabase.CreateAsset(asset, folder + name);
+            AssetDatabase.SaveAssets();
 
-        //    EditorUtility.FocusProjectWindow();
+            EditorUtility.FocusProjectWindow();
 
-        //    Selection.activeObject = asset;
-        //}
+            Selection.activeObject = asset;
+        }
 
-      
-     
+
+
 
         //[MenuItem("Assets/Create/HW/UI/MessageCollection")]
         //public static void CreateUIMessageCollection()
@@ -62,7 +63,7 @@ namespace Zom.Pie.Editor
         //    Selection.activeObject = asset;
         //}
 
-       
+
     }
 
 }
