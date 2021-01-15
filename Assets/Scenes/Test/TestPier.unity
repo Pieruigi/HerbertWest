@@ -230,6 +230,7 @@ GameObject:
   - component: {fileID: 32705233}
   - component: {fileID: 32705235}
   - component: {fileID: 32705236}
+  - component: {fileID: 32705237}
   m_Layer: 0
   m_Name: _TestModule
   m_TagString: Untagged
@@ -276,7 +277,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   code: pippo
-  state: 26
 --- !u!114 &32705236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,6 +289,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8842e44b8de5d5144b3cd2e918f66535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &32705237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32705232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c87e44008d6644ba309cccc20345bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  states:
+  - name: 
+    id: 0
+    othersToSet: []
+    commonStateErrorCode: 0
+    commonStateSucceedCode: 0
+  - name: 
+    id: 1
+    othersToSet: []
+    commonStateErrorCode: 0
+    commonStateSucceedCode: 0
+  transitions: []
+  currentStateName: 
+  currentStateId: 1
 --- !u!1 &131233349
 GameObject:
   m_ObjectHideFlags: 0
@@ -2966,6 +2992,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b31b590a8164f074ab2cae29ed2ec899, type: 3}
+--- !u!1 &964277207958228750 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 964277207280777848, guid: b31b590a8164f074ab2cae29ed2ec899,
+    type: 3}
+  m_PrefabInstance: {fileID: 964277207958228749}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &964277207958228751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 964277207958228750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2adbab377d982ef47b9252d71a8ccc5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  code: p
 --- !u!1001 &3567178129460657899
 PrefabInstance:
   m_ObjectHideFlags: 0

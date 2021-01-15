@@ -6,17 +6,15 @@ namespace Zom.Pie
 {
     public class StateCacher : Cacher
     {
-        public int state = 0;
-
+       
         protected override string GetValue()
         {
             return GetComponent<FiniteStateMachine>().CurrentStateId.ToString();
-            //return state.ToString();
         }
 
         protected override void Init(string value)
         {
-            state = int.Parse(value);
+            GetComponent<FiniteStateMachine>().ForceState(int.Parse(value), false, false);
         }
     }
 

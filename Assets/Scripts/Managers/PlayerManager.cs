@@ -28,13 +28,13 @@ namespace Zom.Pie
         // Start is called before the first frame update
         void Start()
         {
-
+            
         }
 
         // Update is called once per frame
         void Update()
         {
-
+            
         }
 
         /// <summary>
@@ -45,6 +45,7 @@ namespace Zom.Pie
         {
             playerController.Disabled = value;
         }
+
     }
 
 }

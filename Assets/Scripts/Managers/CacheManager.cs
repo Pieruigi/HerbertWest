@@ -164,8 +164,10 @@ namespace Zom.Pie
                 string line = null;
                 while ((line = sr.ReadLine()) != null)
                 {
-                    string[] s = line.Split(' ');
-                    cache.Add(s[0], s[1]);
+                    string code = line.Substring(0, line.IndexOf(' '));
+                    string value = line.Substring(line.IndexOf(' ')+1, line.Length - line.IndexOf(' ') - 1);
+                    //string[] s = line.Split(' ');
+                    cache.Add(code, value);
                 }
             }
 

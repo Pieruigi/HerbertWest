@@ -43,17 +43,28 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
+       
         private bool disabled = false;
         public bool Disabled
         {
             get { return disabled; }
-            set { disabled = value; m_MouseLook.Disabled = value; }
+            set
+            {
+                disabled = value;
+                if (!m_CharacterController)
+                    m_CharacterController = GetComponent<CharacterController>();
+                m_CharacterController.enabled = !value; 
+                m_MouseLook.Disabled = value; 
+            }
         }
 
+       
         // Use this for initialization
         private void Start()
         {
-            m_CharacterController = GetComponent<CharacterController>();
+            if (!m_CharacterController)
+                m_CharacterController = GetComponent<CharacterController>();
+
             m_Camera = Camera.main;
             m_OriginalCameraPosition = m_Camera.transform.localPosition;
             m_FovKick.Setup(m_Camera);
@@ -63,6 +74,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
+                       
         }
 
 
@@ -104,6 +116,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void FixedUpdate()
         {
+
             float speed;
             GetInput(out speed);
 
