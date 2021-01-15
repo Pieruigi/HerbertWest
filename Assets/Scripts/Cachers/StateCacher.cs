@@ -10,8 +10,8 @@ namespace Zom.Pie
 
         protected override string GetValue()
         {
-            //return GetComponent<>
-            return state.ToString();
+            return GetComponent<FiniteStateMachine>().CurrentStateId.ToString();
+            //return state.ToString();
         }
 
         protected override void Init(string value)

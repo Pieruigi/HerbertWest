@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 
 
-namespace HW.Editor
+namespace Zom.Pie.Editor
 {
     [CustomPropertyDrawer(typeof(ReadOnlyAttribute))]
     public class ReadOnlyDrawer : PropertyDrawer

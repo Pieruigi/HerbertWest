@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace HW
+namespace Zom.Pie
 {
     public class ReadOnlyAttribute : PropertyAttribute
     {
