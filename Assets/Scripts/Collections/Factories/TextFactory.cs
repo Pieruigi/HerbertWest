@@ -70,7 +70,7 @@ namespace Zom.Pie.Collections
                     ret = "UIMessages";
                     break;
                 case Type.UILabel:
-                    ret = "UILables";
+                    ret = "UILabels";
                     break;
                 case Type.InGameMessage:
                     ret = "InGameMessages";

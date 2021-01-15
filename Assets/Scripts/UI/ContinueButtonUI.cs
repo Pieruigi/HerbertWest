@@ -7,7 +7,12 @@ namespace Zom.Pie.UI
 {
     public class ContinueButtonUI : MonoBehaviour
     {
-        
+
+        private void Awake()
+        {
+            GetComponent<Button>().onClick.AddListener(HandleOnClick);
+        }
+
         // Start is called before the first frame update
         void Start()
         {
@@ -20,6 +25,11 @@ namespace Zom.Pie.UI
         void Update()
         {
 
+        }
+
+        void HandleOnClick()
+        {
+            GameManager.Instance.ContinueGame();
         }
     }
 

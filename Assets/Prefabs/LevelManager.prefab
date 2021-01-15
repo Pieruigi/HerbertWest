@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3458910506342656072
+--- !u!1 &5626459172009526198
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6243805010365008015}
-  - component: {fileID: 6741571740300875222}
+  - component: {fileID: 3191142681282817385}
+  - component: {fileID: 8202643797595586230}
+  - component: {fileID: 1077170242711870391}
   m_Layer: 0
-  m_Name: CacheManager
+  m_Name: LevelManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6243805010365008015
+--- !u!4 &3191142681282817385
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3458910506342656072}
+  m_GameObject: {fileID: 5626459172009526198}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,15 +32,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6741571740300875222
+--- !u!114 &8202643797595586230
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3458910506342656072}
+  m_GameObject: {fileID: 5626459172009526198}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f162519636868e4bb4c34d5b7f3a1fa, type: 3}
+  m_Script: {fileID: 11500000, guid: c2943444da5f5334794730444740c34c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1077170242711870391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5626459172009526198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebaabb0c61270fd4796f07029238c414, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  code: empty

@@ -36,6 +36,7 @@ namespace Zom.Pie
             if (!Instance)
             {
                 Instance = this;
+                SceneManager.sceneLoaded += HandleOnSceneLoaded;
             }
             else
             {
@@ -134,7 +135,7 @@ namespace Zom.Pie
 
             // Get the index of the scene that must be loaded
             string index;
-            if (!CacheManager.Instance.TryGetCacheValue(Constants.CacheCodeSceneIndex, out index))
+            if (!CacheManager.Instance.TryGetValue(Constants.CacheCodeSceneIndex, out index))
                 throw new System.Exception("Save game must be corrupted: unable to find the scene to load.");
 
             // Load the saved level
