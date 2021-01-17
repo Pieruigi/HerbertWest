@@ -3,7 +3,27 @@ guid: 2761c4aa5c8a09e4cb7a7596f7abda00
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: 74dbe5f1bd512774b927d52c4accfd53, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn3
+    second: {fileID: 2100000, guid: cbbf7964a0b61374cb345b2496ce4e29, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: door
+    second: {fileID: 2100000, guid: b2cadf9dd0ec22e4d9decc75cccd9e23, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal
+    second: {fileID: 2100000, guid: fee5ee9bc6ae2804e99ab3540a420843, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
