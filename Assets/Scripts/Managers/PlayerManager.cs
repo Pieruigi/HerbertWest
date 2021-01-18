@@ -10,6 +10,8 @@ namespace Zom.Pie
         public static PlayerManager Instance { get; private set; }
 
         FirstPersonController playerController;
+
+        bool disabled = false;
         
         private void Awake()
         {
@@ -43,7 +45,13 @@ namespace Zom.Pie
         /// <param name="value"></param>
         public void SetDisable(bool value)
         {
+            disabled = value;
             playerController.Disabled = value;
+        }
+
+        public bool IsDisabled()
+        {
+            return disabled;
         }
 
     }

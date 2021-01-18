@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 namespace Zom.Pie
 {
@@ -26,7 +27,7 @@ namespace Zom.Pie
         {
             sqrDistance = distance * distance;
 
-            if(!interactionCollider)
+            if(!interactionCollider && interactionController)
             {
                 interactionCollider = interactionController.GetComponent<Collider>();
             }    
@@ -41,6 +42,7 @@ namespace Zom.Pie
         // Update is called once per frame
         void Update()
         {
+
             // If the player is too far we don't cast any ray.
             if (!inside)
                 return;
@@ -50,12 +52,20 @@ namespace Zom.Pie
             RaycastHit hitInfo;
             if(Physics.Raycast(ray, out hitInfo, distance))
             {
+                //Debug.LogFormat("Hit something: {0}", hitInfo.collider.gameObject);
                 // Check if we hit the interaction controller collider.
                 if(hitInfo.collider == interactionCollider)
                 {
                     // We hit the right object, now try to interact with it.
                     if (interactionController.InteractionAllowed())
-                        interactionController.Interact();
+                    {
+                        //Debug.Log("Is interaction allowed");
+                        if (CrossPlatformInputManager.GetButtonDown("Fire1"))
+                        {
+                            interactionController.Interact();
+                        }
+                    }
+                        
                 }
             }
         }
@@ -63,13 +73,15 @@ namespace Zom.Pie
         private void FixedUpdate()
         {
             // Check if the player is too far away.
-            if ((PlayerManager.Instance.transform.position - transform.position).sqrMagnitude > sqrDistance * 1.5f)
+            if ((PlayerManager.Instance.transform.position - transform.position).sqrMagnitude < sqrDistance * 1.5f)
             {
                 inside = true;
+                //Debug.Log("Is inside...");
             }
             else
             {
-                inside = false;
+                inside = false; 
+                //Debug.Log("Is outside...");
             }
         }
     }

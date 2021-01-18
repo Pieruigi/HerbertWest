@@ -62,6 +62,9 @@ namespace Zom.Pie
             if (disabled)
                 return false;
 
+            if (PlayerManager.Instance.IsDisabled())
+                return false;
+
             // Wait
             if ((DateTime.UtcNow - lastInteractionTime).TotalSeconds < defaultCooldown)
                 return false;
