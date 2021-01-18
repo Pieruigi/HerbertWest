@@ -10,7 +10,7 @@ namespace Zom.Pie
        
         protected override string GetValue()
         {
-            Transform t = PlayerManager.Instance.transform;
+            Transform t = GetComponent<PlayerManager>().transform;
             string ret = t.position.x.ToString();
             ret += " " + t.position.y.ToString();
             ret += " " + t.position.z.ToString();
@@ -25,10 +25,11 @@ namespace Zom.Pie
         {
             Debug.LogFormat("'CacheValue:{0}'", value);
             string[] s = value.Split(' ');
-            PlayerManager.Instance.SetDisable(true);
-            PlayerManager.Instance.transform.position = new Vector3(float.Parse(s[0]), float.Parse(s[1]), float.Parse(s[2]));
-            PlayerManager.Instance.transform.eulerAngles = new Vector3(float.Parse(s[3]), float.Parse(s[4]), float.Parse(s[5]));
-            PlayerManager.Instance.SetDisable(false);
+            PlayerManager pm = GetComponent<PlayerManager>();
+            pm.SetDisable(true);
+            pm.transform.position = new Vector3(float.Parse(s[0]), float.Parse(s[1]), float.Parse(s[2]));
+            pm.transform.eulerAngles = new Vector3(float.Parse(s[3]), float.Parse(s[4]), float.Parse(s[5]));
+            pm.SetDisable(false);
         }
     }
 

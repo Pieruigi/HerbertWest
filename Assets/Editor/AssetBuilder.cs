@@ -42,7 +42,24 @@ namespace Zom.Pie.Editor
         }
 
 
+        [MenuItem("Assets/Create/Collections/Item")]
+        public static void CreateItem()
+        {
+            Item asset = ScriptableObject.CreateInstance<Item>();
 
+            string name = "/empty.asset";
+            string folder = System.IO.Path.Combine("Assets/Resources", Constants.ItemResourceFolder);
+
+            if (!System.IO.Directory.Exists(folder))
+                System.IO.Directory.CreateDirectory(folder);
+
+            AssetDatabase.CreateAsset(asset, folder + name);
+            AssetDatabase.SaveAssets();
+
+            EditorUtility.FocusProjectWindow();
+
+            Selection.activeObject = asset;
+        }
 
         //[MenuItem("Assets/Create/HW/UI/MessageCollection")]
         //public static void CreateUIMessageCollection()

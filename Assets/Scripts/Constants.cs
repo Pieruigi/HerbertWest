@@ -9,6 +9,10 @@ namespace Zom.Pie
     public class Constants 
     {
         public static readonly string CacheCodeSceneIndex = "s";
+
+
+        // Resources
+        public static readonly string ItemResourceFolder = "Items";
     }
 
 

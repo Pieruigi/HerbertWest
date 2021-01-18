@@ -18,7 +18,8 @@ namespace Zom.Pie
             if (!Instance)
             {
                 Instance = this;
-                playerController = GetComponent<FirstPersonController>();
+                
+                if(!playerController) playerController = GetComponent<FirstPersonController>();
                 
             }
             else
@@ -46,6 +47,8 @@ namespace Zom.Pie
         public void SetDisable(bool value)
         {
             disabled = value;
+            if (!playerController) playerController = GetComponent<FirstPersonController>();
+
             playerController.Disabled = value;
         }
 

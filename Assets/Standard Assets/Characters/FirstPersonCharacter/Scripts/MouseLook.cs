@@ -37,8 +37,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         public void LookRotation(Transform character, Transform camera)
         {
-            float yRot = CrossPlatformInputManager.GetAxis("Mouse X") * XSensitivity;
-            float xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity;
+            //float yRot = CrossPlatformInputManager.GetAxis("Mouse X") * XSensitivity;
+            //float xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity;
+            float yRot = CrossPlatformInputManager.GetAxis("Mouse X") * XSensitivity * 100f * Time.deltaTime;
+            float xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity * 100f * Time.deltaTime;
 
             if (disabled)
             {
@@ -79,7 +81,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         public void UpdateCursorLock()
         {
-            return;
+          
             //if the user set "lockCursor" we check & properly lock the cursos
             if (lockCursor)
                 InternalLockUpdate();
