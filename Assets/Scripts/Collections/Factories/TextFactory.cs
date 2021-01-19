@@ -32,20 +32,21 @@ namespace Zom.Pie.Collections
             messages = new Dictionary<Type, TextCollection>();
 
             // Load text resources depending on the language and the file name
-            string folder = System.IO.Path.Combine(ResourceFolder, GameManager.Instance.Language.ToString());
-            
+            //string folder = System.IO.Path.Combine(ResourceFolder, GameManager.Instance.Language.ToString());
+            //string folder = System.IO.Path.Combine(ResourceFolder, GameManager.Instance.Language.ToString());
+
             // Load UIMessages
-            string path = System.IO.Path.Combine(folder, GetFileName(Type.UIMessage));
+            string path = System.IO.Path.Combine(ResourceFolder, GetFileName(Type.UIMessage));
             TextCollection collection = Resources.Load<TextCollection>(path);
             messages.Add(Type.UIMessage, collection);
 
             // Load UILabels
-            path = System.IO.Path.Combine(folder, GetFileName(Type.UILabel));
+            path = System.IO.Path.Combine(ResourceFolder, GetFileName(Type.UILabel));
             collection = Resources.Load<TextCollection>(path);
             messages.Add(Type.UILabel, collection);
 
             // Load InGameMessge
-            path = System.IO.Path.Combine(folder, GetFileName(Type.InGameMessage));
+            path = System.IO.Path.Combine(ResourceFolder, GetFileName(Type.InGameMessage));
             collection = Resources.Load<TextCollection>(path);
             messages.Add(Type.InGameMessage, collection);
 
@@ -77,7 +78,7 @@ namespace Zom.Pie.Collections
                     break;
             }
 
-            return ret;
+            return ret + "_" + GameManager.Instance.Language.ToString();
         }
     }
 

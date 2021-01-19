@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 4591746974886785017}
   - component: {fileID: 4591746974886785016}
   - component: {fileID: 4591746974886785018}
+  - component: {fileID: 1115261694}
+  - component: {fileID: 2683834731309647649}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -116,7 +118,7 @@ MonoBehaviour:
   - name: Locked
     id: 0
     othersToSet: []
-    commonStateErrorCode: 0
+    commonStateErrorCode: 1
     commonStateSucceedCode: 0
   - name: Unlocked
     id: 1
@@ -124,18 +126,13 @@ MonoBehaviour:
     commonStateErrorCode: 0
     commonStateSucceedCode: 0
   transitions:
-  - tag: Unlock
-    fromStateId: 0
-    toStateId: 1
-    othersToCheck: []
-    errorCode: 0
   - tag: Enter
     fromStateId: 1
     toStateId: 1
     othersToCheck: []
     errorCode: 0
-  currentStateName: Unlocked
-  currentStateId: 1
+  currentStateName: Locked
+  currentStateId: 0
 --- !u!114 &4591746974886785017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,3 +175,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneBuildIndex: 0
   spawnPointIndex: 0
+--- !u!114 &1115261694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2346550057676529444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5a4d9af5bc29314f917b8e5cfce9989, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetItem: {fileID: 11400000, guid: 5c006fe1263b3184692dfcf5545abe94, type: 2}
+  removeAfterUse: 1
+  newState: 1
+--- !u!114 &2683834731309647649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2346550057676529444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fabc65d955ff894aa42c324797fc272, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

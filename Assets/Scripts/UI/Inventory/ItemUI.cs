@@ -12,6 +12,10 @@ namespace Zom.Pie.UI
         Image image;
 
         Item item;
+        public Item Item
+        {
+            get { return item; }
+        }
 
         // Start is called before the first frame update
         void Start()

@@ -50,7 +50,12 @@ namespace Zom.Pie
 
         void HandleOnFail(FiniteStateMachine fsm)
         {
-
+            // If the fsm fails in locked state then we call the ItemUser component in order to 
+            // check if there is something in the inventory that we can use.
+            if(fsm.CurrentStateId == locked)
+            {
+                GetComponent<ItemUser>().CheckInventory();
+            }
         }
     }
 

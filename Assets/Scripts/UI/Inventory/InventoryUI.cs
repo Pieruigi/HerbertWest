@@ -10,6 +10,7 @@ namespace Zom.Pie.UI
     public class InventoryUI : MonoBehaviour
     {
         public UnityAction<Item> OnItemUsed;
+        public UnityAction OnClosed;
 
         [SerializeField]
         GameObject panel;
@@ -18,9 +19,15 @@ namespace Zom.Pie.UI
         Transform container;
 
         [SerializeField]
-        GameObject itemTemplate; 
+        GameObject itemTemplate;
+
+        [SerializeField]
+        GameObject buttonUse; 
 
         bool open = false;
+
+        
+        //bool useEnabled = false;
 
         Item selectedItem = null;
 
@@ -31,6 +38,11 @@ namespace Zom.Pie.UI
             if (!Instance)
             {
                 Instance = this;
+
+                // Set use button not interactable as default.
+                buttonUse.GetComponent<Button>().interactable = false;
+
+                // Deactivate the inventory panel.
                 panel.SetActive(false);
 
                 // Move the template outside.
@@ -40,6 +52,7 @@ namespace Zom.Pie.UI
             {
                 Destroy(gameObject);
             }
+        
         }
 
         // Start is called before the first frame update
@@ -54,21 +67,27 @@ namespace Zom.Pie.UI
 
         }
 
-        public void Open()
+        public void Open(bool useEnabled)
         {
             // If already open then return.
             if (open)
                 return;
 
+            PlayerManager.Instance.SetDisable(true);
+
             open = true;
+
+            // If we are opening the inventory by clicking on some object that needs a given item then
+            // we must set the useButton enable.
+            if (useEnabled)
+            {
+                buttonUse.GetComponent<Button>().interactable = true;
+            }
+            
             panel.SetActive(true);
 
             // Fill content UI
             FillContent();
-
-            // If the inventory is not empty the first item is the selected one.
-            if (Inventory.Instance.Items.Count > 0)
-                selectedItem = Inventory.Instance.Items[0];
         }
 
         public void Close()
@@ -78,8 +97,17 @@ namespace Zom.Pie.UI
 
             ClearAll();
 
+            // Reset use button.
+            buttonUse.GetComponent<Button>().interactable = false;
+
             open = false;
             panel.SetActive(false);
+
+            PlayerManager.Instance.SetDisable(false);
+
+            OnClosed?.Invoke();
+
+            
         }
 
         public bool IsOpen()
@@ -98,34 +126,64 @@ namespace Zom.Pie.UI
             if (selectedItem == null)
                 return;
 
-            OnItemUsed?.Invoke(selectedItem);
+            OnItemUsed
+                ?.Invoke(selectedItem);
         }
 
         private void FillContent()
         {
             // Create a new toggle for each item in the inventory.
+            bool first = true;
             foreach(Item item in Inventory.Instance.Items)
             {
                 // Create object from template.
                 GameObject o = GameObject.Instantiate(itemTemplate, container, false);
                 o.GetComponent<ItemUI>().Init(item);
+                Toggle t = o.GetComponent<Toggle>();
+
+                // Set the first item selected...
+                if (first)
+                {
+                    first = false;
+                    t.isOn = true;
+                    selectedItem = item;
+                }
+                else //... and the others off.
+                {
+                    t.isOn = false;
+                }
+
+                // Set handle.
+                t.onValueChanged.AddListener((Toggle) => HandleOnValueChanged(t, t.isOn));
+
                 o.SetActive(true);
             }
         }
 
         private void ClearAll()
         {
+            // Clear selected item.
+            selectedItem = null;
+
             // Remove all the ui items.
             int count = container.childCount;
             for(int i=0; i<count; i++)
             {
-                Destroy(container.GetChild(0).gameObject);
+                DestroyImmediate(container.GetChild(0).gameObject);
             }
         }
 
-        private void CheckSelected()
+        /// <summary>
+        /// Manages toggle value on change.
+        /// </summary>
+        /// <param name="value"></param>
+        private void HandleOnValueChanged(Toggle toggle, bool value)
         {
-            
+            // If value true then set the caller as the selected item.
+            if (value)
+            {
+                selectedItem = toggle.GetComponent<ItemUI>().Item;
+            }
         }
     }
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zom.Pie.UI;
 
 namespace Zom.Pie
 {
@@ -154,6 +155,23 @@ namespace Zom.Pie
                 Application.Quit();
         }
 
+        public void OpenInventory(bool useEnable)
+        {
+            if (InventoryUI.Instance.IsOpen())
+                return;
+
+            InventoryUI.Instance.Open(useEnable);
+        }
+
+        public void CloseInventory()
+        {
+            if (!InventoryUI.Instance.IsOpen())
+                return;
+
+            InventoryUI.Instance.Close();
+
+        }
+
         /// <summary>
         /// This is called after the scene has been loaded.
         /// </summary>
@@ -168,6 +186,7 @@ namespace Zom.Pie
                 // Loading completed
                 loading = false;
 
+
                 //menuManager = GameObject.FindObjectOfType<HW.UI.MenuManager>();
 
                 // Update inGame flag
@@ -175,8 +194,8 @@ namespace Zom.Pie
                 {
                     inGame = false;
 
-                    //// Release inventory
-                    //inventory = null;
+                    // Release inventory
+                    //inventoryUI = null;
 
                     // Open main menu
                     //menuManager.Open();
@@ -186,7 +205,7 @@ namespace Zom.Pie
                     inGame = true;
 
                     // Get inventory
-                    //inventory = GameObject.FindObjectOfType<InventoryUI>();
+                    //inventoryUI = GameObject.FindObjectOfType<InventoryUI>();
 
                     // Close the game menu
                     //if (menuManager)

@@ -46,14 +46,19 @@ namespace Zom.Pie.Editor
         public static void CreateItem()
         {
             Item asset = ScriptableObject.CreateInstance<Item>();
+            ItemInfo assetInfo = ScriptableObject.CreateInstance<ItemInfo>();
 
             string name = "/empty.asset";
+            string nameInfo = "/empty_info.asset";
+
             string folder = System.IO.Path.Combine("Assets/Resources", Constants.ItemResourceFolder);
 
             if (!System.IO.Directory.Exists(folder))
                 System.IO.Directory.CreateDirectory(folder);
 
             AssetDatabase.CreateAsset(asset, folder + name);
+            AssetDatabase.CreateAsset(assetInfo, folder + nameInfo);
+
             AssetDatabase.SaveAssets();
 
             EditorUtility.FocusProjectWindow();

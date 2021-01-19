@@ -13,6 +13,7 @@ namespace Zom.Pie
 
         // Resources
         public static readonly string ItemResourceFolder = "Items";
+        
     }
 
 
