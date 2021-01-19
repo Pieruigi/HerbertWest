@@ -18,7 +18,11 @@ namespace Zom.Pie.Collections
         string description;
 
         [SerializeField]
-        Texture2D icon;
+        Sprite icon;
+        public Sprite Icon
+        {
+            get { return icon; }
+        }
     }
 
 }
