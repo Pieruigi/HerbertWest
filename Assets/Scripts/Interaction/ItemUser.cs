@@ -12,7 +12,7 @@ namespace Zom.Pie
         Item targetItem;
 
         [SerializeField]
-        bool removeAfterUse = false;
+        bool keepInInventory = false;
 
         // The new state in case of success.
         [SerializeField]
@@ -44,7 +44,7 @@ namespace Zom.Pie
 
         IEnumerator CoroutineCheckInventory()
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
 
             if (InventoryUI.Instance.IsOpen())
                 yield break;
@@ -58,22 +58,28 @@ namespace Zom.Pie
 
         void HandleOnItemUsed(Item item)
         {
-            // Close inventory.
-            Debug.LogFormat("UsingItem:{0}", item);
-            InventoryUI.Instance.Close();
+           
 
             // Try to use the item: on success we check if you need to remove it from the inventory and
             // set the fsm new state.
             if(item == targetItem)
             {
+                // Close inventory.
+                InventoryUI.Instance.Close();
+
                 // Remove the item from the inventory if needed.
-                if (removeAfterUse)
+                if (!keepInInventory)
                 {
                     Inventory.Instance.Remove(item);
                 }
 
                 // Set finite state machine new state.
                 fsm.ForceState(newState, true, true);
+            }
+            else
+            {
+                // This is not the right item so we show an error message.
+                InventoryUI.Instance.ShowWrongItemMessage();
             }
         }
 

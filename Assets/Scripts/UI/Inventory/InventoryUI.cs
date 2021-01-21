@@ -22,7 +22,13 @@ namespace Zom.Pie.UI
         GameObject itemTemplate;
 
         [SerializeField]
-        GameObject buttonUse; 
+        Button buttonUse;
+
+        [SerializeField]
+        Text descriptionField;
+
+        [SerializeField]
+        Text wrongItemField;
 
         bool open = false;
 
@@ -30,6 +36,8 @@ namespace Zom.Pie.UI
         //bool useEnabled = false;
 
         Item selectedItem = null;
+
+        string wrongItemMessage;
 
         public static InventoryUI Instance { get; private set; }
 
@@ -40,7 +48,12 @@ namespace Zom.Pie.UI
                 Instance = this;
 
                 // Set use button not interactable as default.
-                buttonUse.GetComponent<Button>().interactable = false;
+                buttonUse.interactable = false;
+
+                wrongItemField.text = "";
+                wrongItemMessage = TextFactory.Instance.GetText(TextFactory.Type.InGameMessage, 2); 
+
+                SelectItem(null);
 
                 // Deactivate the inventory panel.
                 panel.SetActive(false);
@@ -81,7 +94,7 @@ namespace Zom.Pie.UI
             // we must set the useButton enable.
             if (useEnabled)
             {
-                buttonUse.GetComponent<Button>().interactable = true;
+                buttonUse.interactable = true;
             }
             
             panel.SetActive(true);
@@ -98,7 +111,7 @@ namespace Zom.Pie.UI
             ClearAll();
 
             // Reset use button.
-            buttonUse.GetComponent<Button>().interactable = false;
+            buttonUse.interactable = false;
 
             open = false;
             panel.SetActive(false);
@@ -126,8 +139,14 @@ namespace Zom.Pie.UI
             if (selectedItem == null)
                 return;
 
-            OnItemUsed
-                ?.Invoke(selectedItem);
+            wrongItemField.text = "";
+
+            OnItemUsed?.Invoke(selectedItem);
+        }
+
+        public void ShowWrongItemMessage()
+        {
+            wrongItemField.text = wrongItemMessage;
         }
 
         private void FillContent()
@@ -146,7 +165,7 @@ namespace Zom.Pie.UI
                 {
                     first = false;
                     t.isOn = true;
-                    selectedItem = item;
+                    SelectItem(item);
                 }
                 else //... and the others off.
                 {
@@ -163,8 +182,10 @@ namespace Zom.Pie.UI
         private void ClearAll()
         {
             // Clear selected item.
-            selectedItem = null;
+            SelectItem(null);
 
+            wrongItemField.text = "";
+            
             // Remove all the ui items.
             int count = container.childCount;
             for(int i=0; i<count; i++)
@@ -182,9 +203,22 @@ namespace Zom.Pie.UI
             // If value true then set the caller as the selected item.
             if (value)
             {
-                selectedItem = toggle.GetComponent<ItemUI>().Item;
+                SelectItem(toggle.GetComponent<ItemUI>().Item);
             }
         }
+
+        private void SelectItem(Item item)
+        {
+            selectedItem = item;
+            string desc = "";
+            if(selectedItem != null)
+            {
+                desc = selectedItem.GetDescription();
+            }
+            descriptionField.text = desc;
+        }
+
+        
     }
 
 }

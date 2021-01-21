@@ -32,15 +32,23 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             m_CharacterTargetRot = character.localRotation;
             m_CameraTargetRot = camera.localRotation;
+
+#if !MOBILE_INPUT
+            XSensitivity *= 5f;
+            YSensitivity *= 5f;
+#endif
         }
 
 
         public void LookRotation(Transform character, Transform camera)
         {
-            //float yRot = CrossPlatformInputManager.GetAxis("Mouse X") * XSensitivity;
-            //float xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity;
+//#if !MOBILE_INPUT
+//            float yRot = CrossPlatformInputManager.GetAxis("Mouse X") * XSensitivity;
+//            float xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity;
+//#else
             float yRot = CrossPlatformInputManager.GetAxis("Mouse X") * XSensitivity * 100f * Time.deltaTime;
             float xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity * 100f * Time.deltaTime;
+//#endif
 
             if (disabled)
             {
@@ -55,10 +63,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             if(smooth)
             {
-                character.localRotation = Quaternion.Slerp (character.localRotation, m_CharacterTargetRot,
-                    smoothTime * Time.deltaTime);
-                camera.localRotation = Quaternion.Slerp (camera.localRotation, m_CameraTargetRot,
-                    smoothTime * Time.deltaTime);
+                character.localRotation = Quaternion.Slerp(character.localRotation, m_CharacterTargetRot,
+                    smoothTime);// * Time.deltaTime);
+                camera.localRotation = Quaternion.Slerp(camera.localRotation, m_CameraTargetRot,
+                    smoothTime);// * Time.deltaTime);
             }
             else
             {
