@@ -9,7 +9,7 @@ namespace Zom.Pie.UI
 {
     public class InventoryUI : MonoBehaviour
     {
-        public UnityAction<Item> OnItemUsed;
+        public UnityAction<Item> OnItemChosen;
         public UnityAction OnClosed;
 
         [SerializeField]
@@ -141,7 +141,7 @@ namespace Zom.Pie.UI
 
             wrongItemField.text = "";
 
-            OnItemUsed?.Invoke(selectedItem);
+            OnItemChosen?.Invoke(selectedItem);
         }
 
         public void ShowWrongItemMessage()
