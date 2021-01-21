@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
+using Zom.Pie.Interfaces;
 
 namespace Zom.Pie
 {
-    public class InteractionRaycast : MonoBehaviour
+    public class InteractionRaycast : MonoBehaviour, IInteractor
     {
         [SerializeField]
         [Tooltip("The object you want to interact with.")]
@@ -83,6 +84,12 @@ namespace Zom.Pie
                 inside = false; 
                 //Debug.Log("Is outside...");
             }
+        }
+
+        public void Enable(bool value)
+        {
+            interactionCollider.enabled = value;
+            enabled = value;
         }
     }
 
