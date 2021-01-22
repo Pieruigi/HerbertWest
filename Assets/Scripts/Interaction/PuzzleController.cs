@@ -9,8 +9,11 @@ namespace Zom.Pie
 {
     public class PuzzleController : MonoBehaviour
     {
+        public UnityAction<PuzzleController> OnPuzzleEnterStart;
         public UnityAction<PuzzleController> OnPuzzleEnter;
+        public UnityAction<PuzzleController> OnPuzzleExitStart;
         public UnityAction<PuzzleController> OnPuzzleExit;
+
 
         [SerializeField]
         Transform cameraTarget;
@@ -39,7 +42,11 @@ namespace Zom.Pie
 
         bool opened = false;
 
-        public static List<PuzzleController> puzzleControllers;
+        static List<PuzzleController> puzzleControllers;
+        public static List<PuzzleController> PuzzleControllers
+        {
+            get { return puzzleControllers; }
+        }
 
         FiniteStateMachine fsm;
 
@@ -77,11 +84,11 @@ namespace Zom.Pie
         // Update is called once per frame
         void Update()
         {
-            if (opened && !busy)
-            {
-                if (Input.GetKeyDown(KeyCode.Escape))
-                    StartCoroutine(CoroutineExit());
-            }
+            //if (opened && !busy)
+            //{
+            //    if (Input.GetKeyDown(KeyCode.Escape))
+            //        StartCoroutine(CoroutineExit());
+            //}
         }
 
         void LateUpdate()
@@ -92,6 +99,11 @@ namespace Zom.Pie
                 if (!PlayerManager.Instance.IsDisabled())
                     PlayerManager.Instance.SetDisable(true);
             }
+        }
+
+        public void Exit()
+        {
+            StartCoroutine(CoroutineExit());
         }
 
         protected virtual void HandleOnStateChange(FiniteStateMachine fsm)
@@ -114,6 +126,8 @@ namespace Zom.Pie
 
         IEnumerator CoroutineEnter()
         {
+            OnPuzzleEnterStart?.Invoke(this);
+
             busy = true;
             opened = true;
 
@@ -139,6 +153,8 @@ namespace Zom.Pie
 
         IEnumerator CoroutineExit()
         {
+            OnPuzzleExitStart?.Invoke(this);
+
             busy = true;
             // Deactivate all the objects.
             ActivatePuzzleInteractors(false);
