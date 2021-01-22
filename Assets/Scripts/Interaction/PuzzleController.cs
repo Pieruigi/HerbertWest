@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Zom.Pie.Interfaces;
 
 
@@ -8,6 +9,8 @@ namespace Zom.Pie
 {
     public class PuzzleController : MonoBehaviour
     {
+        public UnityAction<PuzzleController> OnPuzzleEnter;
+        public UnityAction<PuzzleController> OnPuzzleExit;
 
         [SerializeField]
         Transform cameraTarget;
@@ -36,7 +39,7 @@ namespace Zom.Pie
 
         bool opened = false;
 
-        public static List<PuzzleController> puzzleControllers = new List<PuzzleController>();
+        public static List<PuzzleController> puzzleControllers;
 
         FiniteStateMachine fsm;
 
@@ -45,6 +48,7 @@ namespace Zom.Pie
         private void Awake()
         {
             // Add this object to the list
+            if (puzzleControllers == null) puzzleControllers = new List<PuzzleController>();
             puzzleControllers.Add(this);
 
             fsm = GetComponent<FiniteStateMachine>();
@@ -129,6 +133,8 @@ namespace Zom.Pie
             // Activate all the objects.
             ActivatePuzzleInteractors(true);
             busy = false;
+
+            OnPuzzleEnter?.Invoke(this);
         }
 
         IEnumerator CoroutineExit()
@@ -150,6 +156,8 @@ namespace Zom.Pie
             PlayerManager.Instance.SetDisable(false);
 
             busy = false;
+
+            OnPuzzleExit?.Invoke(this);
         }
 
         void ActivatePuzzleInteractors(bool value)
