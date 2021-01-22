@@ -22,13 +22,13 @@ namespace Zom.Pie
         [Tooltip("The interactor of this object.")]
         GameObject interactor;
 
-        [SerializeField]
-        [Tooltip("All the objects we need to activate in order for the puzzle to work.")]
-        List<GameObject> puzzleObjects;
+        //[SerializeField]
+        //[Tooltip("All the objects we need to activate in order for the puzzle to work.")]
+        //List<GameObject> puzzleObjects;
 
-        [SerializeField]
-        [Tooltip("The fsm combination that solve the puzzle.")]
-        int[] solution;
+        //[SerializeField]
+        //[Tooltip("The fsm combination that solve the puzzle.")]
+        //int[] solution;
 
         [SerializeField]
         int readyState = 0;
@@ -52,6 +52,8 @@ namespace Zom.Pie
 
         bool busy = false;
 
+        
+
         private void Awake()
         {
             // Add this object to the list
@@ -68,17 +70,20 @@ namespace Zom.Pie
         // Start is called before the first frame update
         void Start()
         {
-            // Set handles on puzzle objects.
-            foreach(GameObject o in puzzleObjects)
-            {
-                FiniteStateMachine fsm = o.GetComponent<FiniteStateMachine>();
-                if (fsm)
-                {
-                    // Set fsm handles.
-                    fsm.OnStateChange += HandleOnStateChange;
-                    fsm.OnFail += HandleOnFail;
-                }
-            }
+
+
+            //// Set handles on puzzle objects.
+            //foreach(GameObject o in puzzleObjects)
+            //{
+            //    FiniteStateMachine fsm = o.GetComponent<FiniteStateMachine>();
+            //    if (fsm)
+            //    {
+            //        // Set fsm handles.
+            //        fsm.OnStateChange += HandleOnStateChange;
+            //        fsm.OnFail += HandleOnFail;
+            //    }
+            //}
+
         }
 
         // Update is called once per frame
@@ -115,13 +120,26 @@ namespace Zom.Pie
             }
             else // One of the other fsms
             {
-
+                // Check solution
+                if (CheckSolution())
+                {
+                    fsm.ForceState(completedState, true, true);
+                }
             }
         }
 
         protected virtual void HandleOnFail(FiniteStateMachine fsm)
         {
 
+        }
+
+        /// <summary>
+        /// This should be an abstract class.
+        /// </summary>
+        /// <returns></returns>
+        protected virtual bool CheckSolution()
+        {
+            return true;
         }
 
         IEnumerator CoroutineEnter()
@@ -178,11 +196,20 @@ namespace Zom.Pie
 
         void ActivatePuzzleInteractors(bool value)
         {
-            foreach (GameObject o in puzzleObjects)
+            IInteractor[] interactors = GetComponentsInChildren<IInteractor>();
+            for(int i=0; i< interactors.Length; i++)
             {
-                o.GetComponentInChildren<IInteractor>().Enable(value);
+                if (interactors[i] == interactor.GetComponent<IInteractor>())
+                    continue;
 
+                interactors[i].Enable(value);
             }
+
+            //foreach (GameObject o in puzzleObjects)
+            //{
+            //    o.GetComponentInChildren<IInteractor>().Enable(value);
+
+            //}
         }
     }
 
