@@ -47,16 +47,7 @@ namespace Zom.Pie.UI
             {
                 Instance = this;
 
-                // Set use button not interactable as default.
-                buttonUse.interactable = false;
-
-                wrongItemField.text = "";
-                wrongItemMessage = TextFactory.Instance.GetText(TextFactory.Type.InGameMessage, 2); 
-
-                SelectItem(null);
-
-                // Deactivate the inventory panel.
-                panel.SetActive(false);
+                
 
                 // Move the template outside.
                 itemTemplate.transform.parent = container.parent;
@@ -71,7 +62,16 @@ namespace Zom.Pie.UI
         // Start is called before the first frame update
         void Start()
         {
+            // Set use button not interactable as default.
+            buttonUse.interactable = false;
 
+            wrongItemField.text = "";
+            wrongItemMessage = TextFactory.Instance.GetText(TextFactory.Type.InGameMessage, 2);
+
+            SelectItem(null);
+
+            // Deactivate the inventory panel.
+            panel.SetActive(false);
         }
 
         // Update is called once per frame

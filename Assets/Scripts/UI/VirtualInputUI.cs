@@ -6,14 +6,7 @@ namespace Zom.Pie.UI
 {
     public class VirtualInputUI : MonoBehaviour
     {
-        [SerializeField]
-        GameObject leftJoystick;
 
-        [SerializeField]
-        GameObject rightJoystick;
-
-        [SerializeField]
-        GameObject actionButton;
 
         PuzzleController puzzleController;
 
@@ -30,17 +23,11 @@ namespace Zom.Pie.UI
 
         void HandleOnPuzzleEnterStart(PuzzleController puzzleController)
         {
-            //leftJoystick.SetActive(false);
-            //rightJoystick.SetActive(false);
-            //actionButton.SetActive(false);
             gameObject.SetActive(false);
         }
 
         void HandleOnPuzzleExit(PuzzleController puzzleController)
         {
-            //leftJoystick.SetActive(true);
-            //rightJoystick.SetActive(true);
-            //actionButton.SetActive(true);
             gameObject.SetActive(true);
         }
     }

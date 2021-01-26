@@ -24,6 +24,7 @@ namespace UnityStandardAssets.CrossPlatformInput
 		bool m_UseY; // Toggle for using the Y axis
 		CrossPlatformInputManager.VirtualAxis m_HorizontalVirtualAxis; // Reference to the joystick in the cross platform input
 		CrossPlatformInputManager.VirtualAxis m_VerticalVirtualAxis; // Reference to the joystick in the cross platform input
+		int baseHeight = 1080;
 
 		void OnEnable()
 		{
@@ -32,6 +33,12 @@ namespace UnityStandardAssets.CrossPlatformInput
 
         void Start()
         {
+			// adjust movement range
+			float r = (float) baseHeight / (float)Screen.height;
+			Debug.Log("Screen.height:" + Screen.height);
+			Debug.Log("R:" + r);
+			MovementRange = (int)((float)MovementRange / r);
+
             m_StartPos = transform.position;
         }
 
