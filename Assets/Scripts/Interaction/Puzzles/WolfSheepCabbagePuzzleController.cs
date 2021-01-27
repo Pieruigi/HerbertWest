@@ -15,7 +15,8 @@ namespace Zom.Pie
         [SerializeField]
         List<GameObject> handles;
 
-
+        [SerializeField]
+        ItemPicker itemPicker;
 
         // 0 is back, 1 is forward.
         int[] handleValues;
@@ -124,9 +125,22 @@ namespace Zom.Pie
                 // Check if is completed.
                 if (CheckCompleted())
                 {
+                    // Set the state completed.
                     SetStateCompleted();
 
+                    // Open the box.
+
+                    // Wait until the box opens.
                     yield return new WaitForSeconds(1f);
+
+                    // We are calling the picking method here rather than using the fsm change state
+                    // because we want to wait for the picking to complete.
+                    yield return itemPicker.Pick();
+
+                    // Wait a bit.
+                    yield return new WaitForSeconds(0.5f);
+
+                    // Exit.
                     Exit();
                 }
                     
