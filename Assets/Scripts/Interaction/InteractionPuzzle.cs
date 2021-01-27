@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Zom.Pie.Interfaces;
+using UnityEngine.Events;
 
 namespace Zom.Pie
 {
-    public class InteractionPuzzle : MonoBehaviour, IInteractor
+    public class InteractionPuzzle : Interactor
     {
         [SerializeField]
         PuzzleController puzzleController;
@@ -17,15 +17,18 @@ namespace Zom.Pie
 
         bool gamepadStyle = false;
 
-        void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             if (!interactionCollider)
                 interactionCollider = GetComponent<Collider>();
         }
 
         // Update is called once per frame
-        void Update()
+        protected override void Update()
         {
+            base.Update();
+
             if (!enable)
                 return;
 
@@ -49,7 +52,7 @@ namespace Zom.Pie
             }
         }
 
-        public void Enable(bool value)
+        public override void Enable(bool value)
         {
             enable = value;
 

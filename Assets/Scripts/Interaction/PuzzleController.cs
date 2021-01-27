@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using Zom.Pie.Interfaces;
 
 
 namespace Zom.Pie
@@ -13,6 +12,8 @@ namespace Zom.Pie
         public UnityAction<PuzzleController> OnPuzzleEnter;
         public UnityAction<PuzzleController> OnPuzzleExitStart;
         public UnityAction<PuzzleController> OnPuzzleExit;
+        public UnityAction<PuzzleController> OnPuzzleInteractionStart;
+        public UnityAction<PuzzleController> OnPuzzleInteractionStop;
 
         [SerializeField]
         Transform cameraTarget;
@@ -64,7 +65,7 @@ namespace Zom.Pie
             get { return fsm; }
         }
 
-        public abstract void Interact(IInteractor interactor);
+        public abstract void Interact(Interactor interactor);
 
         #region native
         protected virtual void Awake()
@@ -127,7 +128,7 @@ namespace Zom.Pie
             PlayerManager.Instance.SetDisable(true);
 
             // Deactivate the local interactor
-            interactor.GetComponent<IInteractor>().Enable(false);
+            interactor.GetComponent<Interactor>().Enable(false);
 
             // Set camera position and rotation.
             cameraLastPosition = Camera.main.transform.position;
@@ -161,7 +162,7 @@ namespace Zom.Pie
             opened = false;
 
             // Activate the local interactor
-            interactor.GetComponent<IInteractor>().Enable(true);
+            interactor.GetComponent<Interactor>().Enable(true);
 
             PlayerManager.Instance.SetDisable(false);
 
@@ -172,10 +173,10 @@ namespace Zom.Pie
 
         void ActivatePuzzleInteractors(bool value)
         {
-            IInteractor[] interactors = GetComponentsInChildren<IInteractor>();
+            Interactor[] interactors = GetComponentsInChildren<Interactor>();
             for(int i=0; i< interactors.Length; i++)
             {
-                if (interactors[i] == interactor.GetComponent<IInteractor>())
+                if (interactors[i] == interactor.GetComponent<Interactor>())
                     continue;
 
                 interactors[i].Enable(value);

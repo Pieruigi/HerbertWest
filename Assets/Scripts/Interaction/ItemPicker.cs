@@ -42,7 +42,7 @@ namespace Zom.Pie
             {
                 if(fsm.CurrentStateId == pickedState)
                 {
-                    Destroy(sceneObject);
+                    SetAsPicked();
                 }
             }
         }
@@ -51,6 +51,14 @@ namespace Zom.Pie
         void Update()
         {
 
+        }
+
+        public void SetAsPicked()
+        {
+            if (fsm)
+                fsm.ForceState(pickedState, false, false);
+           
+            Destroy(sceneObject);
         }
 
         public IEnumerator Pick()
@@ -74,7 +82,7 @@ namespace Zom.Pie
 
             yield return new WaitForSeconds(time+2f);
 
-            Destroy(sceneObject);
+            SetAsPicked();
 
             Inventory.Instance.Add(item);
 

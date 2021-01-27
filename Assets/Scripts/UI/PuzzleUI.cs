@@ -7,6 +7,9 @@ namespace Zom.Pie.UI
 {
     public class PuzzleUI : MonoBehaviour
     {
+        [SerializeField]
+        Button exitButton;
+
         PuzzleController puzzleController;
 
         private void Awake()
@@ -21,6 +24,8 @@ namespace Zom.Pie.UI
             {
                 pc.OnPuzzleEnter += HandleOnEnter;
                 pc.OnPuzzleExitStart += HandleOnExitStart;
+                pc.OnPuzzleInteractionStart += HandleOnPuzzleInteractionStart;
+                pc.OnPuzzleInteractionStop += HandleOnPuzzleInteractionStop;
             }
 
             gameObject.SetActive(false);
@@ -53,7 +58,15 @@ namespace Zom.Pie.UI
             
         }
 
-        
+        void HandleOnPuzzleInteractionStart(PuzzleController puzzleController)
+        {
+            exitButton.interactable = false;
+        }
+
+        void HandleOnPuzzleInteractionStop(PuzzleController puzzleController)
+        {
+            exitButton.interactable = true;
+        }
     }
 
 }

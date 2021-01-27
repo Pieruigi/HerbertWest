@@ -477,6 +477,7 @@ GameObject:
   - component: {fileID: 4569689810424374047}
   - component: {fileID: 5529630276884994398}
   - component: {fileID: 8855378132250607130}
+  - component: {fileID: 1320399564}
   m_Layer: 5
   m_Name: ActionButton
   m_TagString: Untagged
@@ -601,3 +602,21 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 1
+--- !u!114 &1320399564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7521425544345194217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 273216548fa4d444ab497aea09f2992c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enabledColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  disabledColor:
+    serializedVersion: 2
+    rgba: 1835822188

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Zom.Pie.UI
 {
@@ -9,6 +10,7 @@ namespace Zom.Pie.UI
 
 
         PuzzleController puzzleController;
+        Image[] images;
 
         // Start is called before the first frame update
         void Start()
@@ -18,18 +20,24 @@ namespace Zom.Pie.UI
                 pc.OnPuzzleEnterStart += HandleOnPuzzleEnterStart;
                 pc.OnPuzzleExit += HandleOnPuzzleExit;
             }
+
+            // Get all the images of the controller.
+            images = GetComponentsInChildren<Image>();
         }
 
 
         void HandleOnPuzzleEnterStart(PuzzleController puzzleController)
         {
-            gameObject.SetActive(false);
+            foreach (Image i in images)
+                i.enabled = false;
         }
 
         void HandleOnPuzzleExit(PuzzleController puzzleController)
         {
-            gameObject.SetActive(true);
+            foreach (Image i in images)
+                i.enabled = true;
         }
+
     }
 
 }

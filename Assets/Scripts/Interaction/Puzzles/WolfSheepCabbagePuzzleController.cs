@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Zom.Pie.Interfaces;
 
 namespace Zom.Pie
 {
@@ -16,6 +15,9 @@ namespace Zom.Pie
         List<GameObject> handles;
 
         [SerializeField]
+        GameObject cover;
+
+        [SerializeField]
         ItemPicker itemPicker;
 
         // 0 is back, 1 is forward.
@@ -23,7 +25,7 @@ namespace Zom.Pie
 
         List<Vector3> defaultPositions;
         
-        float disp = 0.1f;
+        float disp = -0.125f;
         float moveTime = 0.5f;
 
         bool wait = false;
@@ -53,7 +55,14 @@ namespace Zom.Pie
                     handleValues[i] = 1;
                     LeanTween.move(handles[i], defaultPositions[i] + handles[i].transform.right * disp, 0f);
                 }
-                
+
+                // Open cover.
+                cover.transform.position += cover.transform.right * 0.2f;
+
+                // Set the picker as picked.
+                itemPicker.SetAsPicked();
+
+
             }
         }
 
@@ -67,7 +76,7 @@ namespace Zom.Pie
 
         }
 
-        public override void Interact(IInteractor interactor)
+        public override void Interact(Interactor interactor)
         {
             if (wait)
                 return;
@@ -80,13 +89,15 @@ namespace Zom.Pie
 
         
 
-        int GetHandleIndex(IInteractor interactor)
+        int GetHandleIndex(Interactor interactor)
         {
-            return handles.FindIndex(h => h.GetComponent<IInteractor>() == interactor);
+            return handles.FindIndex(h => h.GetComponent<Interactor>() == interactor);
         }
 
         IEnumerator DoInteraction(int handleIndex)
         {
+            OnPuzzleInteractionStart?.Invoke(this);
+
             Debug.Log("HandleIndex:" + handleIndex);
             wait = true;
             lastMoveId = handleIndex;
@@ -129,9 +140,10 @@ namespace Zom.Pie
                     SetStateCompleted();
 
                     // Open the box.
+                    LeanTween.move(cover, cover.transform.position + cover.transform.right * 0.2f, 1.0f);
 
                     // Wait until the box opens.
-                    yield return new WaitForSeconds(1f);
+                    yield return new WaitForSeconds(1.5f);
 
                     // We are calling the picking method here rather than using the fsm change state
                     // because we want to wait for the picking to complete.
@@ -147,11 +159,19 @@ namespace Zom.Pie
             }
 
             wait = false;
-
+            OnPuzzleInteractionStop?.Invoke(this);
         }
 
         bool CheckRules()
         {
+            // We are moving the wolf but sheep and cabbage are already to the other side.
+            if (lastMoveId == 0 && (handleValues[1] == handleValues[2]))
+                return false;
+
+            // We are moving the cabbage but sheep and wolf are already to the other side.
+            if (lastMoveId == 2 && (handleValues[0] == handleValues[1]))
+                return false;
+
             // If wolf, sheep and cabbage are togheter return true.
             if (handleValues[0] == handleValues[1] && handleValues[1] == handleValues[2])
                 return true;
@@ -167,6 +187,7 @@ namespace Zom.Pie
             // If cabbage is with sheep but we just moved one of them return true.
             if ((handleValues[1] == handleValues[2]) && (lastMoveId == 2 || lastMoveId == 1))
                 return true;
+    
 
             return false;
         }

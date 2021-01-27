@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityStandardAssets.CrossPlatformInput;
-using Zom.Pie.Interfaces;
 
 namespace Zom.Pie
 {
-    public class InteractionRaycast : MonoBehaviour, IInteractor
+    public class InteractionRaycast : Interactor
     {
+        
+
         [SerializeField]
         [Tooltip("The object you want to interact with.")]
         InteractionController interactionController;
@@ -24,8 +26,16 @@ namespace Zom.Pie
 
         bool inside = false;
 
-        private void Awake()
+
+        // Used to keep trace of the interaction event.
+        // 1: enter
+        // 2: exit
+        int triggerDir = -1;
+
+        protected override void Awake()
         {
+            base.Awake();
+
             sqrDistance = distance * distance;
 
             if(!interactionCollider && interactionController)
@@ -35,18 +45,24 @@ namespace Zom.Pie
         }
 
         // Start is called before the first frame update
-        void Start()
+        protected override void Start()
         {
-
+            base.Start();
         }
 
         // Update is called once per frame
-        void Update()
+        protected override void Update()
         {
+            base.Update();
 
             // If the player is too far we don't cast any ray.
             if (!inside)
+            {
+                if (triggerDir == 1)
+                    CallTriggerEvent();
                 return;
+            }
+                
 
             // Cast a ray from the camera.
             Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
@@ -60,14 +76,35 @@ namespace Zom.Pie
                     // We hit the right object, now try to interact with it.
                     if (interactionController.InteractionAllowed())
                     {
+                        if (triggerDir == -1)
+                            CallTriggerEvent();
+                            
+
                         //Debug.Log("Is interaction allowed");
                         if (CrossPlatformInputManager.GetButtonDown("Fire1"))
                         {
                             interactionController.Interact();
                         }
-                    }
                         
+                    }
+                    else
+                    {
+                        if (triggerDir == 1)
+                            CallTriggerEvent();
+
+                    }
+
                 }
+                else
+                {
+                    if (triggerDir == 1)
+                        CallTriggerEvent();
+                }
+            }
+            else
+            {
+                if (triggerDir == 1)
+                    CallTriggerEvent();
             }
         }
 
@@ -86,10 +123,19 @@ namespace Zom.Pie
             }
         }
 
-        public void Enable(bool value)
+        public override void Enable(bool value)
         {
             interactionCollider.enabled = value;
             enabled = value;
+        }
+
+        private void CallTriggerEvent()
+        {
+            triggerDir *= -1;
+            if (triggerDir > 0)
+                OnTriggerEnter?.Invoke(this);
+            else
+                OnTriggerExit?.Invoke(this);
         }
     }
 
