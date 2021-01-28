@@ -22,16 +22,16 @@ public class TestInventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.A))
-        //{
-        //    if(InventoryUI.Instance.IsOpen())
-        //    {
-        //        InventoryUI.Instance.Close();
-        //    }
-        //    else
-        //    {
-        //        InventoryUI.Instance.Open(true);
-        //    }
-        //}
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            if (InventoryUI.Instance.IsOpen())
+            {
+                InventoryUI.Instance.Close();
+            }
+            else
+            {
+                InventoryUI.Instance.Open(true);
+            }
+        }
     }
 }
