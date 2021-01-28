@@ -8,10 +8,14 @@ namespace Zom.Pie
 {
     public abstract class PuzzleController : MonoBehaviour
     {
+
         public UnityAction<PuzzleController> OnPuzzleEnterStart;
         public UnityAction<PuzzleController> OnPuzzleEnter;
+        
         public UnityAction<PuzzleController> OnPuzzleExitStart;
         public UnityAction<PuzzleController> OnPuzzleExit;
+
+        // Useful if you want to show/hide puzzle UI ( ex. button close ) while you are interacting.
         public UnityAction<PuzzleController> OnPuzzleInteractionStart;
         public UnityAction<PuzzleController> OnPuzzleInteractionStop;
 
@@ -36,6 +40,9 @@ namespace Zom.Pie
         {
             get { return completedState; }
         }
+
+        [SerializeField]
+        List<Light> lights;
 
         float cameraMoveTime = 0.5f;
         Vector3 cameraLastPosition;
@@ -80,6 +87,9 @@ namespace Zom.Pie
 
             // Disable interactors.
             ActivatePuzzleInteractors(false);
+
+            // Disable lights.
+            EnableLights(false);
         }
 
         // Start is called before the first frame update
@@ -127,6 +137,9 @@ namespace Zom.Pie
 
             PlayerManager.Instance.SetDisable(true);
 
+            // Enable lights.
+            EnableLights(true);
+
             // Deactivate the local interactor
             interactor.GetComponent<Interactor>().Enable(false);
 
@@ -153,6 +166,9 @@ namespace Zom.Pie
             busy = true;
             // Deactivate all the objects.
             ActivatePuzzleInteractors(false);
+
+            // Disable lights.
+            EnableLights(false);
 
             LeanTween.move(Camera.main.gameObject, cameraLastPosition, cameraMoveTime);
             LeanTween.rotate(Camera.main.gameObject, cameraLastEulers, cameraMoveTime);
@@ -183,6 +199,14 @@ namespace Zom.Pie
             }
 
 
+        }
+
+        void EnableLights(bool value)
+        {
+            foreach (Light l in lights)
+            {
+                l.enabled = value;
+            }
         }
     }
 
