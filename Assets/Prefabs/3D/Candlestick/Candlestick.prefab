@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4095160320239145042}
   - component: {fileID: 1115543643263737847}
   - component: {fileID: 2927271869763480381}
+  - component: {fileID: 1647321781708944145}
   m_Layer: 0
   m_Name: Candlestick
   m_TagString: Untagged
@@ -82,3 +83,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1647321781708944145
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3719760200099515112}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.88269836, y: 1.5583248, z: 0.64083767}
+  m_Center: {x: 0, y: 0.7780554, z: 0}
