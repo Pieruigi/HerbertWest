@@ -15,6 +15,10 @@ namespace Zom.Pie
 
         [SerializeField]
         GameObject sceneObject;
+        protected GameObject SceneObject
+        {
+            get { return sceneObject; }
+        }
 
 
         // If you don't need a owned fsm simply call Pick().
@@ -25,7 +29,7 @@ namespace Zom.Pie
         int pickedState = 0;
 
 
-        protected abstract IEnumerator PickEffect(GameObject sceneObject);
+        protected abstract IEnumerator PickEffect();
         protected abstract object GetObject();
 
         protected virtual void Awake()
@@ -73,7 +77,7 @@ namespace Zom.Pie
             }
 
             // Effect
-            yield return PickEffect(sceneObject);
+            yield return PickEffect();
           
             // Insert into inventory, or library... or where ever else.
             Insert(GetObject());

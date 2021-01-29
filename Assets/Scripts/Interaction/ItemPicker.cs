@@ -21,10 +21,10 @@ namespace Zom.Pie
             return item;
         }
 
-        protected override IEnumerator PickEffect(GameObject sceneObject)
+        protected override IEnumerator PickEffect()
         {
            
-            LeanTween.move(sceneObject, Camera.main.transform.position + Camera.main.transform.forward * distance, time);
+            LeanTween.move(SceneObject, Camera.main.transform.position + Camera.main.transform.forward * distance, time);
 
             yield return new WaitForSeconds(time+2f);
 
