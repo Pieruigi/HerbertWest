@@ -22,6 +22,7 @@ namespace Zom.Pie
         [SerializeField]
         float distance = 2f;
 
+
         float sqrDistance;
 
         bool inside = false;

@@ -66,24 +66,27 @@ namespace Zom.Pie.Editor
             Selection.activeObject = asset;
         }
 
-        //[MenuItem("Assets/Create/HW/UI/MessageCollection")]
-        //public static void CreateUIMessageCollection()
-        //{
-        //    MessageCollection asset = ScriptableObject.CreateInstance<MessageCollection>();
+        [MenuItem("Assets/Create/Collections/Document")]
+        public static void CreateUIMessageCollection()
+        {
+            Document asset = ScriptableObject.CreateInstance<Document>();
+            DocumentContent assetContent = ScriptableObject.CreateInstance<DocumentContent>();
 
-        //    string name = "messageCollection.asset";
-        //    string folder = "Assets/Resources/" + Constants.ResourceFolderMessageCollectionUI +"/";
+            string name = "/document.asset";
+            string nameContent = "/document_content.asset";
+            string folder = System.IO.Path.Combine("Assets/Resources", Constants.DocumentResourceFolder);
 
-        //    if (!System.IO.Directory.Exists(folder))
-        //        System.IO.Directory.CreateDirectory(folder);
+            if (!System.IO.Directory.Exists(folder))
+                System.IO.Directory.CreateDirectory(folder);
 
-        //    AssetDatabase.CreateAsset(asset, folder + name);
-        //    AssetDatabase.SaveAssets();
+            AssetDatabase.CreateAsset(asset, folder + name);
+            AssetDatabase.CreateAsset(assetContent, folder + nameContent);
+            AssetDatabase.SaveAssets();
 
-        //    EditorUtility.FocusProjectWindow();
+            EditorUtility.FocusProjectWindow();
 
-        //    Selection.activeObject = asset;
-        //}
+            Selection.activeObject = asset;
+        }
 
 
     }

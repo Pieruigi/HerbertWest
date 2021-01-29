@@ -4,6 +4,7 @@ using UnityEngine;
 using Zom.Pie.Collections;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityStandardAssets.CrossPlatformInput;
 
 namespace Zom.Pie.UI
 {
@@ -77,7 +78,12 @@ namespace Zom.Pie.UI
         // Update is called once per frame
         void Update()
         {
-
+            if (CrossPlatformInputManager.GetButtonDown("Fire2"))
+            {
+                Debug.Log("Fire2");
+                if (!open)
+                    Open(false);
+            }
         }
 
         public void Open(bool useEnabled)

@@ -63,7 +63,7 @@ namespace Zom.Pie
                 cover.transform.position += cover.transform.right * 0.2f;
 
                 // Set the picker as picked.
-                itemPicker.SetAsPicked();
+                itemPicker.SetSceneObjectAsPicked();
 
 
             }
