@@ -11,7 +11,7 @@ namespace Zom.Pie.UI
         Button exitButton;
 
         PuzzleController puzzleController;
-
+        
         private void Awake()
         {
                 
@@ -20,6 +20,7 @@ namespace Zom.Pie.UI
         // Start is called before the first frame update
         void Start()
         {
+      
             foreach(PuzzleController pc in PuzzleController.PuzzleControllers)
             {
                 pc.OnPuzzleEnter += HandleOnEnter;

@@ -21,7 +21,7 @@ namespace Zom.Pie.UI
         GameObject menuDefault;
 
         //[SerializeField]
-        //bool closedOnStart = false;
+        //bool hideOnStart = false;
 
         GameObject current;
 
@@ -41,9 +41,7 @@ namespace Zom.Pie.UI
         // Start is called before the first frame update
         protected virtual void Start()
         {
-            //if (!closedOnStart)
-                //Open();
-            //else
+            //if (hideOnStart)
             //    Close();
         }
 

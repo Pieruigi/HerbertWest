@@ -215,7 +215,6 @@ GameObject:
   - component: {fileID: 1169449576193653151}
   - component: {fileID: 1169449576193653147}
   - component: {fileID: 1169449576193653146}
-  - component: {fileID: 773903138297499971}
   - component: {fileID: 397911158}
   - component: {fileID: 348665877}
   m_Layer: 0
@@ -315,18 +314,6 @@ MonoBehaviour:
   interactionController: {fileID: 1169449576193653147}
   interactionCollider: {fileID: 1086228850454710596}
   distance: 2
---- !u!114 &773903138297499971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1086228850454710598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fabc65d955ff894aa42c324797fc272, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &397911158
 MonoBehaviour:
   m_ObjectHideFlags: 0

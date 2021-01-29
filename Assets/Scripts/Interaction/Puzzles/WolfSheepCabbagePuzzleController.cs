@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zom.Pie.Collections;
 
 namespace Zom.Pie
 {
@@ -26,11 +27,13 @@ namespace Zom.Pie
         List<Vector3> defaultPositions;
         
         float disp = -0.125f;
-        float moveTime = 0.5f;
+        float moveTime = 0.25f;
 
         bool wait = false;
         int lastMoveId = -1;
-        
+
+        int errorMsgId = 4;
+
         protected override void Awake()
         {
             base.Awake();
@@ -115,35 +118,40 @@ namespace Zom.Pie
                 handleValues[handleIndex] = 0;
             }
 
-
-            LeanTween.move(handles[handleIndex], targetPosition, moveTime);
+            // Move the handle
+            LeanTween.move(handles[handleIndex], targetPosition, moveTime).setEaseInExpo();
 
             yield return new WaitForSeconds(moveTime);
 
             if (!CheckRules())
             {
-                // Failed, reset.   
+                // Failed, reset all the handles.  
                 yield return new WaitForSeconds(1f);
                 for(int i=0; i<handles.Count; i++)
                 {
                     handleValues[i] = 0;
                     targetPosition = defaultPositions[i];
-                    LeanTween.move(handles[i], targetPosition, moveTime);
+                    LeanTween.move(handles[i], targetPosition, 3*moveTime).setEaseInOutExpo();
                 }
+                // Wait for reset
+                yield return new WaitForSeconds(3 * moveTime + 0.5f);
+
+                // Send a message to the player.
+                GetComponent<Messenger>().SendMessage((int)TextFactory.Type.InGameMessage, errorMsgId);
             }
             else
             {
                 // Check if is completed.
                 if (CheckCompleted())
                 {
-                    // Set the state completed.
+                    // Set completed.
                     SetStateCompleted();
 
                     // Open the box.
-                    LeanTween.move(cover, cover.transform.position + cover.transform.right * 0.2f, 1.0f);
+                    LeanTween.move(cover, cover.transform.position + cover.transform.right * 0.2f, 0.50f);
 
                     // Wait until the box opens.
-                    yield return new WaitForSeconds(1.5f);
+                    yield return new WaitForSeconds(1f);
 
                     // We are calling the picking method here rather than using the fsm change state
                     // because we want to wait for the picking to complete.

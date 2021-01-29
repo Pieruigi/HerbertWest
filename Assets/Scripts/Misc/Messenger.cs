@@ -19,7 +19,12 @@ namespace Zom.Pie
 
         protected virtual void Start() { }
 
-        protected void SendMessage(int messageType, int messageIndex)
+        /// <summary>
+        /// Send a message.
+        /// </summary>
+        /// <param name="messageType"></param>
+        /// <param name="messageIndex"></param>
+        public void SendMessage(int messageType, int messageIndex)
         {
             //return TextFactory.Instance.GetText((TextFactory.Type)messageType, messageIndex);
             OnMessageSent?.Invoke(TextFactory.Instance.GetText((TextFactory.Type)messageType, messageIndex));

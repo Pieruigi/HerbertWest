@@ -12,18 +12,35 @@ namespace Zom.Pie.UI
 
         private void Awake()
         {
-            image = GetComponent<Image>();
+            
         }
 
         // Start is called before the first frame update
         void Start()
         {
-
+            foreach (PuzzleController pc in PuzzleController.PuzzleControllers)
+            {
+                pc.OnPuzzleEnterStart += HandleOnEnterStart;
+                pc.OnPuzzleExit += HandleOnExit;
+                
+            }
         }
 
         // Update is called once per frame
         void Update()
         {
+
+        }
+
+        
+        void HandleOnEnterStart(PuzzleController puzzleController)
+        {
+            image.enabled = false;
+        }
+
+        void HandleOnExit(PuzzleController puzzleController)
+        {
+            image.enabled = true;
 
         }
     }
