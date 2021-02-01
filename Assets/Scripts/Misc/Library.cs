@@ -8,6 +8,10 @@ namespace Zom.Pie
     public class Library : MonoBehaviour
     {
         List<Document> documents = new List<Document>();
+        public IList<Document> Documents
+        {
+            get { return documents.AsReadOnly(); }
+        }
 
         public static Library Instance { get; private set; }
 
