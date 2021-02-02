@@ -1,4 +1,3 @@
-using Aura2API;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,8 +10,8 @@ namespace Zom.Pie
         [SerializeField]
         Document document;
 
-        [SerializeField]
-        AuraLight  auraLight;
+        //[SerializeField]
+        //AuraLight  auraLight;
 
         // The internal finite state machine
         FiniteStateMachine fsm;
@@ -29,7 +28,7 @@ namespace Zom.Pie
             // Destroy the light if the decument has been picked.
             if(fsm.CurrentStateId == PickedState)
             {
-                Destroy(auraLight.gameObject);
+                //Destroy(auraLight.gameObject);
             }
         }
 
@@ -45,7 +44,7 @@ namespace Zom.Pie
             // Increase aura light strength.
             float time = 0.5f;
             float targetStrength = 5f;
-            LeanTween.value(gameObject, OnStrengthUpdate, auraLight.strength, targetStrength, time).setEaseInOutBounce();
+            //LeanTween.value(gameObject, OnStrengthUpdate, auraLight.strength, targetStrength, time).setEaseInOutBounce();
 
             yield return new WaitForSeconds(time);
 
@@ -57,13 +56,13 @@ namespace Zom.Pie
 
             yield return new WaitForSeconds(time);
 
-            Destroy(auraLight.gameObject);
+            //Destroy(auraLight.gameObject);
             
         }
 
         void OnStrengthUpdate(float value)
         {
-            auraLight.strength = value;
+            //auraLight.strength = value;
         }
     }
 
