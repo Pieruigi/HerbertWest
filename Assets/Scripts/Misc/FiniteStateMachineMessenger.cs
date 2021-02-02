@@ -7,6 +7,9 @@ namespace Zom.Pie
 {
     public class FiniteStateMachineMessenger : Messenger
     {
+        [SerializeField]
+        float delay = 1f;
+
         FiniteStateMachine fsm;
 
         protected override void Awake()
@@ -21,7 +24,7 @@ namespace Zom.Pie
         {
             if(fsm.LastExitCode > 0)
             {
-                SendMessage((int)TextFactory.Type.InGameMessage, fsm.LastExitCode);
+                StartCoroutine(SendMessageDelayed((int)TextFactory.Type.InGameMessage, fsm.LastExitCode));
             }
         }
 
@@ -29,8 +32,15 @@ namespace Zom.Pie
         {
             if (fsm.LastExitCode > 0)
             {
-                SendMessage((int)TextFactory.Type.InGameMessage, fsm.LastExitCode);
+                StartCoroutine(SendMessageDelayed((int)TextFactory.Type.InGameMessage, fsm.LastExitCode));
             }
+        }
+
+        IEnumerator SendMessageDelayed(int messageType, int messageIndex)
+        {
+            yield return new WaitForSeconds(delay);
+
+            SendMessage(messageType, messageIndex);
         }
 
     }

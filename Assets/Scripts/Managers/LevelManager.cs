@@ -14,7 +14,7 @@ namespace Zom.Pie
         // Start is called before the first frame update
         void Start()
         {
-
+            StartCoroutine(Test());
         }
 
         // Update is called once per frame
@@ -23,6 +23,11 @@ namespace Zom.Pie
 
         }
 
+        IEnumerator Test()
+        {
+            Debug.Log("AAAAAAAAAAAAA");
+            yield break;
+        }
 
     }
 

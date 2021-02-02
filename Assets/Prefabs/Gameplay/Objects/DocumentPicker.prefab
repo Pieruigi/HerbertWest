@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 757411363}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.578, z: -0.285}
+  m_LocalPosition: {x: 0, y: 1.578, z: -0.188}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6816630877159440729}
@@ -45,7 +45,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 0.95506537, b: 0, a: 1}
   m_Intensity: 13.6
-  m_Range: 2.54
+  m_Range: 2
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -317,7 +317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneObject: {fileID: 1087617454873664114}
   document: {fileID: 11400000, guid: fdccd39cf73190248b457010417eb6be, type: 2}
-  materialIndex: 2
+  auraLight: {fileID: 757411365}
 --- !u!114 &8306250501351587868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,7 +335,7 @@ MonoBehaviour:
     id: 0
     othersToSet: []
     commonStateErrorCode: 0
-    commonStateSucceedCode: 0
+    commonStateSucceedCode: 5
   - name: Ready
     id: 1
     othersToSet: []
@@ -361,6 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fabc65d955ff894aa42c324797fc272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 1.5
 --- !u!114 &1407997856460912852
 MonoBehaviour:
   m_ObjectHideFlags: 0

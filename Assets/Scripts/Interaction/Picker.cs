@@ -27,6 +27,11 @@ namespace Zom.Pie
 
         int readyState = 1;
         int pickedState = 0;
+        protected int PickedState
+        {
+            get { return pickedState; }
+        }
+
 
 
         protected abstract IEnumerator PickEffect();

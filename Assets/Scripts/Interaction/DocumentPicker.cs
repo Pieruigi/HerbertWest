@@ -1,3 +1,4 @@
+using Aura2API;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,18 +12,27 @@ namespace Zom.Pie
         Document document;
 
         [SerializeField]
-        int materialIndex;
+        AuraLight  auraLight;
 
-        Material material;
-        Color startColor;
+        // The internal finite state machine
+        FiniteStateMachine fsm;
 
         protected override void Awake()
         {
             base.Awake();
-            material = SceneObject.GetComponent<MeshRenderer>().materials[materialIndex];
-
-            
         }
+
+        protected override void Start()
+        {
+            base.Start();
+
+            // Destroy the light if the decument has been picked.
+            if(fsm.CurrentStateId == PickedState)
+            {
+                Destroy(auraLight.gameObject);
+            }
+        }
+
 
         protected override object GetObject()
         {
@@ -31,30 +41,29 @@ namespace Zom.Pie
 
         protected override IEnumerator PickEffect()
         {
-            // Get starting color.
-            startColor = material.GetColor("_EmissionColor");
-
-            // Emission effect.
-            float time = 1.5f;
-            float targetPower = 100;
-            LeanTween.value(gameObject, OnEmissionPowerUpdate, 1f, targetPower, time);
+            
+            // Increase aura light strength.
+            float time = 0.5f;
+            float targetStrength = 5f;
+            LeanTween.value(gameObject, OnStrengthUpdate, auraLight.strength, targetStrength, time).setEaseInOutBounce();
 
             yield return new WaitForSeconds(time);
 
-            // Scale down.
-            float scaleTime = 1;
-            LeanTween.scale(SceneObject, Vector3.zero, scaleTime).setEaseInOutBounce();
+            // Destroy the book.
+            Destroy(SceneObject);
 
+            // Decrease light strength.
+            LeanTween.value(gameObject, OnStrengthUpdate, targetStrength, 0, time).setEaseInOutBounce();
 
-            LeanTween.value(gameObject, OnEmissionPowerUpdate, targetPower, 0, scaleTime).setEaseInOutBounce();
+            yield return new WaitForSeconds(time);
 
-            yield return new WaitForSeconds(scaleTime);
+            Destroy(auraLight.gameObject);
             
         }
 
-        void OnEmissionPowerUpdate(float value)
+        void OnStrengthUpdate(float value)
         {
-            material.SetColor("_EmissionColor", startColor * value);
+            auraLight.strength = value;
         }
     }
 
