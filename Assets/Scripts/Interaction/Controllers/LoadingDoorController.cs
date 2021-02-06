@@ -51,7 +51,7 @@ namespace Zom.Pie
         {
             if(fsm.CurrentStateId == unlocked && fsm.PreviousStateId == unlocked)
             {
-                Debug.Log("Loading next scene.");
+                Debug.LogFormat("Loading next scene - sceneId:{0}, spawnIndex:{1}", sceneBuildIndex, spawnPointIndex);
                 //PlayerManager.Instance.SetDisable(true);
                 GeneralUtility.LoadScene(this, sceneBuildIndex, spawnPointIndex);
             }

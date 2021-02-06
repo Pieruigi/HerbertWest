@@ -23,7 +23,7 @@ namespace Zom.Pie
 
             yield return new WaitForSeconds(0.1f);
 
-            Spawner.GetSpawner(PlayerManager.Instance.transform).SpawnPointId = spawnPointIndex;
+            PlayerSpawner.SpawnPointId = spawnPointIndex;
 
             CacheManager.Instance.Update();
             GameManager.Instance.LoadScene(sceneBuildIndex);

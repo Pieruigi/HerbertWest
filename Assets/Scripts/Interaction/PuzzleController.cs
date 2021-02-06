@@ -63,7 +63,7 @@ namespace Zom.Pie
         static List<PuzzleController> puzzleControllers;
         public static List<PuzzleController> PuzzleControllers
         {
-            get { return puzzleControllers; }
+            get { return puzzleControllers != null ? puzzleControllers : new List<PuzzleController>(); }
         }
 
         FiniteStateMachine fsm;

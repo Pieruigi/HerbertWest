@@ -39,6 +39,8 @@ namespace Zom.Pie
         {
             Debug.LogFormat("Cacher - code:{0}, value:{1}", Code, value);
             // Fill the library by reading data from cache.
+            if (string.IsNullOrEmpty(value))
+                return;
             string[] codes = value.Split(' ');
             foreach(string code in codes)
             {

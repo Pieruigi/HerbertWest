@@ -23,7 +23,10 @@ namespace Zom.Pie
 
         // If you don't need a owned fsm simply call Pick().
         FiniteStateMachine fsm;
-
+        protected FiniteStateMachine FiniteStateMachine
+        {
+            get { return fsm; }
+        }
 
         int readyState = 1;
         int pickedState = 0;

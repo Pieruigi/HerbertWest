@@ -35,6 +35,11 @@ namespace Zom.Pie
         {
 
         }
+
+        private void OnDestroy()
+        {
+            interactors.Remove(this);
+        }
     }
 
 }

@@ -14,11 +14,13 @@ namespace Zom.Pie
         //AuraLight  auraLight;
 
         // The internal finite state machine
-        FiniteStateMachine fsm;
+      
 
         protected override void Awake()
         {
             base.Awake();
+
+           
         }
 
         protected override void Start()
@@ -26,7 +28,7 @@ namespace Zom.Pie
             base.Start();
 
             // Destroy the light if the decument has been picked.
-            if(fsm.CurrentStateId == PickedState)
+            if(FiniteStateMachine && FiniteStateMachine.CurrentStateId == PickedState)
             {
                 //Destroy(auraLight.gameObject);
             }

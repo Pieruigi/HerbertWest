@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 6893386326317125565}
   - component: {fileID: 5400749324632961228}
   m_Layer: 0
-  m_Name: Spawners
+  m_Name: PlayerSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,6 +74,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10bc4a90de658be4382d19ea234ffc76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   spawnPoints:
   - {fileID: 3508792098176390872}
