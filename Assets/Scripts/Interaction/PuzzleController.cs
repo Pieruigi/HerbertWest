@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
+using Zom.Pie.Audio;
 
 namespace Zom.Pie
 {
@@ -140,6 +140,9 @@ namespace Zom.Pie
             // Enable lights.
             EnableLights(true);
 
+            // Fade out music
+            MusicManager.Instance?.LerpSetVolume((PrefsManager.GetMusicVolume()-80f) * 0.125f, 0.5f);
+
             // Deactivate the local interactor
             interactor.GetComponent<Interactor>().Enable(false);
 
@@ -169,6 +172,9 @@ namespace Zom.Pie
 
             // Disable lights.
             EnableLights(false);
+
+            // Reset music volume
+            MusicManager.Instance?.LerpResetVolume(0.5f);
 
             LeanTween.move(Camera.main.gameObject, cameraLastPosition, cameraMoveTime);
             LeanTween.rotate(Camera.main.gameObject, cameraLastEulers, cameraMoveTime);

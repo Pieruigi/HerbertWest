@@ -32,7 +32,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6267698543511405813}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -10.482461, y: -1.4482152, z: 4.140937}
   m_LocalScale: {x: 1.4143155, y: 1.2525388, z: 1}
   m_Children: []
@@ -131,8 +131,8 @@ MonoBehaviour:
     toStateId: 1
     othersToCheck: []
     errorCode: 0
-  currentStateName: Locked
-  currentStateId: 0
+  currentStateName: Unlocked
+  currentStateId: 1
 --- !u!114 &1679161069980379707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionController: {fileID: 8816086470733024522}
-  interactionCollider: {fileID: 0}
+  interactionCollider: {fileID: 1406168036530147808}
   distance: 2
 --- !u!114 &5736414416719548768
 MonoBehaviour:
@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66f3bd6b54b31b6419291f8b2901c497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneBuildIndex: 0
+  sceneBuildIndex: 3
   spawnPointIndex: 0
   key: {fileID: 11400000, guid: 5c006fe1263b3184692dfcf5545abe94, type: 2}
 --- !u!114 &104864267982696260
@@ -201,3 +201,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fabc65d955ff894aa42c324797fc272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 1

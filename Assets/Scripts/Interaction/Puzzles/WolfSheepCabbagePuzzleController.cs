@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zom.Pie.Audio;
 using Zom.Pie.Collections;
 
 namespace Zom.Pie
@@ -21,6 +22,21 @@ namespace Zom.Pie
         [SerializeField]
         ItemPicker itemPicker;
 
+        [SerializeField]
+        ClipData handleClip;
+
+        [SerializeField]
+        ClipData handleResetClip;
+
+        [SerializeField]
+        ClipData lockResetClip;
+
+        [SerializeField]
+        ClipData lockOpenClip;
+
+        [SerializeField]
+        ClipData coverOpenClip;
+
         // 0 is back, 1 is forward.
         int[] handleValues;
 
@@ -34,9 +50,14 @@ namespace Zom.Pie
 
         int errorMsgId = 4;
 
+        AudioSource audioSource;
+
         protected override void Awake()
         {
             base.Awake();
+
+            // Get the audio source
+            audioSource = GetComponent<AudioSource>();
 
             defaultPositions = new List<Vector3>();
             foreach (GameObject handle in handles)
@@ -121,10 +142,18 @@ namespace Zom.Pie
             // Move the handle
             LeanTween.move(handles[handleIndex], targetPosition, moveTime).setEaseInExpo();
 
+            // Play audio
+            handleClip.Play(audioSource);
+
             yield return new WaitForSeconds(moveTime);
 
             if (!CheckRules())
             {
+                yield return new WaitForSeconds(0.5f);
+
+                // Play clip
+                lockResetClip.Play(audioSource);
+
                 // Failed, reset all the handles.  
                 yield return new WaitForSeconds(1f);
                 for(int i=0; i<handles.Count; i++)
@@ -133,6 +162,10 @@ namespace Zom.Pie
                     targetPosition = defaultPositions[i];
                     LeanTween.move(handles[i], targetPosition, 3*moveTime).setEaseInOutExpo();
                 }
+
+                // Play clip
+                handleResetClip.PlayDelayed(audioSource, 0.5f);
+
                 // Wait for reset
                 yield return new WaitForSeconds(3 * moveTime + 0.5f);
 
@@ -144,11 +177,21 @@ namespace Zom.Pie
                 // Check if is completed.
                 if (CheckCompleted())
                 {
+                    yield return new WaitForSeconds(0.5f);
+
+                    // Play clip
+                    lockOpenClip.PlayDelayed(audioSource, 0.5f);
+
+                    yield return new WaitForSeconds(1f);
+
                     // Set completed.
                     SetStateCompleted();
 
                     // Open the box.
-                    LeanTween.move(cover, cover.transform.position + cover.transform.right * 0.2f, 0.50f);
+                    LeanTween.move(cover, cover.transform.position + cover.transform.right * 0.2f, 0.750f);
+
+                    // Play clip
+                    coverOpenClip.Play(audioSource);
 
                     // Wait until the box opens.
                     yield return new WaitForSeconds(1f);
