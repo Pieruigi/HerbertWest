@@ -21,6 +21,9 @@ namespace Zom.Pie
         ClipData lockedClip;
 
         [SerializeField]
+        ClipData unlockClip;
+
+        [SerializeField]
         ClipData openClip;
 
         [SerializeField]
@@ -62,7 +65,11 @@ namespace Zom.Pie
             if(fsm.CurrentStateId == unlocked && fsm.PreviousStateId == unlocked)
             {
                 Debug.LogFormat("Loading next scene - sceneId:{0}, spawnIndex:{1}", sceneBuildIndex, spawnPointIndex);
-                //PlayerManager.Instance.SetDisable(true);
+                // Set the clip you want to play entering the next room
+                LevelManager.SetOnEnterClip(closeClip);
+                
+                // Play open clip
+                LevelManager.Instance.PlayClip(openClip);
                 GeneralUtility.LoadScene(this, sceneBuildIndex, spawnPointIndex);
             }
         }
@@ -74,8 +81,9 @@ namespace Zom.Pie
             if(fsm.CurrentStateId == locked)
             {
                 // Play audio
-                //lockedClip.Play(audioSource);
+                LevelManager.Instance.PlayClip(lockedClip);
 
+                // Open inventory to check for items.
                 inventoryUser.Open();
             }
         }
@@ -85,13 +93,20 @@ namespace Zom.Pie
             //ItemUser iu = GetComponent<ItemUser>();
             if(key == null || key != item)
             {
+                // Tell the inventory we chosen a wrong item
                 inventoryUser.ReportWrongItem();
             }
             else
             {
+                // Report the inventory we chosen the right item.
                 inventoryUser.ReportRightItem();
+                // Remove the item
                 Inventory.Instance.Remove(item);
+                // Force door unlocked
                 fsm.ForceState(unlocked, true, true);
+
+                // Play audio
+                LevelManager.Instance.PlayClip(unlockClip);
             }
             
         }

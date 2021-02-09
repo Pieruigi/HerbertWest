@@ -50,14 +50,28 @@ namespace Zom.Pie
             //PlayerManager.Instance.SetDisable(true);
 
             // Ask the level manager for the spawn point in the world
-            Transform sp = spawnPoints[spawnPointId];
-            Debug.Log("SpawnPoint:" + sp);
+            if (spawnPointId < 0)
+            {
+                // Use cache
+                PlayerCacher cacher = PlayerManager.Instance.GetComponent<PlayerCacher>();
+                PlayerManager.Instance.transform.position = cacher.GetPosition();
+                PlayerManager.Instance.transform.eulerAngles = cacher.GetEulerAngles();
+            }
+            else
+            {
+                // Use spawn point
+                Transform sp = spawnPoints[spawnPointId];
+                Debug.Log("SpawnPoint:" + sp);
 
-            // Set position and rotation
-            PlayerManager.Instance.transform.position = sp.position;
-            PlayerManager.Instance.transform.rotation = sp.rotation;
+                // Set position and rotation
+                PlayerManager.Instance.transform.position = sp.position;
+                PlayerManager.Instance.transform.rotation = sp.rotation;
 
-            //PlayerManager.Instance.SetDisable(false);
+                spawnPointId = -1;
+
+                //PlayerManager.Instance.SetDisable(false);
+            }
+
         }
         
     }

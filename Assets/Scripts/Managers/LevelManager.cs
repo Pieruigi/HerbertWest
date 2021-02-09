@@ -1,13 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zom.Pie.Audio;
 
 namespace Zom.Pie
 {
     public class LevelManager : MonoBehaviour
     {
+        static LevelManager instance;
+        public static LevelManager Instance
+        {
+            get { return instance; }
+        }
+
+        // We can play an audio clip on enter ( for example a door that is closing )
+        static ClipData onEnterClip;
+        
+        
+        AudioSource audioSource;
+
         private void Awake()
         {
+            if (!instance)
+            {
+                instance = this;
+                audioSource = GetComponent<AudioSource>();
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
             
         }
 
@@ -23,12 +45,40 @@ namespace Zom.Pie
 
         }
 
+        /// <summary>
+        /// Sets the enter clip ( for example a door that is closing )
+        /// </summary>
+        /// <param name="clip"></param>
+        public static void SetOnEnterClip(ClipData clip)
+        {
+            onEnterClip = clip;
+        }
+
+        public static void PlayOnEnterClip()
+        {
+            if (onEnterClip == null)
+                return;
+
+            onEnterClip.Play(instance.audioSource);
+        }
+
+        public void PlayClip(ClipData clip)
+        {
+            if (clip == null)
+                return;
+
+            clip.Play(audioSource);
+        }
+
         IEnumerator SpawnPlayer()
         {
-            // Spawn player and disable controller
-            PlayerSpawner.Instance.Spawn();
-            PlayerManager.Instance.SetDisable(true);
+            // Play enter clip
+            PlayOnEnterClip();
 
+            // Spawn player and disable controller
+            PlayerManager.Instance.SetDisable(true);
+            PlayerSpawner.Instance.Spawn();
+            
             // Set black screen and fade in
             CameraFader.Instance.ForceBlackScreen();
             yield return CameraFader.Instance.FadeInCoroutine(2f);

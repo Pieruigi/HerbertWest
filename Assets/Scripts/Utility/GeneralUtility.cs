@@ -12,16 +12,17 @@ namespace Zom.Pie
             caller.StartCoroutine(CoroutineLoadScene(sceneBuildIndex, spawnPointIndex));
         }
 
-
+        
         static IEnumerator CoroutineLoadScene(int sceneBuildIndex, int spawnPointIndex)
         {
+            
             PlayerManager.Instance.SetDisable(true);
             
             //CameraFader.Instance.TryDisableAnimator();
 
             yield return CameraFader.Instance.FadeOutCoroutine(2f);
 
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.5f);
 
             PlayerSpawner.SpawnPointId = spawnPointIndex;
 

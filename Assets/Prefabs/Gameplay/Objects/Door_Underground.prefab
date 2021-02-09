@@ -131,8 +131,8 @@ MonoBehaviour:
     toStateId: 1
     othersToCheck: []
     errorCode: 0
-  currentStateName: Unlocked
-  currentStateId: 1
+  currentStateName: Locked
+  currentStateId: 0
 --- !u!114 &1679161069980379707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,6 +189,22 @@ MonoBehaviour:
   sceneBuildIndex: 3
   spawnPointIndex: 0
   key: {fileID: 11400000, guid: 5c006fe1263b3184692dfcf5545abe94, type: 2}
+  lockedClip:
+    clip: {fileID: 8300000, guid: 3b3379c650036dd49b3f1ef812ff45fc, type: 3}
+    volume: 1
+    loop: 0
+  unlockClip:
+    clip: {fileID: 8300000, guid: 83e2ff15f2d6395428b0fb47174ddb0d, type: 3}
+    volume: 1
+    loop: 0
+  openClip:
+    clip: {fileID: 8300000, guid: 73ee06220395ec745bf51ea55c2b04f7, type: 3}
+    volume: 1
+    loop: 0
+  closeClip:
+    clip: {fileID: 8300000, guid: 8370055fd62843842a121386c77b9822, type: 3}
+    volume: 1
+    loop: 0
 --- !u!114 &104864267982696260
 MonoBehaviour:
   m_ObjectHideFlags: 0

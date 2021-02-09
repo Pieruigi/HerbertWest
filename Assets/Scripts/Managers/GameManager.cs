@@ -13,6 +13,7 @@ namespace Zom.Pie
         int mainSceneIndex = 0;
         int loadingSceneIndex = 1; 
         int startingSceneIndex = 2;
+        int startingPointIndex = 1;
 
         bool inGame = false;
         public bool InGame
@@ -120,6 +121,9 @@ namespace Zom.Pie
         {
             // Delete cache when a new game is started
             CacheManager.Instance.Delete();
+
+            // Set the starting point
+            PlayerSpawner.SpawnPointId = startingPointIndex;
 
             // Load level
             LoadScene(startingSceneIndex);

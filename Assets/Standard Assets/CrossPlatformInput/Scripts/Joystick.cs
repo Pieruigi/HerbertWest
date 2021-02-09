@@ -35,8 +35,6 @@ namespace UnityStandardAssets.CrossPlatformInput
         {
 			// adjust movement range
 			float r = (float) baseHeight / (float)Screen.height;
-			Debug.Log("Screen.height:" + Screen.height);
-			Debug.Log("R:" + r);
 			MovementRange = (int)((float)MovementRange / r);
 
             m_StartPos = transform.position;
