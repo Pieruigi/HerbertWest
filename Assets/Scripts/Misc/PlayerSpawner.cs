@@ -35,7 +35,19 @@ namespace Zom.Pie
         void Start()
         {
             
-            PlayerManager.Instance.SetDisable(true);
+           
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
+
+
+        public void Spawn()
+        {
+            //PlayerManager.Instance.SetDisable(true);
 
             // Ask the level manager for the spawn point in the world
             Transform sp = spawnPoints[spawnPointId];
@@ -45,15 +57,8 @@ namespace Zom.Pie
             PlayerManager.Instance.transform.position = sp.position;
             PlayerManager.Instance.transform.rotation = sp.rotation;
 
-            PlayerManager.Instance.SetDisable(false);
+            //PlayerManager.Instance.SetDisable(false);
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
         
     }
 

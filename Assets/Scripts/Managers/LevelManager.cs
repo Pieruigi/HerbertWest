@@ -14,7 +14,7 @@ namespace Zom.Pie
         // Start is called before the first frame update
         void Start()
         {
-            StartCoroutine(Test());
+            StartCoroutine(SpawnPlayer());
         }
 
         // Update is called once per frame
@@ -23,12 +23,20 @@ namespace Zom.Pie
 
         }
 
-        IEnumerator Test()
+        IEnumerator SpawnPlayer()
         {
-            Debug.Log("AAAAAAAAAAAAA");
-            yield break;
-        }
+            // Spawn player and disable controller
+            PlayerSpawner.Instance.Spawn();
+            PlayerManager.Instance.SetDisable(true);
 
+            // Set black screen and fade in
+            CameraFader.Instance.ForceBlackScreen();
+            yield return CameraFader.Instance.FadeInCoroutine(2f);
+
+            // Enable player
+            PlayerManager.Instance.SetDisable(false);
+
+        }
     }
 
 }

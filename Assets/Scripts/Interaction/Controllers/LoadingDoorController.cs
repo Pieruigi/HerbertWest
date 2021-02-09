@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zom.Pie.Audio;
 using Zom.Pie.Collections;
 
 namespace Zom.Pie
@@ -15,7 +16,16 @@ namespace Zom.Pie
 
         [SerializeField]
         Item key;
-        
+
+        [SerializeField]
+        ClipData lockedClip;
+
+        [SerializeField]
+        ClipData openClip;
+
+        [SerializeField]
+        ClipData closeClip;
+
         FiniteStateMachine fsm;
 
         int unlocked = 1;
@@ -63,6 +73,9 @@ namespace Zom.Pie
             // check if there is something in the inventory that we can use.
             if(fsm.CurrentStateId == locked)
             {
+                // Play audio
+                //lockedClip.Play(audioSource);
+
                 inventoryUser.Open();
             }
         }

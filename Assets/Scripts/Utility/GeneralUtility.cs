@@ -19,7 +19,7 @@ namespace Zom.Pie
             
             //CameraFader.Instance.TryDisableAnimator();
 
-            //yield return CameraFader.Instance.FadeOutCoroutine(5);
+            yield return CameraFader.Instance.FadeOutCoroutine(2f);
 
             yield return new WaitForSeconds(0.1f);
 
