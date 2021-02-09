@@ -36,7 +36,7 @@ namespace Zom.Pie
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    Debug.Log("Mouse button down.");
+                    //Debug.Log("Mouse button down.");
                     RaycastHit hit;
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -44,7 +44,7 @@ namespace Zom.Pie
                     {
                         if(hit.collider == interactionCollider)
                         {
-                            Debug.Log("Hit collider:" + hit.collider);
+                            //Debug.Log("Hit collider:" + hit.collider);
                             puzzleController.Interact(this);
                         }
                     }

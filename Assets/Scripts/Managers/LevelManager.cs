@@ -77,7 +77,9 @@ namespace Zom.Pie
 
             // Spawn player and disable controller
             PlayerManager.Instance.SetDisable(true);
-            PlayerSpawner.Instance.Spawn();
+
+            if(PlayerSpawner.Instance)
+                PlayerSpawner.Instance.Spawn();
             
             // Set black screen and fade in
             CameraFader.Instance.ForceBlackScreen();
