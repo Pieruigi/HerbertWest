@@ -16,7 +16,7 @@ namespace Zom.Pie
         public UnityAction<Interactor> OnTriggerEnter;
         public UnityAction<Interactor> OnTriggerExit;
 
-        public abstract void Enable(bool value);
+        public abstract void SetEnable(bool value);
                
 
         protected virtual void Awake()

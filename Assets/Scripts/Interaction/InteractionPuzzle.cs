@@ -44,7 +44,7 @@ namespace Zom.Pie
                     {
                         if(hit.collider == interactionCollider)
                         {
-                            //Debug.Log("Hit collider:" + hit.collider);
+                            Debug.Log("Hit collider:" + hit.collider);
                             puzzleController.Interact(this);
                         }
                     }
@@ -52,7 +52,7 @@ namespace Zom.Pie
             }
         }
 
-        public override void Enable(bool value)
+        public override void SetEnable(bool value)
         {
             enable = value;
 

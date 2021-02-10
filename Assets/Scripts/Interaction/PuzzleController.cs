@@ -144,7 +144,7 @@ namespace Zom.Pie
             MusicManager.Instance?.LerpSetVolume((PrefsManager.GetMusicVolume()-80f) * 0.125f, 0.5f);
 
             // Deactivate the local interactor
-            interactor.GetComponent<Interactor>().Enable(false);
+            interactor.GetComponent<Interactor>().SetEnable(false);
 
             // Set camera position and rotation.
             cameraLastPosition = Camera.main.transform.position;
@@ -184,7 +184,7 @@ namespace Zom.Pie
             opened = false;
 
             // Activate the local interactor
-            interactor.GetComponent<Interactor>().Enable(true);
+            interactor.GetComponent<Interactor>().SetEnable(true);
 
             PlayerManager.Instance.SetDisable(false);
 
@@ -201,7 +201,7 @@ namespace Zom.Pie
                 if (interactors[i] == interactor.GetComponent<Interactor>())
                     continue;
 
-                interactors[i].Enable(value);
+                interactors[i].SetEnable(value);
             }
 
 

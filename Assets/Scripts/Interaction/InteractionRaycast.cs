@@ -124,7 +124,7 @@ namespace Zom.Pie
             }
         }
 
-        public override void Enable(bool value)
+        public override void SetEnable(bool value)
         {
             interactionCollider.enabled = value;
             enabled = value;
