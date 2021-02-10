@@ -30,6 +30,12 @@ namespace Zom.Pie
             OnMessageSent?.Invoke(TextFactory.Instance.GetText((TextFactory.Type)messageType, messageIndex));
         }
 
+        public void SendInGameMessage(int messageIndex)
+        {
+            OnMessageSent?.Invoke(TextFactory.Instance.GetText(TextFactory.Type.InGameMessage, messageIndex));
+        }
+
+
         
     }
 

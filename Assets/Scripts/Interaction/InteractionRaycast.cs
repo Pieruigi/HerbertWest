@@ -68,7 +68,10 @@ namespace Zom.Pie
             // Cast a ray from the camera.
             Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
             RaycastHit hitInfo;
-            if(Physics.Raycast(ray, out hitInfo, distance))
+            PlayerManager.Instance.GetComponent<Collider>().enabled = false; // Avoid player collider
+            bool hit = Physics.Raycast(ray, out hitInfo, 2 * distance);
+            PlayerManager.Instance.GetComponent<Collider>().enabled = true;
+            if (hit)
             {
                 //Debug.LogFormat("Hit something: {0}", hitInfo.collider.gameObject);
                 // Check if we hit the interaction controller collider.
@@ -112,7 +115,7 @@ namespace Zom.Pie
         private void FixedUpdate()
         {
             // Check if the player is too far away.
-            if ((PlayerManager.Instance.transform.position - transform.position).sqrMagnitude < sqrDistance * 1.5f)
+            if ((PlayerManager.Instance.transform.position - transform.position).sqrMagnitude < sqrDistance)
             {
                 inside = true;
                 //Debug.Log("Is inside...");
