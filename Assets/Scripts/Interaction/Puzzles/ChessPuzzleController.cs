@@ -17,6 +17,10 @@ namespace Zom.Pie
         [SerializeField]
         Transform chessContainer;
 
+        //[SerializeField]
+        Material selectionBlackMaterial;
+        Material selectionWhiteMaterial;
+
         bool interacting = false;
 
         List<GameObject> tiles;
@@ -33,19 +37,45 @@ namespace Zom.Pie
         float defaultY;
         bool started = false;
 
-        
+        Material blackMaterial;
+        Material whiteMaterial;
 
+        Picker picker;
+
+        protected override void Awake()
+        {
+            base.Awake();
+
+            OnPuzzleEnterStart += delegate
+            {
+                foreach (GameObject tile in activeTiles)
+                    SetSelectionColor(tile);
+            };
+
+            OnPuzzleExit += delegate 
+            {
+                foreach (GameObject tile in tiles)
+                    ResetColor(tile);
+            };
+        }
 
         protected override void Start()
         {
             base.Start();
 
+            // Get the picker
+            picker = GetComponentInChildren<Picker>();
+
             if(finiteStateMachine.CurrentStateId == CompletedState)
             {
                 // Set the chess open
+                chessContainer.Rotate(chessContainer.forward, -90);
+
+                picker.SetSceneObjectAsPicked();
             }
             else
             {
+                
                 // Set default y
                 defaultY = horse.transform.position.y;
 
@@ -62,19 +92,21 @@ namespace Zom.Pie
                     
                 }
 
+                // Store black and white materials
+                blackMaterial = tiles[0].GetComponent<MeshRenderer>().sharedMaterial;
+                whiteMaterial = tiles[1].GetComponent<MeshRenderer>().sharedMaterial;
+                // Create selection materials
+                selectionBlackMaterial = new Material(blackMaterial);
+                selectionBlackMaterial.color = new Color32(5, 44, 0, 255);
+                selectionWhiteMaterial = new Material(whiteMaterial);
+                selectionWhiteMaterial.color = new Color32(10,88,5, 255);
+              
                 // Init horse
                 Vector3 pos = horse.transform.position;
                 pos.y += upDisp;
                 horse.transform.position = pos;
+                //SetSelectionColor(horse);
 
-                // Init enemies
-                //for(int i=0; i<enemies.Count; i++)
-                //{
-                //    pos = enemies[i].transform.position;
-                //    pos.y -= downDisp;
-                    
-                //    enemies[i].transform.position = pos;
-                //}
             }
         }
 
@@ -118,8 +150,19 @@ namespace Zom.Pie
                 {
                     SetStateCompleted();
 
+                    // Wait for tiles animation
                     yield return new WaitForSeconds(1f);
+
+                    // Open the chest and wait for animation to complete.
                     OpenChest();
+                    yield return new WaitForSeconds(2f);
+
+                    // Pick the oject inside.
+                    yield return picker.Pick();
+
+                    // Just wait a bit and exit.
+                    yield return new WaitForSeconds(0.5f);
+                    Exit();
                 }
                     
             }
@@ -177,15 +220,23 @@ namespace Zom.Pie
             foreach(GameObject tile in tiles)
             {
                 if(tile != horse)
+                {
                     LeanTween.moveY(tile, defaultY, moveTime).setEaseInExpo();
+                    ResetColor(tile);
+                }
                 else
-                    LeanTween.moveY(tile, defaultY+upDisp, moveTime).setEaseInExpo();
+                {
+                    LeanTween.moveY(tile, defaultY + upDisp, moveTime).setEaseInExpo();
+                    SetSelectionColor(tile);
+                }
+                    
             }
         }
 
         void OpenChest()
         {
-
+            // Open the cover
+            LeanTween.rotateZ(chessContainer.gameObject, -90, 1.5f).setEaseOutBounce();
         }
 
         void UpdateTiles(Interactor interactor)
@@ -244,13 +295,14 @@ namespace Zom.Pie
                 {
                     // Is a dead enemy, put it really down
                     LeanTween.moveY(tile, defaultY-downDisp, moveTime).setEaseOutExpo();
+                   
                 }
                 else
                 {
                     // Simple tile, put just down
                     LeanTween.moveY(tile, defaultY, moveTime).setEaseOutExpo();
                 }
-                
+                ResetColor(tile);
             }
 
             // Clear the list
@@ -260,6 +312,9 @@ namespace Zom.Pie
             foreach (GameObject tile in activeTiles)
             {
                 LeanTween.moveY(tile, defaultY+upDisp, moveTime).setEaseInExpo();
+
+                SetSelectionColor(tile);
+                    
             }
 
         }
@@ -487,6 +542,40 @@ namespace Zom.Pie
                      
 
             return false;
+        }
+
+        bool IsBlackTile(GameObject tile)
+        {
+            int row, col;
+            MathUtility.ArrayIndexToMatrixCoords(tiles.IndexOf(tile), size, out row, out col);
+            if ((col + row) % 2 == 0)// black
+                return true;
+
+            return false;
+        }
+
+        void SetSelectionColor(GameObject tile)
+        {
+            if (IsBlackTile(tile))
+            {
+                tile.GetComponent<MeshRenderer>().material = selectionBlackMaterial;
+            }
+            else
+            {
+                tile.GetComponent<MeshRenderer>().material = selectionWhiteMaterial;
+            }
+        }
+
+        void ResetColor(GameObject tile)
+        {
+            if (IsBlackTile(tile))
+            {
+                tile.GetComponent<MeshRenderer>().material = blackMaterial;
+            }
+            else
+            {
+                tile.GetComponent<MeshRenderer>().material = whiteMaterial;
+            }
         }
     }
 
