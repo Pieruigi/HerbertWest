@@ -20,6 +20,10 @@ namespace Zom.Pie
         //[SerializeField]
         Material selectionBlackMaterial;
         Material selectionWhiteMaterial;
+        Material deadMaterial;
+
+        Material blackMaterial;
+        Material whiteMaterial;
 
         bool interacting = false;
 
@@ -37,8 +41,8 @@ namespace Zom.Pie
         float defaultY;
         bool started = false;
 
-        Material blackMaterial;
-        Material whiteMaterial;
+
+        
 
         Picker picker;
 
@@ -100,6 +104,8 @@ namespace Zom.Pie
                 selectionBlackMaterial.color = new Color32(5, 44, 0, 255);
                 selectionWhiteMaterial = new Material(whiteMaterial);
                 selectionWhiteMaterial.color = new Color32(10,88,5, 255);
+                deadMaterial = new Material(blackMaterial);
+                deadMaterial.color = new Color32(88, 10, 5, 255);
               
                 // Init horse
                 Vector3 pos = horse.transform.position;
@@ -295,14 +301,16 @@ namespace Zom.Pie
                 {
                     // Is a dead enemy, put it really down
                     LeanTween.moveY(tile, defaultY-downDisp, moveTime).setEaseOutExpo();
-                   
+                    // Set dead material.
+                    tile.GetComponent<MeshRenderer>().material = deadMaterial;
                 }
                 else
                 {
                     // Simple tile, put just down
                     LeanTween.moveY(tile, defaultY, moveTime).setEaseOutExpo();
+                    ResetColor(tile);
                 }
-                ResetColor(tile);
+                
             }
 
             // Clear the list
