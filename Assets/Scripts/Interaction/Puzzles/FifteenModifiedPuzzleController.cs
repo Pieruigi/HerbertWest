@@ -7,6 +7,7 @@ namespace Zom.Pie
     public class FifteenModifiedPuzzleController : PuzzleController
     {
         // Internal class useful to store row and column of each tile.
+        [System.Serializable]
         class Tile
         {
             public GameObject tileObject;
@@ -24,6 +25,9 @@ namespace Zom.Pie
         List<Transform> targets;
 
         bool interacting = false;
+        int sizeH = 4, sizeV = 3;
+        float moveTime = 0.5f;
+        float moveDisp = 0.111f;
 
         protected override void Start()
         {
@@ -75,10 +79,12 @@ namespace Zom.Pie
                 if(TryMoveRow("east".Equals(splits[0].ToLower()), int.Parse(splits[1])))
                 {
                     Debug.Log("Moving east or west...");
+                    yield return new WaitForSeconds(moveTime+0.1f);
                 }
                 else
                 {
                     Debug.Log("Can't move");
+                    yield return new WaitForSeconds(0.1f);
                 }
             }
             else // Is north or south
@@ -86,14 +92,23 @@ namespace Zom.Pie
                 if (TryMoveColumn("north".Equals(splits[0].ToLower()), int.Parse(splits[1])))
                 {
                     Debug.Log("Moving north or south...");
+                    yield return new WaitForSeconds(moveTime + 0.1f);
                 }
                 else
                 {
                     Debug.Log("Can't move");
+                    yield return new WaitForSeconds(0.1f);
                 }
             }
 
-            yield return new WaitForSeconds(2f);
+            if (CheckCompleted())
+            {
+                SetStateCompleted(); // We should open the door at this point.
+                yield return new WaitForSeconds(0.5f);
+                GetComponent<Messenger>().SendInGameMessage(10);
+                yield return new WaitForSeconds(1f);
+                Exit();
+            }
 
 
 
@@ -110,6 +125,26 @@ namespace Zom.Pie
         /// <returns></returns>
         bool TryMoveRow(bool east, int index)
         {
+            // Get all the tiles in the given row.
+            List<Tile> moveList = tiles.FindAll(t => t.row == index);
+
+            // If one of the tiles is alredy on the edge we can't move.
+            if ((east && moveList.Exists(t => t.col == sizeH - 1)) || (!east && moveList.Exists(t => t.col == 0)))
+                return false;
+
+            // Move tiles
+            int dir = 1;
+            if (!east)
+                dir = -1;
+
+            // Move all tiles
+            foreach(Tile tile in moveList)
+            {
+                float x = tile.tileObject.transform.position.x + dir * moveDisp;
+                LeanTween.moveX(tile.tileObject, x, moveTime).setEaseInOutExpo();
+                tile.col += dir;
+            }
+
             return false;
         }
 
@@ -121,7 +156,46 @@ namespace Zom.Pie
         /// <returns></returns>
         bool TryMoveColumn(bool north, int index)
         {
+            // Get all the tiles in the given colum.
+            List<Tile> moveList = tiles.FindAll(t => t.col == index);
+
+            // If one of the tiles is alredy on the edge we can't move.
+            if ((north && moveList.Exists(t => t.row == 0)) || (!north && moveList.Exists(t => t.row == sizeV-1)))
+                return false;
+
+            // Move tiles
+            int dir = 1;
+            if (!north)
+                dir = -1;
+
+            // Move all tiles
+            foreach (Tile tile in moveList)
+            {
+                float z = tile.tileObject.transform.position.z + dir * moveDisp;
+                LeanTween.moveZ(tile.tileObject, z, moveTime).setEaseInOutExpo();
+                tile.row -= dir;
+            }
+
             return false;
+        }
+
+        bool CheckCompleted()
+        {
+            // We simply check row and column for each tile
+            if (tiles[0].row != 1 && tiles[0].col != 3)
+                return false;
+            if (tiles[1].row != 2 && tiles[1].col != 2)
+                return false;
+            if (tiles[2].row != 2 && tiles[2].col != 1)
+                return false;
+            if (tiles[3].row != 1 && tiles[3].col != 1)
+                return false;
+            if (tiles[4].row != 2 && tiles[4].col != 3)
+                return false;
+            if (tiles[5].row != 1 && tiles[5].col != 1)
+                return false;
+
+            return true;
         }
     }
 
