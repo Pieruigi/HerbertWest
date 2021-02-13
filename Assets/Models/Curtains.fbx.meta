@@ -3,7 +3,22 @@ guid: 0f8eafeecbe4e2d4a86f23597fb0f7ca
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: biancotenda
+    second: {fileID: 2100000, guid: 7ec5c43339d4b6e4585daa9def407640, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: oro
+    second: {fileID: 2100000, guid: 514bb88626ae73143a512b361c01032c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tenda
+    second: {fileID: 2100000, guid: bc69ea526ff73e948a2054e0ab23f00b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -45,7 +60,7 @@ ModelImporter:
     importLights: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
