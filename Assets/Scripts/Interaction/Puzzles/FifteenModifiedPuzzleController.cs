@@ -17,13 +17,9 @@ namespace Zom.Pie
         [SerializeField]
         Transform tileContainer;
 
-        [SerializeField]
-        Transform targetContainer;
-
 
         List<Tile> tiles;
-        List<Transform> targets;
-
+ 
         bool interacting = false;
         int sizeH = 4, sizeV = 3;
         float moveTime = 0.5f;
@@ -48,10 +44,6 @@ namespace Zom.Pie
             }
                 
 
-            // Fill target positions
-            targets = new List<Transform>();
-            for (int i = 0; i < targetContainer.childCount; i++)
-                targets.Add(targetContainer.GetChild(i));
         }
 
         public override void Interact(Interactor interactor)
