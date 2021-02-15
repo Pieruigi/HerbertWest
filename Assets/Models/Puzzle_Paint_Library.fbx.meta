@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d4ac6af998b50a047a7feed0d3d88f76
+guid: 8957c1fb24863b541b19d57081c1f886
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -7,28 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: METALLO
-    second: {fileID: 2100000, guid: e4933d5ea77449641aaf573f2c7113c8, type: 2}
+      name: FRAME
+    second: {fileID: 2100000, guid: 514bb88626ae73143a512b361c01032c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Plastic
-    second: {fileID: 2100000, guid: ec8e714e4afb51744a6e2ac5285acc92, type: 2}
+      name: Glass
+    second: {fileID: 2100000, guid: 54ed647a316bc404faea381c395e3e5e, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: glass
-    second: {fileID: 2100000, guid: 74dbe5f1bd512774b927d52c4accfd53, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: leather
-    second: {fileID: 2100000, guid: b7c6f407cf8851b438fc583e402043ba, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: plastic_b
-    second: {fileID: 2100000, guid: eaa588fb8dd14fd4bb43f82d20d20117, type: 2}
+      name: MISKATONIC_GRIGLIA1
+    second: {fileID: 2100000, guid: fee5ee9bc6ae2804e99ab3540a420843, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -70,7 +60,7 @@ ModelImporter:
     importLights: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
