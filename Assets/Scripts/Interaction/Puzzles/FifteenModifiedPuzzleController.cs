@@ -74,7 +74,7 @@ namespace Zom.Pie
                 if(TryMoveRow("east".Equals(splits[0].ToLower()), int.Parse(splits[1])))
                 {
                     Debug.Log("Moving east or west...");
-                    yield return new WaitForSeconds(moveTime+0.1f);
+                    yield return new WaitForSeconds(moveTime+0.2f);
                 }
                 else
                 {
@@ -87,7 +87,7 @@ namespace Zom.Pie
                 if (TryMoveColumn("north".Equals(splits[0].ToLower()), int.Parse(splits[1])))
                 {
                     Debug.Log("Moving north or south...");
-                    yield return new WaitForSeconds(moveTime + 0.1f);
+                    yield return new WaitForSeconds(moveTime + 0.2f);
                 }
                 else
                 {
@@ -135,12 +135,13 @@ namespace Zom.Pie
             // Move all tiles
             foreach(Tile tile in moveList)
             {
+                tile.col += dir;
                 float x = tile.tileObject.transform.position.x + dir * moveDisp;
                 LeanTween.moveX(tile.tileObject, x, moveTime).setEaseInOutExpo();
-                tile.col += dir;
+                
             }
 
-            return false;
+            return true;
         }
 
         /// <summary>
@@ -166,28 +167,29 @@ namespace Zom.Pie
             // Move all tiles
             foreach (Tile tile in moveList)
             {
+                tile.row -= dir;
                 float z = tile.tileObject.transform.position.z + dir * moveDisp;
                 LeanTween.moveZ(tile.tileObject, z, moveTime).setEaseInOutExpo();
-                tile.row -= dir;
+               
             }
 
-            return false;
+            return true;
         }
 
         bool CheckCompleted()
         {
             // We simply check row and column for each tile
-            if (tiles[0].row != 1 && tiles[0].col != 3)
+            if (tiles[0].row != 1 || tiles[0].col != 3)
                 return false;
-            if (tiles[1].row != 2 && tiles[1].col != 2)
+            if (tiles[1].row != 2 || tiles[1].col != 2)
                 return false;
-            if (tiles[2].row != 2 && tiles[2].col != 1)
+            if (tiles[2].row != 2 || tiles[2].col != 1)
                 return false;
-            if (tiles[3].row != 1 && tiles[3].col != 1)
+            if (tiles[3].row != 1 || tiles[3].col != 1)
                 return false;
-            if (tiles[4].row != 2 && tiles[4].col != 3)
+            if (tiles[4].row != 2 || tiles[4].col != 3)
                 return false;
-            if (tiles[5].row != 1 && tiles[5].col != 1)
+            if (tiles[5].row != 1 || tiles[5].col != 2)
                 return false;
 
             return true;
@@ -196,7 +198,7 @@ namespace Zom.Pie
         IEnumerator PressButton(GameObject button)
         {
             float yDef = button.transform.position.y;
-            float yNew = yDef - 0.014f;
+            float yNew = yDef - 0.01f;
             
             float time = 0.2f;
             LeanTween.moveY(button, yNew, time).setEaseOutExpo();
