@@ -23,7 +23,7 @@ namespace Zom.Pie
         bool interacting = false;
         int sizeH = 4, sizeV = 3;
         float moveTime = 0.5f;
-        float moveDisp = 0.111f;
+        float moveDisp = 0.103f;
 
         protected override void Start()
         {
@@ -61,6 +61,9 @@ namespace Zom.Pie
             OnPuzzleInteractionStart?.Invoke(this);
 
             Debug.Log("Pressed " + interactor.name);
+
+            // Press button
+            StartCoroutine(PressButton(interactor.transform.GetChild(0).gameObject));
 
             // Split interactor name according to its format
             string[] splits = interactor.name.Split('-');
@@ -188,6 +191,17 @@ namespace Zom.Pie
                 return false;
 
             return true;
+        }
+
+        IEnumerator PressButton(GameObject button)
+        {
+            float yDef = button.transform.position.y;
+            float yNew = yDef - 0.014f;
+            
+            float time = 0.2f;
+            LeanTween.moveY(button, yNew, time).setEaseOutExpo();
+            yield return new WaitForSeconds(time);
+            LeanTween.moveY(button, yDef, time).setEaseOutExpo();
         }
     }
 
