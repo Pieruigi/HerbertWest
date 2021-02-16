@@ -136,7 +136,7 @@ namespace Zom.Pie.UI
 
         /// <summary>
         /// Try to use the selected item.
-        /// This method can be used for exaple if you want to use a key in order to open a locked door, or
+        /// This method can be used for example if you want to use a key in order to open a locked door, or
         /// if you want to put something you have in your inventory in some devide ( to solve a puzzle for
         /// example ).
         /// </summary>
