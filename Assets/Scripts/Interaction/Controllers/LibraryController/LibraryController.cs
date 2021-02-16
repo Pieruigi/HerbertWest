@@ -29,6 +29,9 @@ namespace Zom.Pie
             solution.Add(0);
             solution.Add(1);
             solution.Add(2);
+            solution.Add(3);
+            solution.Add(4);
+            solution.Add(5);
         }
 
         // Start is called before the first frame update
