@@ -224,7 +224,7 @@ namespace Zom.Pie
             else
             {
                 
-                if (states != null && states.Count > 0)
+                if (states != null && states.Count > 0 && currentStateId > states.Count)
                 {
                     currentStateName = states[currentStateId].Name;
                 }
@@ -255,6 +255,8 @@ namespace Zom.Pie
             // Get the first checked transition
             Transition transition = transitions.Find(t => t.FromStateId == currentStateId);
 
+            Debug.Log("Transitions:" + transition);
+
             // If no transition return
             if (transition == null)
             {
@@ -262,6 +264,7 @@ namespace Zom.Pie
                 OnFail?.Invoke(this);
                 return false;
             }
+
 
             if (!transition.Checked())
             {

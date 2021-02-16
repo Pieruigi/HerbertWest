@@ -6,13 +6,15 @@ namespace Zom.Pie
 {
     public class LibraryBookController : MonoBehaviour
     {
+        public static readonly int PushedState = 0;
+        public static readonly int NotPushedState = 1;
+
         GameObject bookObject;
 
         float disp = 0.1f;
+        float zDefault;
 
         FiniteStateMachine fsm;
-
-        int pushedState = 0;
 
         private void Awake()
         {
@@ -24,11 +26,12 @@ namespace Zom.Pie
         void Start()
         {
             bookObject = transform.GetChild(0).gameObject;
+            zDefault = bookObject.transform.position.z;
 
-            if(fsm.CurrentStateId != pushedState)
+            if (fsm.CurrentStateId == PushedState)
             {
                 Vector3 pos = bookObject.transform.position;
-                pos.z -= disp;
+                pos.z += disp;
                 bookObject.transform.position = pos;
             }
         }
@@ -39,20 +42,32 @@ namespace Zom.Pie
 
         }
 
+        
+
         void HandleOnStateChange(FiniteStateMachine fsm)
         {
             if (this.fsm != fsm)
                 return;
             
-            if(fsm.CurrentStateId == pushedState)
+            if(fsm.CurrentStateId == PushedState)
             {
                 // Move forward
+                LeanTween.moveZ(bookObject, zDefault + disp, 1.0f).setEaseInOutExpo();
             }
             else
             {
                 // Move back
+                LeanTween.moveZ(bookObject, zDefault, 1.0f).setEaseInOutExpo().setEaseOutBounce();
+                StartCoroutine(ResetState());
             }
         }
+
+        IEnumerator ResetState()
+        {
+            yield return new WaitForSeconds(1f);
+            fsm.ForceState(NotPushedState, false, false);
+        }
+
     }
 
 }
