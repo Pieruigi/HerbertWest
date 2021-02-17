@@ -236,6 +236,7 @@ MonoBehaviour:
   items:
   - {fileID: 11400000, guid: 5c006fe1263b3184692dfcf5545abe94, type: 2}
   - {fileID: 11400000, guid: 830d270deb077da43a7c277fac203ef7, type: 2}
+  - {fileID: 11400000, guid: cb8b703f987ded341a2d3850b9fe5da1, type: 2}
 --- !u!1 &40919614
 GameObject:
   m_ObjectHideFlags: 0
@@ -1521,18 +1522,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66977c7ccaa538c4baf04ceebc4a856a, type: 3}
---- !u!114 &919132149012757538 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 794981589974114886, guid: 60d744d2ea94d8b49ab912e8058c52c5,
-    type: 3}
-  m_PrefabInstance: {fileID: 6181752813554789807}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7b7727803e35ac4097ee75bd982c1fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &964277207958228749
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1602,72 +1591,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b31b590a8164f074ab2cae29ed2ec899, type: 3}
---- !u!1 &1544027369153518632 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4657992879700193671, guid: 60d744d2ea94d8b49ab912e8058c52c5,
-    type: 3}
-  m_PrefabInstance: {fileID: 6181752813554789807}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1544027369153518633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1544027369153518632}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27759bcde04352841b6fc7c8afc264a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzleController: {fileID: 919132149012757538}
-  interactionCollider: {fileID: 0}
---- !u!65 &1544027369153518634
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1544027369153518632}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1336922, y: 0.008230667, z: 0.13207364}
-  m_Center: {x: -0.0668461, y: 0.012733145, z: -0.06603682}
---- !u!1 &1747026837607968858 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5618047886157028853, guid: 60d744d2ea94d8b49ab912e8058c52c5,
-    type: 3}
-  m_PrefabInstance: {fileID: 6181752813554789807}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1747026837607968859
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1747026837607968858}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27759bcde04352841b6fc7c8afc264a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzleController: {fileID: 919132149012757538}
-  interactionCollider: {fileID: 0}
---- !u!65 &1747026837607968860
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1747026837607968858}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1336922, y: 0.008230667, z: 0.13207364}
-  m_Center: {x: -0.06684609, y: 0.012733145, z: -0.06603682}
 --- !u!1001 &1869954452885531743
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1742,39 +1665,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 519bcd4c4b7c3fd4b975f1f091498a52, type: 3}
---- !u!1 &2367398423788878624 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8436173649181218447, guid: 60d744d2ea94d8b49ab912e8058c52c5,
-    type: 3}
-  m_PrefabInstance: {fileID: 6181752813554789807}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2367398423788878625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2367398423788878624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27759bcde04352841b6fc7c8afc264a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzleController: {fileID: 919132149012757538}
-  interactionCollider: {fileID: 0}
---- !u!65 &2367398423788878626
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2367398423788878624}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1336922, y: 0.008230667, z: 0.13207366}
-  m_Center: {x: -0.06684609, y: 0.012733145, z: -0.06603683}
 --- !u!1001 &2605373602068030373
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1844,39 +1734,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf9d41ba695c8d34eb91c7800a0ee82c, type: 3}
---- !u!1 &2723342040338379859 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8071222691559234044, guid: 60d744d2ea94d8b49ab912e8058c52c5,
-    type: 3}
-  m_PrefabInstance: {fileID: 6181752813554789807}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2723342040338379860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2723342040338379859}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27759bcde04352841b6fc7c8afc264a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzleController: {fileID: 919132149012757538}
-  interactionCollider: {fileID: 0}
---- !u!65 &2723342040338379861
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2723342040338379859}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1336922, y: 0.008230667, z: 0.13207364}
-  m_Center: {x: -0.06684609, y: 0.012733145, z: -0.06603682}
 --- !u!1001 &3267182959743550774
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2050,72 +1907,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93e288feca8367b47ab7f110c23b6859, type: 3}
---- !u!1 &3451861174006109078 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8804121778783567417, guid: 60d744d2ea94d8b49ab912e8058c52c5,
-    type: 3}
-  m_PrefabInstance: {fileID: 6181752813554789807}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3451861174006109079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3451861174006109078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27759bcde04352841b6fc7c8afc264a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzleController: {fileID: 919132149012757538}
-  interactionCollider: {fileID: 0}
---- !u!65 &3451861174006109080
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3451861174006109078}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1336922, y: 0.008230667, z: 0.13207366}
-  m_Center: {x: -0.06684609, y: 0.012733145, z: -0.06603683}
---- !u!1 &3453754790654243555 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8802229124191723340, guid: 60d744d2ea94d8b49ab912e8058c52c5,
-    type: 3}
-  m_PrefabInstance: {fileID: 6181752813554789807}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3453754790654243556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3453754790654243555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27759bcde04352841b6fc7c8afc264a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzleController: {fileID: 919132149012757538}
-  interactionCollider: {fileID: 0}
---- !u!65 &3453754790654243557
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3453754790654243555}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1336922, y: 0.008230667, z: 0.13207366}
-  m_Center: {x: -0.0668461, y: 0.012733145, z: -0.06603683}
 --- !u!1001 &3567178129460657899
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2235,105 +2026,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0a009e217396674083a7aa34eeb2b5e, type: 3}
---- !u!1 &3796019872257615554 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7018812294973442925, guid: 60d744d2ea94d8b49ab912e8058c52c5,
-    type: 3}
-  m_PrefabInstance: {fileID: 6181752813554789807}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3796019872257615555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3796019872257615554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27759bcde04352841b6fc7c8afc264a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzleController: {fileID: 919132149012757538}
-  interactionCollider: {fileID: 0}
---- !u!65 &3796019872257615556
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3796019872257615554}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.13369218, y: 0.008230667, z: 0.13207364}
-  m_Center: {x: -0.0668461, y: 0.012733145, z: -0.06603682}
---- !u!1 &4082738345656088025 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7881637493333170294, guid: 60d744d2ea94d8b49ab912e8058c52c5,
-    type: 3}
-  m_PrefabInstance: {fileID: 6181752813554789807}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4082738345656088026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4082738345656088025}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27759bcde04352841b6fc7c8afc264a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzleController: {fileID: 919132149012757538}
-  interactionCollider: {fileID: 0}
---- !u!65 &4082738345656088027
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4082738345656088025}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.13369218, y: 0.008230667, z: 0.13207364}
-  m_Center: {x: -0.0668461, y: 0.012733145, z: -0.06603682}
---- !u!1 &4308940876260290321 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7927902748775006910, guid: 60d744d2ea94d8b49ab912e8058c52c5,
-    type: 3}
-  m_PrefabInstance: {fileID: 6181752813554789807}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4308940876260290322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4308940876260290321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27759bcde04352841b6fc7c8afc264a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzleController: {fileID: 919132149012757538}
-  interactionCollider: {fileID: 0}
---- !u!65 &4308940876260290323
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4308940876260290321}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1336922, y: 0.008230667, z: 0.13207364}
-  m_Center: {x: -0.0668461, y: 0.012733145, z: -0.06603682}
 --- !u!1001 &4332124477106551954
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2484,39 +2176,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4471765279872402447}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &4839994587504517208 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1649128909275483639, guid: 60d744d2ea94d8b49ab912e8058c52c5,
-    type: 3}
-  m_PrefabInstance: {fileID: 6181752813554789807}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4839994587504517209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4839994587504517208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27759bcde04352841b6fc7c8afc264a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzleController: {fileID: 919132149012757538}
-  interactionCollider: {fileID: 0}
---- !u!65 &4839994587504517210
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4839994587504517208}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1336922, y: 0.008230667, z: 0.13207364}
-  m_Center: {x: -0.0668461, y: 0.012733145, z: -0.06603682}
 --- !u!1001 &5044482861250775647
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2812,61 +2471,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 794981589974114886, guid: 60d744d2ea94d8b49ab912e8058c52c5,
-        type: 3}
-      propertyPath: completedState
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1661223943079821276, guid: 60d744d2ea94d8b49ab912e8058c52c5,
-        type: 3}
-      propertyPath: currentStateId
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1661223943079821276, guid: 60d744d2ea94d8b49ab912e8058c52c5,
-        type: 3}
-      propertyPath: transitions.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1661223943079821276, guid: 60d744d2ea94d8b49ab912e8058c52c5,
-        type: 3}
-      propertyPath: states.Array.data[0].name
-      value: Open
-      objectReference: {fileID: 0}
-    - target: {fileID: 1661223943079821276, guid: 60d744d2ea94d8b49ab912e8058c52c5,
-        type: 3}
-      propertyPath: states.Array.data[1].name
-      value: Completed
-      objectReference: {fileID: 0}
-    - target: {fileID: 1661223943079821276, guid: 60d744d2ea94d8b49ab912e8058c52c5,
-        type: 3}
-      propertyPath: transitions.Array.data[0].tag
-      value: Play
-      objectReference: {fileID: 0}
-    - target: {fileID: 1661223943079821276, guid: 60d744d2ea94d8b49ab912e8058c52c5,
-        type: 3}
-      propertyPath: transitions.Array.data[1].tag
-      value: PutMissingTile
-      objectReference: {fileID: 0}
-    - target: {fileID: 1661223943079821276, guid: 60d744d2ea94d8b49ab912e8058c52c5,
-        type: 3}
-      propertyPath: transitions.Array.data[0].toStateId
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1661223943079821276, guid: 60d744d2ea94d8b49ab912e8058c52c5,
-        type: 3}
-      propertyPath: transitions.Array.data[1].toStateId
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1661223943079821276, guid: 60d744d2ea94d8b49ab912e8058c52c5,
-        type: 3}
-      propertyPath: transitions.Array.data[0].fromStateId
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1661223943079821276, guid: 60d744d2ea94d8b49ab912e8058c52c5,
-        type: 3}
-      propertyPath: transitions.Array.data[1].fromStateId
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5927658582975695669, guid: 60d744d2ea94d8b49ab912e8058c52c5,
         type: 3}
       propertyPath: m_RootOrder
@@ -3191,72 +2795,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 312921d728b42ba40a67a159c9feff73, type: 3}
---- !u!1 &7308577374881234791 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3505127655499682504, guid: 60d744d2ea94d8b49ab912e8058c52c5,
-    type: 3}
-  m_PrefabInstance: {fileID: 6181752813554789807}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7308577374881234792
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7308577374881234791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27759bcde04352841b6fc7c8afc264a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzleController: {fileID: 919132149012757538}
-  interactionCollider: {fileID: 0}
---- !u!65 &7308577374881234793
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7308577374881234791}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.13369218, y: 0.008230667, z: 0.13207364}
-  m_Center: {x: -0.0668461, y: 0.012733145, z: -0.06603682}
---- !u!1 &7527668329896598370 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4449091441691834061, guid: 60d744d2ea94d8b49ab912e8058c52c5,
-    type: 3}
-  m_PrefabInstance: {fileID: 6181752813554789807}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7527668329896598371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7527668329896598370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27759bcde04352841b6fc7c8afc264a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzleController: {fileID: 919132149012757538}
-  interactionCollider: {fileID: 0}
---- !u!65 &7527668329896598372
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7527668329896598370}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1336922, y: 0.008230667, z: 0.13207364}
-  m_Center: {x: -0.06684609, y: 0.012733145, z: -0.06603682}
 --- !u!1001 &7821369165276790810
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3326,39 +2864,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9119d176d7bf2204194f322791ad35d3, type: 3}
---- !u!1 &7838234395945444573 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4111504752777873778, guid: 60d744d2ea94d8b49ab912e8058c52c5,
-    type: 3}
-  m_PrefabInstance: {fileID: 6181752813554789807}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7838234395945444574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7838234395945444573}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27759bcde04352841b6fc7c8afc264a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzleController: {fileID: 919132149012757538}
-  interactionCollider: {fileID: 0}
---- !u!65 &7838234395945444575
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7838234395945444573}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1336922, y: 0.008230667, z: 0.13207364}
-  m_Center: {x: -0.06684609, y: 0.012733145, z: -0.06603682}
 --- !u!1001 &7857450349367665724
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3478,39 +2983,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 853600cc3abd27541b8ea1b36490edb9, type: 3}
---- !u!1 &8165040936846363490 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2637405236132865741, guid: 60d744d2ea94d8b49ab912e8058c52c5,
-    type: 3}
-  m_PrefabInstance: {fileID: 6181752813554789807}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8165040936846363491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8165040936846363490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27759bcde04352841b6fc7c8afc264a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzleController: {fileID: 919132149012757538}
-  interactionCollider: {fileID: 0}
---- !u!65 &8165040936846363492
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8165040936846363490}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1336922, y: 0.008230667, z: 0.13207364}
-  m_Center: {x: -0.06684609, y: 0.012733145, z: -0.06603682}
 --- !u!1001 &8323605905808021371
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3699,72 +3171,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65100eb5b9386484abf27d08884638ee, type: 3}
---- !u!1 &8973293436675084149 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2976445840956629722, guid: 60d744d2ea94d8b49ab912e8058c52c5,
-    type: 3}
-  m_PrefabInstance: {fileID: 6181752813554789807}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8973293436675084150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8973293436675084149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27759bcde04352841b6fc7c8afc264a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzleController: {fileID: 919132149012757538}
-  interactionCollider: {fileID: 0}
---- !u!65 &8973293436675084151
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8973293436675084149}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.13369218, y: 0.008230667, z: 0.13207366}
-  m_Center: {x: -0.0668461, y: 0.012733145, z: -0.06603683}
---- !u!1 &9095172362277729383 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3166440094273362376, guid: 60d744d2ea94d8b49ab912e8058c52c5,
-    type: 3}
-  m_PrefabInstance: {fileID: 6181752813554789807}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &9095172362277729384
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9095172362277729383}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27759bcde04352841b6fc7c8afc264a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzleController: {fileID: 919132149012757538}
-  interactionCollider: {fileID: 0}
---- !u!65 &9095172362277729385
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9095172362277729383}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1336922, y: 0.008230667, z: 0.13207364}
-  m_Center: {x: -0.06684609, y: 0.012733145, z: -0.06603682}
 --- !u!1001 &9108315537124834921
 PrefabInstance:
   m_ObjectHideFlags: 0

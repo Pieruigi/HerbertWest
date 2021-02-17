@@ -18,6 +18,18 @@ namespace Zom.Pie
         [SerializeField]
         List<Tile> tiles;
 
+        [SerializeField]
+        Collections.Item missingTileItem;
+
+        [SerializeField]
+        GameObject cover;
+
+        [SerializeField]
+        GameObject tileContainer;
+
+        [SerializeField]
+        Picker picker;
+
         Vector3[] positions; // Default positions
 
         int missingTileId = 15;
@@ -28,6 +40,8 @@ namespace Zom.Pie
         int freePositionId = -1;
 
         bool interacting = false;
+
+        float coverMoveDisp = 0.5f;
 
         protected override void Awake()
         {
@@ -61,6 +75,15 @@ namespace Zom.Pie
             if(finiteStateMachine.CurrentStateId == openState)
             {
                 // Open the box
+                Vector3 pos = cover.transform.position;
+                pos.x += coverMoveDisp;
+                cover.transform.position = pos;
+                pos = tileContainer.transform.position;
+                pos.x += coverMoveDisp;
+                tileContainer.transform.position = pos;
+
+                // Set picker as picked
+                picker.SetSceneObjectAsPicked();
             }
             else if(finiteStateMachine.CurrentStateId == CompletedState)
             {
@@ -122,9 +145,9 @@ namespace Zom.Pie
             if (TryMoveTile(tile)) 
             {
                 // Move tile
-                float time = 1f;
+                float time = 0.5f;
                 Vector3 newPos = positions[MathUtility.MatrixCoordsToArrayIndex(tile.row, tile.col, 4)];
-                LeanTween.move(tile.tileObject, newPos, time).setEaseInOutExpo();
+                LeanTween.move(tile.tileObject, newPos, time);//.setEaseInOutExpo();
 
                 // Move the empty tile
                 newPos = positions[MathUtility.MatrixCoordsToArrayIndex(tiles[missingTileId].row, tiles[missingTileId].col, 4)];
@@ -136,6 +159,7 @@ namespace Zom.Pie
                 {
                     
                     SetStateCompleted();
+                    GetComponent<Messenger>().SendInGameMessage(11);
                     interacting = false;
                     Exit();
                 }
@@ -211,7 +235,7 @@ namespace Zom.Pie
 
         bool IsSolved()
         {
-            return true;
+            
             // Check if all the tiles are in the right order
             for(int i=0; i<tiles.Count; i++)
             {
@@ -242,12 +266,26 @@ namespace Zom.Pie
 
         IEnumerator PutMissingTile()
         {
-            yield break;
+            // Set the tile visible
+            tiles[missingTileId].tileObject.SetActive(true);
+
+            yield return new WaitForSeconds(1f);
+
+            // Remove the item from the inventory
+            Inventory.Instance.Remove(missingTileItem);
+
+            // Open top
+            float time = 0.5f;
+            LeanTween.moveX(cover, cover.transform.position.x + coverMoveDisp, time);
+            LeanTween.moveX(tileContainer, tileContainer.transform.position.x + coverMoveDisp, time);
+
+            // Take whatever is inside
+            yield return picker.Pick();
         }
 
         void HandleOnItemChosen(Collections.Item item)
         {
-            if (IsWrongItem())
+            if (IsWrongItem(item))
             {
                 UI.InventoryUI.Instance.ShowWrongItemMessage();
             }
@@ -265,9 +303,9 @@ namespace Zom.Pie
             }
         }
 
-        bool IsWrongItem()
+        bool IsWrongItem(Collections.Item item)
         {
-            return true;
+            return item != missingTileItem;
         }
     }
 
