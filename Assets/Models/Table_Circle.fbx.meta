@@ -3,7 +3,27 @@ guid: e9db811797008e248b056d432a774740
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MARBLE
+    second: {fileID: 2100000, guid: 09e2c273ceb1ba142bbfb6126ad64ad4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood
+    second: {fileID: 2100000, guid: 25c9f0be04daf824bb041d942e11a968, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood8
+    second: {fileID: 2100000, guid: 25c9f0be04daf824bb041d942e11a968, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metallo
+    second: {fileID: 2100000, guid: fee5ee9bc6ae2804e99ab3540a420843, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -45,7 +65,7 @@ ModelImporter:
     importLights: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
