@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zom.Pie.Interfaces;
 
 namespace Zom.Pie
 {
-    public class ChairController : MonoBehaviour
+    public class ChairController : MonoBehaviour, ICacheable
     {
         public enum Symbol { Coin, Snake, Fish, Sword, Shield, Bow }
 
@@ -14,7 +15,7 @@ namespace Zom.Pie
 
         FiniteStateMachine fsm;
 
-        int stateAvailable = 1;
+        int stateAvailable = 0;
 
 
 
@@ -66,6 +67,16 @@ namespace Zom.Pie
             float angle = transform.localEulerAngles.z - 60.0f;
 
             LeanTween.rotateZ(gameObject, angle, 0.75f).setEaseInOutExpo().setEaseOutElastic();//.setEaseInOutElastic();
+        }
+
+        public string GetData()
+        {
+            return ((int)symbol).ToString();
+        }
+
+        public void Init(string extraData)
+        {
+            symbol = (Symbol)int.Parse(extraData);
         }
     }
 

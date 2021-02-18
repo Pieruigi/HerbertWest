@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Zom.Pie.Interfaces
 {
-    public interface IExtraDataCacheable
+    public interface ICacheable
     {
         string GetData();
 

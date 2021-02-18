@@ -255,7 +255,7 @@ namespace Zom.Pie
             // Get the first checked transition
             Transition transition = transitions.Find(t => t.FromStateId == currentStateId);
 
-            Debug.Log("Transitions:" + transition);
+           
 
             // If no transition return
             if (transition == null)

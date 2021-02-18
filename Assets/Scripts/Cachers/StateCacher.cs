@@ -11,9 +11,9 @@ namespace Zom.Pie
         protected override string GetValue()
         {
             string ret = GetComponent<FiniteStateMachine>().CurrentStateId.ToString();
-            if (GetComponent<IExtraDataCacheable>() != null)
+            if (GetComponent<ICacheable>() != null)
             {
-                ret += " " + GetComponent<IExtraDataCacheable>().GetData();
+                ret += " " + GetComponent<ICacheable>().GetData();
             }
 
             return ret;
@@ -21,14 +21,28 @@ namespace Zom.Pie
 
         protected override void Init(string value)
         {
-            string[] splits = value.Trim().Split(' ');
+            //string[] splits = value.Trim().Split(' ');
+            string state = null;
+            string extra = null;
+            if(value != null && value.Trim().Contains(" "))
+            {
+                state = value.Substring(0, value.IndexOf(' ')).Trim();
+                extra = value.Substring(value.IndexOf(' ') + 1).Trim();
+            }
+            else
+            {
+                state = value;
+            }
+            
+            
 
             //GetComponent<FiniteStateMachine>().ForceState(int.Parse(value), false, false);
-            GetComponent<FiniteStateMachine>().ForceState(int.Parse(splits[0]), false, false);
-            if ( GetComponent<IExtraDataCacheable>() != null && splits.Length == 2)
-            {
-                GetComponent<IExtraDataCacheable>().Init(splits[1]);
-            }
+            if(state != null)
+                GetComponent<FiniteStateMachine>().ForceState(int.Parse(state), false, false);
+
+            if ( GetComponent<ICacheable>() != null && extra != null)
+                GetComponent<ICacheable>().Init(extra);
+           
         }
     }
 
