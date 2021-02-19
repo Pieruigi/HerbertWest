@@ -3,7 +3,42 @@ guid: 160f5aa77e896e846a057c051846481b
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pecora
+    second: {fileID: 2100000, guid: 514bb88626ae73143a512b361c01032c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood
+    second: {fileID: 2100000, guid: 25c9f0be04daf824bb041d942e11a968, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood1
+    second: {fileID: 2100000, guid: 25c9f0be04daf824bb041d942e11a968, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn1
+    second: {fileID: 2100000, guid: 1243c98d669bc5840af9b6319785a320, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pezzi_Wood
+    second: {fileID: 2100000, guid: 514bb88626ae73143a512b361c01032c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pezzi_metal
+    second: {fileID: 2100000, guid: 514bb88626ae73143a512b361c01032c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pezzi_metallo
+    second: {fileID: 2100000, guid: 514bb88626ae73143a512b361c01032c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -45,7 +80,7 @@ ModelImporter:
     importLights: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
