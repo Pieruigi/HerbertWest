@@ -88,7 +88,7 @@ namespace Zom.Pie.Editor
             Selection.activeObject = asset;
         }
 
-
+    
     }
 
 }

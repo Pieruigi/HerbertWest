@@ -260,7 +260,11 @@ namespace Zom.Pie
             // If no transition return
             if (transition == null)
             {
-                lastExitCode = states[currentStateId].CommonStateErrorCode;
+                if (currentStateId + 1 > states.Count)
+                    lastExitCode = -1;
+                else
+                    lastExitCode = states[currentStateId].CommonStateErrorCode;
+
                 OnFail?.Invoke(this);
                 return false;
             }

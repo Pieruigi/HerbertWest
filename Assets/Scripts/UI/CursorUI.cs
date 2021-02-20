@@ -7,12 +7,21 @@ namespace Zom.Pie.UI
 {
     public class CursorUI : MonoBehaviour
     {
+        public static CursorUI Instance { get; private set; }
+
         [SerializeField]
         Image image;
 
         private void Awake()
         {
-            
+            if (!Instance)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
 
         // Start is called before the first frame update
@@ -32,6 +41,15 @@ namespace Zom.Pie.UI
 
         }
 
+        public void Show(bool value)
+        {
+            image.enabled = value;
+        }
+
+        public bool IsHidden()
+        {
+            return !image.enabled;
+        }
         
         void HandleOnEnterStart(PuzzleController puzzleController)
         {
@@ -43,6 +61,8 @@ namespace Zom.Pie.UI
             image.enabled = true;
 
         }
+
+        
     }
 
 }

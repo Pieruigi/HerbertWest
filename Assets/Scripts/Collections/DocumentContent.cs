@@ -8,6 +8,18 @@ namespace Zom.Pie.Collections
     {
         [SerializeField]
         string description;
+        public string Description
+        {
+            get { return description; }
+        }
+
+        [SerializeField]
+        [TextArea(40, 100)]
+        string body;
+        public string Body
+        {
+            get { return body; }
+        }
     }
 
 }

@@ -13,7 +13,23 @@ namespace Zom.Pie.Collections
             get { return code; }
         }
 
-        
+        public string GetDescription()
+        {
+            DocumentContent info = GetDocumentContent();
+            return info.Description;
+        }
+
+        public string GetBody()
+        {
+            DocumentContent info = GetDocumentContent();
+            return info.Body;
+        }
+
+        DocumentContent GetDocumentContent()
+        {
+            string fileName = name + "_content_" + GameManager.Instance.Language.ToString();
+            return Resources.Load<DocumentContent>(Constants.DocumentResourceFolder + "/" + fileName);
+        }
     }
 
 }

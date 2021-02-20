@@ -14,6 +14,7 @@ namespace Zom.Pie
         // Resources
         public static readonly string ItemResourceFolder = "Items";
         public static readonly string DocumentResourceFolder = "Documents";
+        public static readonly string ClueResourceFolder = "Clues";
 
     }
 
