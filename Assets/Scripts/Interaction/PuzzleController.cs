@@ -28,14 +28,14 @@ namespace Zom.Pie
 
 
         [SerializeField]
-        int readyState = 0;
+        int readyState = 1;
         protected int ReadyState
         {
             get { return readyState; }
         }
 
         [SerializeField]
-        int completedState = 1;
+        int completedState = 0;
         protected int CompletedState
         {
             get { return completedState; }
