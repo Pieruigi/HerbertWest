@@ -786,7 +786,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &156363161
 Transform:
   m_ObjectHideFlags: 0
@@ -6587,6 +6587,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Paint
       objectReference: {fileID: 0}
+    - target: {fileID: 8126885209350133469, guid: d1cd73fa7fd7fa94ea472e89057600ca,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: b80a018102276134cb367cd070adc852, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1cd73fa7fd7fa94ea472e89057600ca, type: 3}
 --- !u!1001 &1505227678
