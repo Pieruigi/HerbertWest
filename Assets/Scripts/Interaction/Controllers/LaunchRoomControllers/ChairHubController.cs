@@ -9,14 +9,14 @@ namespace Zom.Pie
         [SerializeField]
         List<GameObject> chairs;
 
+        [SerializeField]
+        GameObject door;
+
         int[] solution;
 
         private void Awake()
         {
-            foreach(GameObject chair in chairs)
-            {
-                chair.GetComponent<FiniteStateMachine>().OnStateChange += HandleOnStateChange;
-            }
+           
 
             // Set solution
             solution = new int[6];
@@ -31,11 +31,9 @@ namespace Zom.Pie
         // Start is called before the first frame update
         void Start()
         {
-            if (IsCompleted())
+            foreach (GameObject chair in chairs)
             {
-                // Set box opened
-
-                // Set object picked
+                chair.GetComponentInChildren<FiniteStateMachine>().OnStateChange += HandleOnStateChange;
             }
         }
 
@@ -52,11 +50,11 @@ namespace Zom.Pie
             {
                 // Force each chair disabled
                 foreach (GameObject chair in chairs)
-                    chair.GetComponent<FiniteStateMachine>().ForceStateDisabled();
+                    chair.GetComponentInChildren<FiniteStateMachine>().ForceStateDisabled();
 
 
                 // Open box
-                StartCoroutine(OpenBox());
+                OpenDoor();
             }
             
         }
@@ -65,16 +63,20 @@ namespace Zom.Pie
         {
             for (int i = 0; i < chairs.Count; i++)
             {
-                if (chairs[i].GetComponent<ChairController>().GetSymbol() != solution[i])
+                if (chairs[i].GetComponentInChildren<ChairController>().GetSymbol() != solution[i])
                     return false;
             }
 
             return true;
         }
 
-        IEnumerator OpenBox()
+        void OpenDoor()
         {
-            yield break;
+            // Some audio
+
+
+            // Set door open
+            door.GetComponent<FiniteStateMachine>().ForceState(1, false, false);
         }
     }
 
