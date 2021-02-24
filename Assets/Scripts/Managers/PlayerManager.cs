@@ -49,12 +49,41 @@ namespace Zom.Pie
             disabled = value;
             if (!playerController) playerController = GetComponent<FirstPersonController>();
 
+            Debug.Log("PlayerController:" + playerController);
             playerController.Disabled = value;
         }
 
         public bool IsDisabled()
         {
             return disabled;
+        }
+
+        public void ForceRotation(Quaternion rotation)
+        {
+            
+            bool playerDisabled = disabled;
+            
+            SetDisable(true);
+
+            transform.rotation = rotation;
+            playerController.InitMouseLook();
+
+            // If player was not disable we enable him
+            if (!playerDisabled)
+                SetDisable(false);
+        }
+
+        public void ForcePosition(Vector3 position)
+        {
+            bool playerDisabled = disabled;
+
+            SetDisable(true);
+
+            transform.position = position;
+           
+            // If player was not disable we enable him
+            if (!playerDisabled)
+                SetDisable(false);
         }
 
     }

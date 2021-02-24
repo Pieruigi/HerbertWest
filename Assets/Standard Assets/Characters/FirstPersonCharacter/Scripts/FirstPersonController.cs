@@ -53,7 +53,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 disabled = value;
                 if (!m_CharacterController)
                     m_CharacterController = GetComponent<CharacterController>();
-                m_CharacterController.enabled = !value; 
+                Debug.Log("CharacterController:" + m_CharacterController);
+                m_CharacterController.enabled = !value;
+                Debug.Log("CharacterController.enabled:" + m_CharacterController.enabled);
                 m_MouseLook.Disabled = value; 
             }
         }
@@ -65,7 +67,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (!m_CharacterController)
                 m_CharacterController = GetComponent<CharacterController>();
 
-            m_Camera = Camera.main;
+            if (!m_Camera)
+                m_Camera = Camera.main;
+
             m_OriginalCameraPosition = m_Camera.transform.localPosition;
             m_FovKick.Setup(m_Camera);
             m_HeadBob.Setup(m_Camera, m_StepInterval);
@@ -101,10 +105,27 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
+
+            
         }
 
+        private void LateUpdate()
+        {
+            // The problem is that if you set player transform ( for example while spawning ) the 
+            // character controller enable itself, so we must check if we need to disable it again.
+            if (disabled)
+            {
+                if (m_CharacterController.enabled)
+                    m_CharacterController.enabled = false;
+            }
+        }
 
-        
+        public void InitMouseLook()
+        {
+            if (!m_Camera)
+                m_Camera = Camera.main;
+            m_MouseLook.Init(transform, m_Camera.transform);
+        }
 
         private void PlayLandingSound()
         {
@@ -270,7 +291,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void RotateView()
         {
-            if(!disabled) m_MouseLook.LookRotation (transform, m_Camera.transform);
+            m_MouseLook.LookRotation(transform, m_Camera.transform);
         }
 
 

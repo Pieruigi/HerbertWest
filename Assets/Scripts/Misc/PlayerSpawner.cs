@@ -64,8 +64,10 @@ namespace Zom.Pie
                 Debug.Log("SpawnPoint:" + sp);
 
                 // Set position and rotation
-                PlayerManager.Instance.transform.position = sp.position;
-                PlayerManager.Instance.transform.rotation = sp.rotation;
+                //PlayerManager.Instance.transform.position = sp.position;
+                //PlayerManager.Instance.transform.rotation = sp.rotation;
+                PlayerManager.Instance.ForcePosition(sp.position);
+                PlayerManager.Instance.ForceRotation(sp.rotation);
 
                 spawnPointId = -1;
 

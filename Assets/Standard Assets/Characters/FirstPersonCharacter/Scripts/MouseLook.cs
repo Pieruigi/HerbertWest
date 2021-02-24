@@ -30,8 +30,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         public void Init(Transform character, Transform camera)
         {
+
             m_CharacterTargetRot = character.localRotation;
             m_CameraTargetRot = camera.localRotation;
+            
 
 #if !MOBILE_INPUT
             XSensitivity *= 5f;

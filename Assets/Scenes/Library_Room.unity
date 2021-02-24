@@ -136,6 +136,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PuzzleUI
       objectReference: {fileID: 0}
+    - target: {fileID: 3734796964521813674, guid: 853600cc3abd27541b8ea1b36490edb9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5721722558989719644, guid: 853600cc3abd27541b8ea1b36490edb9,
         type: 3}
       propertyPath: m_Pivot.x
@@ -446,6 +451,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FPSCounter
+      objectReference: {fileID: 0}
+    - target: {fileID: 1211755803052930078, guid: 63c0d63590705c54ea253f94acfb3d40,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63c0d63590705c54ea253f94acfb3d40, type: 3}
@@ -2151,6 +2161,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 8849558319660294909, guid: ec91416112e6b844b93852fd4ab08028,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec91416112e6b844b93852fd4ab08028, type: 3}
 --- !u!4 &515493718 stripped
@@ -2580,6 +2595,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CursorUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 558570656208789971, guid: e5c474b58f96f8e41908b5dc65d8b6d1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 558570656208789998, guid: e5c474b58f96f8e41908b5dc65d8b6d1,
         type: 3}
@@ -4061,13 +4081,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1033502508}
-  m_LocalRotation: {x: 0, y: 0.6333809, z: 0, w: 0.77384025}
-  m_LocalPosition: {x: -3.842, y: 1.2, z: 4.633}
+  m_LocalRotation: {x: 0, y: 0.7847223, z: 0, w: 0.61984754}
+  m_LocalPosition: {x: -3.845, y: 1.2, z: 4.539}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 515493718}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 78.6, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 103.39, z: 0}
 --- !u!1001 &1035089832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5191,6 +5211,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: InventoryUI
       objectReference: {fileID: 0}
+    - target: {fileID: 7962980031547089940, guid: 66977c7ccaa538c4baf04ceebc4a856a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8426838005614541370, guid: 66977c7ccaa538c4baf04ceebc4a856a,
         type: 3}
       propertyPath: m_Pivot.x
@@ -5424,6 +5449,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CameraFader
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534524879627717972, guid: f5b3713c28511944e8aa2f820db581a1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7499642817203640624, guid: f5b3713c28511944e8aa2f820db581a1,
         type: 3}
@@ -5807,6 +5837,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MessageUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 5891191684213507011, guid: 65100eb5b9386484abf27d08884638ee,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7487017215810179505, guid: 65100eb5b9386484abf27d08884638ee,
         type: 3}
@@ -8053,6 +8088,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1077170242711870391, guid: ca3fc5da8cc80a34fb7eae9dacf82940,
+        type: 3}
+      propertyPath: code
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3191142681282817385, guid: ca3fc5da8cc80a34fb7eae9dacf82940,
         type: 3}
       propertyPath: m_RootOrder
@@ -8112,6 +8152,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LevelManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5626459172009526198, guid: ca3fc5da8cc80a34fb7eae9dacf82940,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca3fc5da8cc80a34fb7eae9dacf82940, type: 3}
