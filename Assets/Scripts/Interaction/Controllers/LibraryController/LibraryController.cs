@@ -18,7 +18,7 @@ namespace Zom.Pie
 
         List<int> solution;
         int count = 0;
-        float paintDisp = 1.06f;
+        float paintDisp = -1.06f;
 
         private void Awake()
         {
@@ -49,9 +49,9 @@ namespace Zom.Pie
             if(fsm.CurrentStateId == completedState)
             {
                 // Set new paint position
-                Vector3 pos = paint.transform.position;
+                Vector3 pos = paint.transform.localPosition;
                 pos.x += paintDisp;
-                paint.transform.position = pos;
+                paint.transform.localPosition = pos;
             }
         }
 
@@ -117,7 +117,7 @@ namespace Zom.Pie
             fsm.ForceState(completedState, false, false);
 
             // Move paint
-            LeanTween.moveX(paint, paint.transform.position.x + paintDisp, 0.5f).setEaseOutExpo();
+            LeanTween.moveLocalX(paint, paint.transform.position.x + paintDisp, 0.5f).setEaseOutExpo();
         }
     }
 

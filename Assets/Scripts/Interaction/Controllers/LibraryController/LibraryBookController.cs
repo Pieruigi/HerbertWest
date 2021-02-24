@@ -11,7 +11,7 @@ namespace Zom.Pie
 
         GameObject bookObject;
 
-        float disp = 0.1f;
+        float disp = -0.1f;
         float zDefault;
 
         FiniteStateMachine fsm;
@@ -26,12 +26,13 @@ namespace Zom.Pie
         void Start()
         {
             bookObject = transform.GetChild(0).gameObject;
-            zDefault = bookObject.transform.position.z;
+            zDefault = bookObject.transform.localPosition.z;
 
             if (fsm.CurrentStateId == PushedState)
             {
                 Vector3 pos = bookObject.transform.position;
-                pos.z += disp;
+                //pos.z += disp;
+                pos += bookObject.transform.forward * disp;
                 bookObject.transform.position = pos;
             }
         }
@@ -52,12 +53,12 @@ namespace Zom.Pie
             if(fsm.CurrentStateId == PushedState)
             {
                 // Move forward
-                LeanTween.moveZ(bookObject, zDefault + disp, 1.0f).setEaseInOutExpo();
+                LeanTween.moveLocalZ(bookObject, zDefault + disp, 1.0f).setEaseInOutExpo();
             }
             else
             {
                 // Move back
-                LeanTween.moveZ(bookObject, zDefault, 1.0f).setEaseInOutExpo().setEaseOutBounce();
+                LeanTween.moveLocalZ(bookObject, zDefault, 1.0f).setEaseInOutExpo().setEaseOutBounce();
                 StartCoroutine(ResetState());
             }
         }
