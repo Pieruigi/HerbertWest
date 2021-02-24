@@ -114,10 +114,10 @@ namespace Zom.Pie
             yield return new WaitForSeconds(1f);
 
             // Set the state
-            fsm.ForceState(completedState, false, false);
+            fsm.ForceState(completedState, false, true);
 
             // Move paint
-            LeanTween.moveLocalX(paint, paint.transform.position.x + paintDisp, 0.5f).setEaseOutExpo();
+            LeanTween.moveLocalX(paint, paint.transform.localPosition.x + paintDisp, 0.5f).setEaseOutExpo();
         }
     }
 

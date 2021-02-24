@@ -17,6 +17,10 @@ namespace Zom.Pie
         [SerializeField]
         Transform tileContainer;
 
+        [SerializeField]
+        GameObject furniture;
+
+        float furnitureX = -3.06f;
 
         List<Tile> tiles;
  
@@ -43,6 +47,27 @@ namespace Zom.Pie
 
             }
                 
+            // Check cache
+            if(finiteStateMachine.CurrentStateId == CompletedState)
+            {
+                // Get current tile positions
+                Vector3[] positions = new Vector3[tiles.Count];
+                for (int i = 0; i < positions.Length; i++)
+                    positions[i] = tiles[i].tileObject.transform.position;
+
+                // Set each tile 
+                tiles[0].tileObject.transform.position = positions[2];
+                tiles[1].tileObject.transform.position = positions[4];
+                tiles[2].tileObject.transform.position = positions[3];
+                tiles[3].tileObject.transform.position = positions[0];
+                tiles[4].tileObject.transform.position = positions[5];
+                tiles[5].tileObject.transform.position = positions[1];
+
+                // Open passage
+                Vector3 pos = furniture.transform.localPosition;
+                pos.x = furnitureX;
+                furniture.transform.localPosition = pos;
+            }
 
         }
 
@@ -102,6 +127,10 @@ namespace Zom.Pie
                 yield return new WaitForSeconds(0.5f);
                 GetComponent<Messenger>().SendInGameMessage(10);
                 yield return new WaitForSeconds(1f);
+
+                // Move furniture
+                LeanTween.moveLocalX(furniture, furnitureX, 1).setEaseInOutExpo();
+
                 Exit();
             }
 
