@@ -22,7 +22,7 @@ namespace Zom.Pie
         {
             if(fsm.CurrentStateId == 0)
             {
-                LeanTween.moveLocalZ(bolt, 0, 0);
+                LeanTween.moveLocalX(bolt, 0, 0);
             }
         }
 
