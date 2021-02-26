@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using Zom.Pie.Collections;
 
 namespace Zom.Pie
@@ -14,7 +16,7 @@ namespace Zom.Pie
         //AuraLight  auraLight;
 
         // The internal finite state machine
-      
+        Bloom bloom;
 
         protected override void Awake()
         {
@@ -32,6 +34,13 @@ namespace Zom.Pie
             {
                 //Destroy(auraLight.gameObject);
             }
+
+
+
+            Volume volume = GameObject.FindObjectOfType<Volume>();
+            bloom = null;
+            volume.profile.TryGet(out bloom);
+            
         }
 
 
@@ -43,28 +52,65 @@ namespace Zom.Pie
         protected override IEnumerator PickEffect()
         {
             
-            // Increase aura light strength.
-            float time = 0.5f;
-            float targetStrength = 5f;
-            //LeanTween.value(gameObject, OnStrengthUpdate, auraLight.strength, targetStrength, time).setEaseInOutBounce();
+            // Increase post processing bloom.
+            float time = 1.5f;
+            float targetIntensity = 12000f;
+            float targetThreshold = 0f;
+
+            float intensityDefault = 0, thresholdDefault = 0;
+
+            if (bloom)
+            {
+
+                intensityDefault = bloom.intensity.value;
+                thresholdDefault = bloom.threshold.value;
+                Debug.Log("Bloom.strength:" + bloom.intensity);
+                
+                LeanTween.value(gameObject, OnIntensityUpdate, intensityDefault, targetIntensity, time);
+                LeanTween.value(gameObject, OnThresholdUpdate, thresholdDefault, targetThreshold, time);
+            }
+
+
 
             yield return new WaitForSeconds(time);
 
             // Destroy the book.
-            Destroy(SceneObject);
+            
+            time = 0.5f;
+            LeanTween.value(gameObject, OnScaleUpdate, SceneObject.transform.localScale, Vector3.zero, time);
+
+            
 
             // Decrease light strength.
-            LeanTween.value(gameObject, OnStrengthUpdate, targetStrength, 0, time).setEaseInOutBounce();
+            if (bloom)
+            {
+                LeanTween.value(gameObject, OnIntensityUpdate, targetIntensity, intensityDefault, time);
+                LeanTween.value(gameObject, OnThresholdUpdate, targetThreshold, thresholdDefault, time);
+            }
 
             yield return new WaitForSeconds(time);
+            Destroy(SceneObject);
 
-            //Destroy(auraLight.gameObject);
+            //yield return new WaitForSeconds(time);
+
+ 
             
         }
 
-        void OnStrengthUpdate(float value)
+        void OnIntensityUpdate(float value)
         {
-            //auraLight.strength = value;
+            bloom.intensity.value = value;
+        }
+
+
+        void OnThresholdUpdate(float value)
+        {
+            bloom.threshold.value = value;
+        }
+
+        void OnScaleUpdate(Vector3 value)
+        {
+            SceneObject.transform.localScale = value;
         }
     }
 
