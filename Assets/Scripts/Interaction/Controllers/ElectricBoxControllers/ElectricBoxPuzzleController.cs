@@ -10,11 +10,20 @@ namespace Zom.Pie
         Transform fuseSpareContainer;
 
         [SerializeField]
-        Transform spotContainer; 
+        Transform nodeContainer;
+
+        [SerializeField]
+        Transform controlLightContainer;
+
+        [SerializeField]
+        MeshRenderer meshRenderer;
 
         List<GameObject> fuses;
 
-        List<Transform> spots;
+        List<Transform> nodes;
+
+        [SerializeField]
+        List<int> controlLightMaterialIds;
 
         Dictionary<GameObject, Vector3> defaultPositions; // Fuses default positions
 
@@ -25,6 +34,17 @@ namespace Zom.Pie
         bool interacting = false;
 
         GameObject selectedFuse = null;
+
+        int rows = 3;
+        int cols = 4;
+
+        Transform powerNode;
+        List<Transform> targetNodes;
+
+        
+
+        Material lightOffMaterial;
+        Material lightOnMaterial;
 
         protected override void Start()
         {
@@ -48,17 +68,30 @@ namespace Zom.Pie
                 placings.Add(-1);
             }
 
-            // Get all the spots
-            spots = new List<Transform>();
-            for (int i = 0; i < spotContainer.childCount; i++)
+            // Get all the nodes
+            nodes = new List<Transform>();
+            for (int i = 0; i < nodeContainer.childCount; i++)
             {
-                spots.Add(spotContainer.GetChild(i));
+                nodes.Add(nodeContainer.GetChild(i));
             }
-                
+            // Set the power node
+            powerNode = nodes[0];
+            targetNodes = new List<Transform>();
+            targetNodes.Add(nodes[2]);
+            targetNodes.Add(nodes[7]);
+            targetNodes.Add(nodes[8]);
+            targetNodes.Add(nodes[10]);
 
+            // Set the control lights
+
+
+            lightOffMaterial = meshRenderer.materials[controlLightMaterialIds[0]];
+            lightOnMaterial = new Material(lightOffMaterial);
+            lightOnMaterial.color = Color.green;
+            lightOnMaterial.SetColor("_EmissionColor", Color.green * 2);
 
             // Check wheather the state is ready, compleated or missing.
-            if(finiteStateMachine.CurrentStateId == 2)
+            if (finiteStateMachine.CurrentStateId == 2)
             {
                 // In missing state, check missing fuses which are the ones with the fsm attached to them.
                 List<GameObject> missingFuses = fuses.FindAll(f => f.GetComponent<FiniteStateMachine>());
@@ -111,7 +144,7 @@ namespace Zom.Pie
                             // We have already a fuse selected, so we must unselect it first
                             // Move it back
                             defaultPositions.TryGetValue(selectedFuse, out pos);
-                            LeanTween.moveLocalZ(selectedFuse, pos.z, 0.5f);
+                            LeanTween.moveLocalZ(selectedFuse, pos.z, 0.25f);
 
                             // Enable collider
                             selectedFuse.GetComponent<Collider>().enabled = true;
@@ -122,7 +155,7 @@ namespace Zom.Pie
 
                         // Move a little
                         defaultPositions.TryGetValue(selectedFuse, out pos);
-                        LeanTween.moveLocalZ(selectedFuse, pos.z-0.03f, 0.5f);
+                        LeanTween.moveLocalZ(selectedFuse, pos.z-0.02f, 0.25f);
 
                         // Disable interaction
                         selectedFuse.GetComponent<Collider>().enabled = false;
@@ -133,16 +166,129 @@ namespace Zom.Pie
                 }
                 else
                 {
-                    Debug.LogFormat("Fuse {0} is in spot {1}", interactor.name, GetSpotId(interactor.gameObject));
+                    // The fuse is already in the node, so we must move it back on the spare
+                    Debug.LogFormat("Fuse {0} is in spot {1}", interactor.name, GetNodeId(interactor.gameObject));
+                    // Get the fuse id
+                    int fuseId = fuses.IndexOf(interactor.gameObject);
+
+                    // Get the node 
+                    Transform spot = nodes[placings[fuseId]];
+
+                    // Reset fuse placing
+                    placings[fuseId] = -1;
+
+                    // Move the fuse back to its default position
+                    interactor.transform.localPosition = defaultPositions[interactor.gameObject];
+
+                    // Now if we have a fuse already selected we also move the fuse on the spot
+                    if (selectedFuse)
+                    {
+                        // Get the selected fuse id
+                        fuseId = fuses.IndexOf(selectedFuse);
+
+                        // Set the fuse
+                        placings[fuseId] = nodes.IndexOf(spot);
+
+                        // Move the fuse
+                        selectedFuse.transform.position = spot.position + selectedFuse.transform.up * -0.01f;
+
+                        // Set the fuse interactable again
+                        selectedFuse.GetComponent<Collider>().enabled = true;
+
+                        // Uselect fuse
+                        selectedFuse = null;
+
+                    }
+                    else
+                    {
+                        // No fuse selected, so set the spot interactable again
+                        spot.GetComponent<Collider>().enabled = true;
+                    }
+                    
                 }
             }
+            else
+            {
+                // It's not a fuse, it's a spot on the electric panel
+                // If we already selected a fuse then we must put it in the spot
+                if (selectedFuse)
+                {
+                    // Get the node id
+                    int spotId = nodes.IndexOf(interactor.transform);
 
-            yield return new WaitForSeconds(1f);
+                    // Get the selected fuse id
+                    int fuseId = fuses.IndexOf(selectedFuse);
+
+                    // Set the fuse
+                    placings[fuseId] = spotId;
+
+                    // Move the fuse
+                    selectedFuse.transform.position = interactor.transform.position + selectedFuse.transform.up*-0.01f;
+
+                    // Set the fuse interactable again
+                    selectedFuse.GetComponent<Collider>().enabled = true;
+
+                    // Uselect fuse
+                    selectedFuse = null;
+
+                    // Set node not interactable
+                    interactor.GetComponent<Collider>().enabled = false;
+
+                    
+                    
+                }
+
+            }
+
+            yield return new WaitForSeconds(0.25f);
+
+            if (!selectedFuse && IsCompleted())
+            {
+                Debug.Log("IsCompleted...");
+                SetStateCompleted();
+
+                Exit();
+            }
+
+            
 
             interacting = false;
 
             OnPuzzleInteractionStop?.Invoke(this);
 
+        }
+
+        bool IsCompleted()
+        {
+            // Check if puzzle is completed
+            bool notCompleted = false;
+            //foreach (Transform node in targetNodes)
+            for(int i=0; i<targetNodes.Count; i++)
+            {
+                Transform node = targetNodes[i];
+                if (!IsPowered(node, null))
+                {
+                    notCompleted = true;
+
+                    // Power off light
+                    if(meshRenderer.materials[controlLightMaterialIds[i]] != lightOffMaterial)
+                        meshRenderer.materials[controlLightMaterialIds[i]] = lightOffMaterial;
+                }
+                else
+                {
+                    // Power on light
+                    Debug.LogFormat("Node {0} is powered", node);
+                    if (meshRenderer.materials[controlLightMaterialIds[i]] == lightOffMaterial)
+                    {
+                        meshRenderer.materials[controlLightMaterialIds[i]] = lightOnMaterial;
+                    }
+                        
+                }
+
+                
+            }
+
+            return !notCompleted;
         }
 
         bool IsFuse(GameObject obj)
@@ -161,11 +307,117 @@ namespace Zom.Pie
             return placings[id] < 0;
         }
 
-        int GetSpotId(GameObject fuse)
+        int GetNodeId(GameObject fuse)
         {
             int id = fuses.IndexOf(fuse);
             return placings[id];
         }
+
+        bool IsEmptyNode(Transform spot)
+        {
+            int spotId = nodes.IndexOf(spot);
+            return !placings.Contains(spotId);
+        }
+
+        GameObject GetFuse(Transform spot)
+        {
+            // Get the spot id
+            int spotId = nodes.IndexOf(spot);
+
+            // Get the id of the corresponding fuse in the spot
+            int fuseId = placings.IndexOf(spotId);
+            return fuses[fuseId];
+        }
+
+        List<Transform> GetConnectedSpots(Transform spot)
+        {
+            List<Transform> ret = new List<Transform>();
+            
+            // Empty spot means no connection
+            if (IsEmptyNode(spot))
+                return ret;
+
+            int fuseType = GetFuseType(GetFuse(spot));
+            int spotId = nodes.IndexOf(spot);
+
+            switch (fuseType)
+            {
+                case 1: // North and east
+                    if (spotId >= cols)
+                        ret.Add(nodes[spotId - cols]);
+                    if (spotId % cols < cols - 1)
+                        ret.Add(nodes[spotId + 1]);
+                    break;
+                case 2: // South and west
+                    if (spotId < (rows-1) * cols)
+                        ret.Add(nodes[spotId + cols]);
+                    if (spotId % cols > 0)
+                        ret.Add(nodes[spotId - 1]);
+                    break;
+                case 3: // North, south and east
+                    if (spotId >= cols)
+                        ret.Add(nodes[spotId - cols]);
+                    if (spotId < (rows - 1) * cols)
+                        ret.Add(nodes[spotId + cols]);
+                    if (spotId % cols < cols - 1)
+                        ret.Add(nodes[spotId + 1]);
+                    break;
+                case 4: // North and west
+                    if (spotId >= cols)
+                        ret.Add(nodes[spotId - cols]);
+                    if (spotId % cols > 0)
+                        ret.Add(nodes[spotId - 1]);
+                    break;
+                case 5: // South, west and east
+                    if (spotId < (rows - 1) * cols)
+                        ret.Add(nodes[spotId + cols]);
+                    if (spotId % cols > 0)
+                        ret.Add(nodes[spotId - 1]);
+                    if (spotId % cols < cols - 1)
+                        ret.Add(nodes[spotId + 1]);
+                    break;
+            }
+
+            return ret;
+        }
+
+        bool IsPowered(Transform node, Transform parentNode)
+        {
+            Debug.LogFormat("Checking node {0}, parent:{1}", nodes.IndexOf(node), nodes.IndexOf(parentNode));
+
+            if (IsEmptyNode(node))
+            {
+                // If the node is empty then it's not connected 
+                return false;
+            }
+            
+            if (node == powerNode)
+                return true;
+
+            // Check other connections
+            List<Transform> others = GetConnectedSpots(node);
+            
+            // Remove the parent spot
+            if(parentNode)
+                others.Remove(parentNode);
+
+            
+            if (others.Count > 0)
+            {
+                foreach (Transform other in others)
+                {
+                    if (IsPowered(other, node))
+                        return true;
+                }
+                    
+            }
+            
+            // Not connected to any other node
+            return false;
+            
+        }
+
+
     }
 
 }
