@@ -90,6 +90,9 @@ namespace Zom.Pie
             lightOnMaterial.color = Color.green;
             lightOnMaterial.SetColor("_EmissionColor", Color.green * 2);
 
+            
+            
+
             // Check wheather the state is ready, compleated or missing.
             if (finiteStateMachine.CurrentStateId == 2)
             {
@@ -190,7 +193,7 @@ namespace Zom.Pie
                         placings[fuseId] = nodes.IndexOf(spot);
 
                         // Move the fuse
-                        selectedFuse.transform.position = spot.position + selectedFuse.transform.up * -0.01f;
+                        selectedFuse.transform.position = spot.position + selectedFuse.transform.up *0.0205f;
 
                         // Set the fuse interactable again
                         selectedFuse.GetComponent<Collider>().enabled = true;
@@ -223,7 +226,7 @@ namespace Zom.Pie
                     placings[fuseId] = spotId;
 
                     // Move the fuse
-                    selectedFuse.transform.position = interactor.transform.position + selectedFuse.transform.up*-0.01f;
+                    selectedFuse.transform.position = interactor.transform.position + selectedFuse.transform.up*0.0205f;
 
                     // Set the fuse interactable again
                     selectedFuse.GetComponent<Collider>().enabled = true;
@@ -266,23 +269,24 @@ namespace Zom.Pie
             for(int i=0; i<targetNodes.Count; i++)
             {
                 Transform node = targetNodes[i];
-                if (!IsPowered(node, null))
+               
+                if (!CheckLightNode(i) || !IsPowered(node, null))
                 {
                     notCompleted = true;
 
                     // Power off light
-                    if(meshRenderer.materials[controlLightMaterialIds[i]] != lightOffMaterial)
-                        meshRenderer.materials[controlLightMaterialIds[i]] = lightOffMaterial;
+                    Material[] mats = meshRenderer.sharedMaterials;
+                    mats[controlLightMaterialIds[i]] = lightOffMaterial;
+                    meshRenderer.sharedMaterials = mats;
                 }
                 else
                 {
                     // Power on light
                     Debug.LogFormat("Node {0} is powered", node);
-                    if (meshRenderer.materials[controlLightMaterialIds[i]] == lightOffMaterial)
-                    {
-                        meshRenderer.materials[controlLightMaterialIds[i]] = lightOnMaterial;
-                    }
-                        
+                   
+                    Material[] mats = meshRenderer.sharedMaterials;
+                    mats[controlLightMaterialIds[i]] = lightOnMaterial;
+                    meshRenderer.sharedMaterials = mats;
                 }
 
                 
@@ -343,38 +347,129 @@ namespace Zom.Pie
             switch (fuseType)
             {
                 case 1: // North and east
-                    if (spotId >= cols)
-                        ret.Add(nodes[spotId - cols]);
-                    if (spotId % cols < cols - 1)
-                        ret.Add(nodes[spotId + 1]);
+                    if (spotId >= cols) // North
+                    {
+                        if(!IsEmptyNode(nodes[spotId-cols]))
+                        {
+                            int type = GetFuseType(GetFuse(nodes[spotId - cols]));
+                            if(type == 2 || type == 3 || type == 5)
+                                ret.Add(nodes[spotId - cols]);
+                        }
+                        
+                    }
+                        
+                    if (spotId % cols < cols - 1) // East
+                    {
+                        if (!IsEmptyNode(nodes[spotId + 1]))
+                        {
+                            int type = GetFuseType(GetFuse(nodes[spotId + 1]));
+                            if (type == 2 || type == 4 || type == 5)
+                                ret.Add(nodes[spotId + 1]);
+                        }
+                    }
+                        
                     break;
                 case 2: // South and west
-                    if (spotId < (rows-1) * cols)
-                        ret.Add(nodes[spotId + cols]);
-                    if (spotId % cols > 0)
-                        ret.Add(nodes[spotId - 1]);
+                    if (spotId < (rows-1) * cols) // South
+                    {
+                        if (!IsEmptyNode(nodes[spotId + cols]))
+                        {
+                            int type = GetFuseType(GetFuse(nodes[spotId + cols]));
+                            if (type == 1 || type == 4 || type == 3)
+                                ret.Add(nodes[spotId + cols]);
+                        }
+                    }
+                        
+                    if (spotId % cols > 0) // West
+                    {
+                        if (!IsEmptyNode(nodes[spotId - 1]))
+                        {
+                            int type = GetFuseType(GetFuse(nodes[spotId - 1]));
+                            if (type == 1 || type == 3 || type == 5)
+                                ret.Add(nodes[spotId - 1]);
+                        }
+                    }
+                        
                     break;
                 case 3: // North, south and east
-                    if (spotId >= cols)
-                        ret.Add(nodes[spotId - cols]);
-                    if (spotId < (rows - 1) * cols)
-                        ret.Add(nodes[spotId + cols]);
-                    if (spotId % cols < cols - 1)
-                        ret.Add(nodes[spotId + 1]);
+                    if (spotId >= cols) // North
+                    {
+                        if (!IsEmptyNode(nodes[spotId - cols]))
+                        {
+                            int type = GetFuseType(GetFuse(nodes[spotId - cols]));
+                            if (type == 2 || type == 3 || type == 5)
+                                ret.Add(nodes[spotId - cols]);
+                        }
+
+                    }
+                    if (spotId < (rows - 1) * cols) // South
+                    {
+                        if (!IsEmptyNode(nodes[spotId + cols]))
+                        {
+                            int type = GetFuseType(GetFuse(nodes[spotId + cols]));
+                            if (type == 1 || type == 4 || type == 3)
+                                ret.Add(nodes[spotId + cols]);
+                        }
+                    }
+                    if (spotId % cols < cols - 1) // East
+                    {
+                        if (!IsEmptyNode(nodes[spotId + 1]))
+                        {
+                            int type = GetFuseType(GetFuse(nodes[spotId + 1]));
+                            if (type == 2 || type == 4 || type == 5)
+                                ret.Add(nodes[spotId + 1]);
+                        }
+                    }
                     break;
                 case 4: // North and west
-                    if (spotId >= cols)
-                        ret.Add(nodes[spotId - cols]);
-                    if (spotId % cols > 0)
-                        ret.Add(nodes[spotId - 1]);
+                    if (spotId >= cols) // North
+                    {
+                        if (!IsEmptyNode(nodes[spotId - cols]))
+                        {
+                            int type = GetFuseType(GetFuse(nodes[spotId - cols]));
+                            if (type == 2 || type == 3 || type == 5)
+                                ret.Add(nodes[spotId - cols]);
+                        }
+
+                    }
+                    if (spotId % cols > 0) // West
+                    {
+                        if (!IsEmptyNode(nodes[spotId - 1]))
+                        {
+                            int type = GetFuseType(GetFuse(nodes[spotId - 1]));
+                            if (type == 1 || type == 3 || type == 5)
+                                ret.Add(nodes[spotId - 1]);
+                        }
+                    }
                     break;
                 case 5: // South, west and east
-                    if (spotId < (rows - 1) * cols)
-                        ret.Add(nodes[spotId + cols]);
-                    if (spotId % cols > 0)
-                        ret.Add(nodes[spotId - 1]);
-                    if (spotId % cols < cols - 1)
-                        ret.Add(nodes[spotId + 1]);
+                    if (spotId < (rows - 1) * cols) // South
+                    {
+                        if (!IsEmptyNode(nodes[spotId + cols]))
+                        {
+                            int type = GetFuseType(GetFuse(nodes[spotId + cols]));
+                            if (type == 1 || type == 4 || type == 3)
+                                ret.Add(nodes[spotId + cols]);
+                        }
+                    }
+                    if (spotId % cols > 0) // West
+                    {
+                        if (!IsEmptyNode(nodes[spotId - 1]))
+                        {
+                            int type = GetFuseType(GetFuse(nodes[spotId - 1]));
+                            if (type == 1 || type == 3 || type == 5)
+                                ret.Add(nodes[spotId - 1]);
+                        }
+                    }
+                    if (spotId % cols < cols - 1) // East
+                    {
+                        if (!IsEmptyNode(nodes[spotId + 1]))
+                        {
+                            int type = GetFuseType(GetFuse(nodes[spotId + 1]));
+                            if (type == 2 || type == 4 || type == 5)
+                                ret.Add(nodes[spotId + 1]);
+                        }
+                    }
                     break;
             }
 
@@ -417,7 +512,36 @@ namespace Zom.Pie
             
         }
 
+        bool CheckLightNode(int i)
+        {
+            Transform node = targetNodes[i];
 
+            if (IsEmptyNode(node))
+                return false;
+
+            if (i == 0 && ( GetFuseType(GetFuse(node)) == 2 || GetFuseType(GetFuse(node)) == 5))
+            {
+                
+                return false;
+            }
+           
+            if (i == 1 && (GetFuseType(GetFuse(node)) == 4 || GetFuseType(GetFuse(node)) == 2))
+            {
+
+                return false;
+            }
+            if (i == 2 && (GetFuseType(GetFuse(node)) == 1 || GetFuseType(GetFuse(node)) == 3))
+            {
+
+                return false;
+            }
+            if (i == 3 && (GetFuseType(GetFuse(node)) == 1 || GetFuseType(GetFuse(node)) == 4))
+            {
+
+                return false;
+            }
+            return true;
+        }
     }
 
 }
