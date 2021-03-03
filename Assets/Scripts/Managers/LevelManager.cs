@@ -19,6 +19,8 @@ namespace Zom.Pie
         
         AudioSource audioSource;
 
+        bool saveOnEnter = true;
+
         private void Awake()
         {
             if (!instance)
@@ -36,6 +38,7 @@ namespace Zom.Pie
         // Start is called before the first frame update
         void Start()
         {
+            
             StartCoroutine(SpawnPlayer());
         }
 
@@ -84,6 +87,13 @@ namespace Zom.Pie
             // Set black screen and fade in
             CameraFader.Instance.ForceBlackScreen();
             yield return CameraFader.Instance.FadeInCoroutine(2f);
+
+            // Just wait
+            yield return new WaitForEndOfFrame();
+
+            // If true the game saves everytime you enter the room
+            if(saveOnEnter)
+                CacheManager.Instance.Save();
 
             // Enable player
             PlayerManager.Instance.SetDisable(false);
