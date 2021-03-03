@@ -2258,19 +2258,14 @@ MonoBehaviour:
     othersToSet: []
     commonStateErrorCode: 0
     commonStateSucceedCode: 0
-  - name: Missing
-    id: 2
-    othersToSet: []
-    commonStateErrorCode: 0
-    commonStateSucceedCode: 0
   transitions:
   - tag: Play
     fromStateId: 1
     toStateId: 1
     othersToCheck: []
     errorCode: 0
-  currentStateName: 
-  currentStateId: 1
+  currentStateName: Disabled
+  currentStateId: -1
 --- !u!114 &7195555838923793260
 MonoBehaviour:
   m_ObjectHideFlags: 0

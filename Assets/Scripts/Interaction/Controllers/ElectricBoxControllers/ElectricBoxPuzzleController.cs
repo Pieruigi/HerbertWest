@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zom.Pie.Collections;
+using Zom.Pie.Interfaces;
 
 namespace Zom.Pie
 {
@@ -17,6 +19,7 @@ namespace Zom.Pie
 
         [SerializeField]
         MeshRenderer meshRenderer;
+
 
         List<GameObject> fuses;
 
@@ -41,10 +44,12 @@ namespace Zom.Pie
         Transform powerNode;
         List<Transform> targetNodes;
 
-        
+         
 
         Material lightOffMaterial;
         Material lightOnMaterial;
+
+
 
         protected override void Start()
         {
@@ -93,16 +98,16 @@ namespace Zom.Pie
             
             
 
-            // Check wheather the state is ready, compleated or missing.
-            if (finiteStateMachine.CurrentStateId == 2)
-            {
-                // In missing state, check missing fuses which are the ones with the fsm attached to them.
-                List<GameObject> missingFuses = fuses.FindAll(f => f.GetComponent<FiniteStateMachine>());
+            //// Check wheather the state is ready, compleated or missing.
+            //if (finiteStateMachine.CurrentStateId == 2)
+            //{
+            //    // In missing state, check missing fuses which are the ones with the fsm attached to them.
+            //    List<GameObject> missingFuses = fuses.FindAll(f => f.GetComponent<FiniteStateMachine>());
 
-                // If we picked both then we set the state to ready
-                if (AllFusesPicked(missingFuses))
-                    finiteStateMachine.ForceState(ReadyState, false, false);
-            }
+            //    // If we picked both then we set the state to ready
+            //    if (AllFusesPicked(missingFuses))
+            //        finiteStateMachine.ForceState(ReadyState, false, false);
+            //}
             
         }
 
@@ -542,6 +547,8 @@ namespace Zom.Pie
             }
             return true;
         }
+
+
     }
 
 }
