@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3070464222397832091}
   - component: {fileID: 3070464222397832089}
-  - component: {fileID: 3070464222397832090}
   - component: {fileID: 3070464222397832094}
   - component: {fileID: 3070464222397832095}
   - component: {fileID: 3070464222397832088}
+  - component: {fileID: 1769809479}
+  - component: {fileID: 1769809480}
   m_Layer: 0
   m_Name: ElectricPanelMissings
   m_TagString: Untagged
@@ -69,19 +70,6 @@ MonoBehaviour:
     errorCode: 0
   currentStateName: 
   currentStateId: 1
---- !u!114 &3070464222397832090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3070464222397832068}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 526a003e89f642044b1babb02d7b3dee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  code: 
 --- !u!114 &3070464222397832094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,3 +116,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unavailableStates: 00000000
+--- !u!114 &1769809479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3070464222397832068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b423446a75f6921419515695609e8378, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transitions:
+  - fromEveryState: 0
+    fromState: 1
+    toState: 0
+--- !u!114 &1769809480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3070464222397832068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 526a003e89f642044b1babb02d7b3dee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  code: p002_2

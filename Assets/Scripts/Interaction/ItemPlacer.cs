@@ -23,7 +23,9 @@ namespace Zom.Pie
 
         void Awake()
         {
-            fsm = GetComponent<FiniteStateMachine>();
+            if(!fsm)
+                fsm = GetComponent<FiniteStateMachine>();
+
             fsm.OnStateChange += HandleOnStateChange;
 
             
@@ -76,6 +78,9 @@ namespace Zom.Pie
 
         public void Init(string extraData)
         {
+            if (!fsm)
+                fsm = GetComponent<FiniteStateMachine>();
+
             missings = new bool[items.Count];
             if (fsm.CurrentStateId == completedState)
             {

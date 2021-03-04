@@ -394,6 +394,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior
       objectReference: {fileID: 0}
+    - target: {fileID: 731506543407406903, guid: 02f6ff969c220634a956a614d5bfeeea,
+        type: 3}
+      propertyPath: code
+      value: p004_1
+      objectReference: {fileID: 0}
     - target: {fileID: 731506543407406907, guid: 02f6ff969c220634a956a614d5bfeeea,
         type: 3}
       propertyPath: symbol
@@ -2878,6 +2883,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Naga
       objectReference: {fileID: 0}
+    - target: {fileID: 731506543407406903, guid: 02f6ff969c220634a956a614d5bfeeea,
+        type: 3}
+      propertyPath: code
+      value: p004_4
+      objectReference: {fileID: 0}
     - target: {fileID: 985281363905792029, guid: 02f6ff969c220634a956a614d5bfeeea,
         type: 3}
       propertyPath: m_RootOrder
@@ -3233,7 +3243,7 @@ GameObject:
   m_Component:
   - component: {fileID: 756179006}
   - component: {fileID: 756179005}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Colliders_Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3352,7 +3362,7 @@ GameObject:
   m_Component:
   - component: {fileID: 846478714}
   - component: {fileID: 846478715}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Collider_Walls (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3591,6 +3601,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Squire
+      objectReference: {fileID: 0}
+    - target: {fileID: 731506543407406903, guid: 02f6ff969c220634a956a614d5bfeeea,
+        type: 3}
+      propertyPath: code
+      value: p004_2
       objectReference: {fileID: 0}
     - target: {fileID: 731506543407406907, guid: 02f6ff969c220634a956a614d5bfeeea,
         type: 3}
@@ -8097,6 +8112,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Innsmouth
       objectReference: {fileID: 0}
+    - target: {fileID: 731506543407406903, guid: 02f6ff969c220634a956a614d5bfeeea,
+        type: 3}
+      propertyPath: code
+      value: p004_5
+      objectReference: {fileID: 0}
     - target: {fileID: 731506543407406907, guid: 02f6ff969c220634a956a614d5bfeeea,
         type: 3}
       propertyPath: symbol
@@ -8522,12 +8542,32 @@ PrefabInstance:
     - target: {fileID: 738039390683746151, guid: 7ba92849b46ec7c4dbab41e8e4cb1eed,
         type: 3}
       propertyPath: code
-      value: 
+      value: d005
       objectReference: {fileID: 0}
     - target: {fileID: 3814179938385684005, guid: 7ba92849b46ec7c4dbab41e8e4cb1eed,
         type: 3}
       propertyPath: currentStateId
-      value: 0
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814179938385684005, guid: 7ba92849b46ec7c4dbab41e8e4cb1eed,
+        type: 3}
+      propertyPath: states.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814179938385684005, guid: 7ba92849b46ec7c4dbab41e8e4cb1eed,
+        type: 3}
+      propertyPath: states.Array.data[2].id
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814179938385684005, guid: 7ba92849b46ec7c4dbab41e8e4cb1eed,
+        type: 3}
+      propertyPath: states.Array.data[2].name
+      value: BlockedBySomething
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814179938385684005, guid: 7ba92849b46ec7c4dbab41e8e4cb1eed,
+        type: 3}
+      propertyPath: states.Array.data[2].commonStateErrorCode
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 6218732233878553522, guid: 7ba92849b46ec7c4dbab41e8e4cb1eed,
         type: 3}
@@ -9067,7 +9107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1836912017}
   - component: {fileID: 1836912018}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Collider_Walls (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9371,7 +9411,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1873728813}
   - component: {fileID: 1873728814}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Collider_Walls (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9416,6 +9456,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Hunter
+      objectReference: {fileID: 0}
+    - target: {fileID: 731506543407406903, guid: 02f6ff969c220634a956a614d5bfeeea,
+        type: 3}
+      propertyPath: code
+      value: p004_6
       objectReference: {fileID: 0}
     - target: {fileID: 985281363905792029, guid: 02f6ff969c220634a956a614d5bfeeea,
         type: 3}
@@ -9881,7 +9926,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2010392535}
   - component: {fileID: 2010392536}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Collider_Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10166,6 +10211,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1397405012724284053, guid: f0a009e217396674083a7aa34eeb2b5e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1808906830393640340, guid: f0a009e217396674083a7aa34eeb2b5e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3567178128943197001, guid: f0a009e217396674083a7aa34eeb2b5e,
         type: 3}
       propertyPath: m_Pivot.x
@@ -10276,6 +10331,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvasVirtualInput
       objectReference: {fileID: 0}
+    - target: {fileID: 5379582674521386555, guid: f0a009e217396674083a7aa34eeb2b5e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6076265225829225023, guid: f0a009e217396674083a7aa34eeb2b5e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7521425544345194217, guid: f0a009e217396674083a7aa34eeb2b5e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0a009e217396674083a7aa34eeb2b5e, type: 3}
 --- !u!4 &2098622481 stripped
@@ -10301,6 +10371,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Treasury
+      objectReference: {fileID: 0}
+    - target: {fileID: 731506543407406903, guid: 02f6ff969c220634a956a614d5bfeeea,
+        type: 3}
+      propertyPath: code
+      value: p004_3
       objectReference: {fileID: 0}
     - target: {fileID: 731506543407406907, guid: 02f6ff969c220634a956a614d5bfeeea,
         type: 3}

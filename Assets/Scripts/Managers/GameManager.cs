@@ -138,6 +138,9 @@ namespace Zom.Pie
             // Load cache first
             CacheManager.Instance.Load();
 
+            // Set the starting point id -1
+            PlayerSpawner.SpawnPointId = -1;
+
             // Get the index of the scene that must be loaded
             string index;
             if (!CacheManager.Instance.TryGetValue(Constants.CacheCodeSceneIndex, out index))

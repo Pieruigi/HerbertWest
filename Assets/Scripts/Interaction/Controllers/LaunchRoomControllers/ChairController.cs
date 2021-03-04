@@ -24,17 +24,17 @@ namespace Zom.Pie
             fsm = GetComponent<FiniteStateMachine>();
             fsm.OnStateChange += HandleOnStateChange;
 
-            // Rotate
-            float angle = -60.0f * (float)symbol;
-            Vector3 eulers = transform.localEulerAngles;
-            eulers.z = angle;
-            transform.localEulerAngles = eulers;
+           
         }
 
         // Start is called before the first frame update
         void Start()
         {
-
+            // Rotate
+            float angle = -60.0f * (float)symbol;
+            Vector3 eulers = transform.localEulerAngles;
+            eulers.z = angle;
+            transform.localEulerAngles = eulers;
         }
 
         // Update is called once per frame

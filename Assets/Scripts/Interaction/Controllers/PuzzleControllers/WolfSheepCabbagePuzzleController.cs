@@ -73,15 +73,17 @@ namespace Zom.Pie
 
             if(finiteStateMachine.CurrentStateId == CompletedState)
             {
-                Debug.Log("Completed");
-                for(int i=0; i<handles.Count; i++)
-                {
-                    handleValues[i] = 1;
-                    LeanTween.move(handles[i], defaultPositions[i] + handles[i].transform.right * disp, 0f);
-                }
+                
 
                 // Open cover.
                 cover.transform.position += cover.transform.right * 0.2f;
+
+                Debug.Log("Completed");
+                for (int i = 0; i < handles.Count; i++)
+                {
+                    handleValues[i] = 1;
+                    LeanTween.moveLocalX(handles[i], disp, 0f);
+                }
 
                 // Set the picker as picked.
                 itemPicker.SetSceneObjectAsPicked();
