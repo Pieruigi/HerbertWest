@@ -1151,7 +1151,7 @@ GameObject:
   m_Component:
   - component: {fileID: 215140486}
   - component: {fileID: 215140485}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Collider_Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3057,7 +3057,7 @@ GameObject:
   m_Component:
   - component: {fileID: 772148329}
   - component: {fileID: 772148330}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Collider_Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3789,7 +3789,7 @@ GameObject:
   m_Component:
   - component: {fileID: 969890831}
   - component: {fileID: 969890832}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Collider_Walls (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4458,6 +4458,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 407451169228186050, guid: bcffc27639c64c6478ff00b316b175a1,
+        type: 3}
+      propertyPath: code
+      value: d002_l
       objectReference: {fileID: 0}
     - target: {fileID: 407451169228186054, guid: bcffc27639c64c6478ff00b316b175a1,
         type: 3}
@@ -6422,7 +6427,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1389261683}
   - component: {fileID: 1389261684}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Collider_Walls (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7071,7 +7076,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1515100213}
   - component: {fileID: 1515100214}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Collider_Walls (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

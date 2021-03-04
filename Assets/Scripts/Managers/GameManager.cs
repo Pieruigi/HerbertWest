@@ -33,12 +33,16 @@ namespace Zom.Pie
             get { return language; }
         }
 
+        // Useful to avoid the game to save on scene enter every time we test a scene in the editor
+        bool loadedByMain = false;
+
         private void Awake()
         {
             if (!Instance)
             {
                 Instance = this;
                 SceneManager.sceneLoaded += HandleOnSceneLoaded;
+                DontDestroyOnLoad(gameObject);
             }
             else
             {
@@ -111,6 +115,7 @@ namespace Zom.Pie
 
             SceneLoader.LoadingSceneIndex = index;
             SceneManager.LoadScene(index);
+            loadedByMain = true;
             loading = true;
         }
 
@@ -209,7 +214,8 @@ namespace Zom.Pie
                 }
                 else
                 {
-                    inGame = true;
+                    if(loadedByMain)
+                        inGame = true;
 
                     // Get inventory
                     //inventoryUI = GameObject.FindObjectOfType<InventoryUI>();

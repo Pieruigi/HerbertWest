@@ -92,7 +92,7 @@ namespace Zom.Pie
             yield return new WaitForEndOfFrame();
 
             // If true the game saves everytime you enter the room
-            if(saveOnEnter)
+            if(GameManager.Instance.InGame && saveOnEnter)
                 CacheManager.Instance.Save();
 
             // Enable player
