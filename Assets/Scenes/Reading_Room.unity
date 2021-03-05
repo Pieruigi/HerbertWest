@@ -4906,6 +4906,7 @@ MonoBehaviour:
   interactionController: {fileID: 1453039686}
   interactionCollider: {fileID: 1453039684}
   distance: 2
+  pivot: {fileID: 0}
 --- !u!114 &1453039688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7237,7 +7238,8 @@ PrefabInstance:
       propertyPath: spawnPointIndex
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 738039390683746151, guid: 7ba92849b46ec7c4dbab41e8e4cb1eed, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7ba92849b46ec7c4dbab41e8e4cb1eed, type: 3}
 --- !u!4 &2146740341 stripped
 Transform:

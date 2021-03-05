@@ -565,6 +565,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 773418356}
     m_Modifications:
+    - target: {fileID: 6940896061483511267, guid: 312921d728b42ba40a67a159c9feff73,
+        type: 3}
+      propertyPath: code
+      value: p005_4
+      objectReference: {fileID: 0}
     - target: {fileID: 6940896061483511268, guid: 312921d728b42ba40a67a159c9feff73,
         type: 3}
       propertyPath: m_RootOrder
@@ -1102,6 +1107,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1961665796}
     m_Modifications:
+    - target: {fileID: 738039390683746151, guid: 7ba92849b46ec7c4dbab41e8e4cb1eed,
+        type: 3}
+      propertyPath: code
+      value: d005
+      objectReference: {fileID: 0}
     - target: {fileID: 6218732233878553522, guid: 7ba92849b46ec7c4dbab41e8e4cb1eed,
         type: 3}
       propertyPath: m_Name
@@ -1187,7 +1197,8 @@ PrefabInstance:
       propertyPath: spawnPointIndex
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 738039390683746151, guid: 7ba92849b46ec7c4dbab41e8e4cb1eed, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7ba92849b46ec7c4dbab41e8e4cb1eed, type: 3}
 --- !u!4 &219961028 stripped
 Transform:
@@ -1993,6 +2004,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlatoneBook
       objectReference: {fileID: 0}
+    - target: {fileID: 6274718457963426429, guid: c76b68f3200ce104c823491a5b1d3362,
+        type: 3}
+      propertyPath: code
+      value: p005_5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c76b68f3200ce104c823491a5b1d3362, type: 3}
 --- !u!4 &469686553 stripped
@@ -2483,7 +2499,7 @@ PrefabInstance:
     - target: {fileID: 3267182958887678154, guid: 48dc34108321ee047937a00100ea5598,
         type: 3}
       propertyPath: code
-      value: 
+      value: p005
       objectReference: {fileID: 0}
     - target: {fileID: 3267182958887678155, guid: 48dc34108321ee047937a00100ea5598,
         type: 3}
@@ -2782,6 +2798,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7812766112301221169, guid: 9a594ebef2bf2104998d64237472cf72,
+        type: 3}
+      propertyPath: code
+      value: p005_3
       objectReference: {fileID: 0}
     - target: {fileID: 9047892553374889133, guid: 9a594ebef2bf2104998d64237472cf72,
         type: 3}
@@ -3967,6 +3988,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1722003825}
     m_Modifications:
+    - target: {fileID: 2605373601966731793, guid: bf9d41ba695c8d34eb91c7800a0ee82c,
+        type: 3}
+      propertyPath: code
+      value: p006
+      objectReference: {fileID: 0}
     - target: {fileID: 2605373601966731794, guid: bf9d41ba695c8d34eb91c7800a0ee82c,
         type: 3}
       propertyPath: m_RootOrder
@@ -6265,6 +6291,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8323605906410192862, guid: 2258eea006941bd408389114ac9d1650,
+        type: 3}
+      propertyPath: code
+      value: p005_6
+      objectReference: {fileID: 0}
     - target: {fileID: 8323605906410192868, guid: 2258eea006941bd408389114ac9d1650,
         type: 3}
       propertyPath: m_Name
@@ -6354,6 +6385,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1397405012724284053, guid: f0a009e217396674083a7aa34eeb2b5e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1808906830393640340, guid: f0a009e217396674083a7aa34eeb2b5e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3567178128943197001, guid: f0a009e217396674083a7aa34eeb2b5e,
         type: 3}
       propertyPath: m_Pivot.x
@@ -6464,6 +6505,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvasVirtualInput
       objectReference: {fileID: 0}
+    - target: {fileID: 5379582674521386555, guid: f0a009e217396674083a7aa34eeb2b5e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6076265225829225023, guid: f0a009e217396674083a7aa34eeb2b5e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7521425544345194217, guid: f0a009e217396674083a7aa34eeb2b5e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0a009e217396674083a7aa34eeb2b5e, type: 3}
 --- !u!4 &1556123623 stripped
@@ -6479,6 +6535,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1722003825}
     m_Modifications:
+    - target: {fileID: 79373631506216958, guid: dd9fdee46b1f281468a5d0ea92e803e0,
+        type: 3}
+      propertyPath: code
+      value: p005_1
+      objectReference: {fileID: 0}
     - target: {fileID: 6849617099566127593, guid: dd9fdee46b1f281468a5d0ea92e803e0,
         type: 3}
       propertyPath: m_RootOrder
@@ -7603,6 +7664,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3408364759085606510, guid: 93e288feca8367b47ab7f110c23b6859,
+        type: 3}
+      propertyPath: code
+      value: p005_2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93e288feca8367b47ab7f110c23b6859, type: 3}
 --- !u!1 &1861919779 stripped
@@ -7818,7 +7884,8 @@ PrefabInstance:
       propertyPath: spawnPointIndex
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 738039390683746151, guid: 7ba92849b46ec7c4dbab41e8e4cb1eed, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7ba92849b46ec7c4dbab41e8e4cb1eed, type: 3}
 --- !u!4 &1944540225 stripped
 Transform:

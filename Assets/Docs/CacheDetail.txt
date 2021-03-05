@@ -6,10 +6,10 @@ doc: documents
 
 // doors
 d001: underground room
-d002: ground floor kitchen room
-d003: ground floor reading room
+d002: ground floor kitchen room ( external )
+d003: ground floor reading room ( external )
 d004: ground floor garden room
-d005: kitchen internal door
+d005: lunchroom->kitchen door
 d002_l: door d002 lock
 d003_l: door d003 lock
 
@@ -25,8 +25,17 @@ p004_3: coin chair
 p004_4: naga chair
 p004_5: fish chair
 p004_6: bow chair
+p005: library puzzle
+p005_1: kafka book
+p005_2: fedro book
+p005_3: kepler book
+p005_4: eschilo book
+p005_5: platone book
+p005_6: camus book
+p006: 15 mod puzzle in the library
 
 // doc pickers
 l001: underground room
 
-
+// item pickers
+i001: fuse 2, the one in the kitchen

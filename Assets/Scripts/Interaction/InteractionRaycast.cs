@@ -22,11 +22,12 @@ namespace Zom.Pie
         [SerializeField]
         float distance = 2f;
 
+        [SerializeField]
+        Transform pivot;
 
         float sqrDistance;
 
         bool inside = false;
-
 
         // Used to keep trace of the interaction event.
         // 1: enter
@@ -36,6 +37,10 @@ namespace Zom.Pie
         protected override void Awake()
         {
             base.Awake();
+
+            // Set the current object as pivot if needed
+            if (!pivot)
+                pivot = transform;
 
             sqrDistance = distance * distance;
 
@@ -115,7 +120,7 @@ namespace Zom.Pie
         private void FixedUpdate()
         {
             // Check if the player is too far away.
-            if ((PlayerManager.Instance.transform.position - transform.position).sqrMagnitude < sqrDistance)
+            if ((PlayerManager.Instance.transform.position - pivot.position).sqrMagnitude < sqrDistance)
             {
                 inside = true;
                 //Debug.Log("Is inside...");

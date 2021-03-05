@@ -86,8 +86,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   items:
-  - {fileID: 11400000, guid: 2034336d71249504ab160ec2f8e096f7, type: 2}
   - {fileID: 11400000, guid: d29eed026b5f9724eb2c1db630424407, type: 2}
+  - {fileID: 11400000, guid: e619e11cc0e2e0c4ca2ce43a0e34fc52, type: 2}
 --- !u!114 &3070464222397832095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,6 +103,7 @@ MonoBehaviour:
   interactionController: {fileID: 3070464222397832088}
   interactionCollider: {fileID: 0}
   distance: 2
+  pivot: {fileID: 0}
 --- !u!114 &3070464222397832088
 MonoBehaviour:
   m_ObjectHideFlags: 0
