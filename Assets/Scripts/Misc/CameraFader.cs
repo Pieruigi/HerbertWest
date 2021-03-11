@@ -32,7 +32,7 @@ namespace Zom.Pie
             if(instance == null)
             {
                 instance = this;
-                animator = GetComponent<Animator>();
+                animator = image.GetComponent<Animator>();
                 if (blackOnEnter) ForceBlackScreen();
             }
             else

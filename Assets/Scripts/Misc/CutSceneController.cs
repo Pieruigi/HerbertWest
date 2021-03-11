@@ -17,12 +17,19 @@ namespace Zom.Pie
         FiniteStateMachine fsm;
 
         int completedState = 0;
-        int readyState = 1;
+        int playingState = 1;
+        int readyState = 2;
+
 
         private void Awake()
         {
             fsm = GetComponent<FiniteStateMachine>();
             fsm.OnStateChange += HandleOnStateChange;
+            //director.played += delegate { Debug.Log("Playing..."); };
+            director.stopped += delegate { 
+                Debug.Log("Stopping..."); 
+                fsm.ForceState(completedState, true, true); 
+            };
         }
 
         // Start is called before the first frame update
@@ -35,7 +42,7 @@ namespace Zom.Pie
             {
                 if (playOnStart)
                 {
-                    fsm.ForceState(completedState, true, true);
+                    fsm.ForceState(playingState, true, true);
                 }
             }
         }
@@ -48,7 +55,7 @@ namespace Zom.Pie
 
         void HandleOnStateChange(FiniteStateMachine fsm)
         {
-            if(fsm.CurrentStateId == completedState && fsm.PreviousStateId == readyState)
+            if(fsm.CurrentStateId == playingState && fsm.PreviousStateId == readyState)
             {
                 director.Play();
             }

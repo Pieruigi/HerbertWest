@@ -13,6 +13,9 @@ namespace Zom.Pie
             get { return instance; }
         }
 
+        [SerializeField]
+        bool spawnOnly = false; // False if you want this manager to do other stuff as fade and save
+
         // We can play an audio clip on enter ( for example a door that is closing )
         static ClipData onEnterClip;
         
@@ -78,32 +81,35 @@ namespace Zom.Pie
             // Play enter clip
             PlayOnEnterClip();
 
-            // Spawn player and disable controller
-            PlayerManager.Instance.SetDisable(true);
-
             if(PlayerSpawner.Instance)
                 PlayerSpawner.Instance.Spawn();
-            
-            
-            // Set black screen and fade in
-            CameraFader.Instance.ForceBlackScreen();
 
-            // Check if player started a new game and in that case keep the fade out and show some 
-            // message on the screen
-     
+            if (!spawnOnly)
+            {
+                // Spawn player and disable controller
+                PlayerManager.Instance.SetDisable(true);
 
-            yield return CameraFader.Instance.FadeInCoroutine(2f);
+                // Set black screen and fade in
+                CameraFader.Instance.TryDisableAnimator();
+                CameraFader.Instance.ForceBlackScreen();
 
-            // Just wait
-            yield return new WaitForEndOfFrame();
+                // Fade in
+                yield return CameraFader.Instance.FadeInCoroutine(2f);
 
-            // If true the game saves everytime you enter the room
-            if(GameManager.Instance.InGame && saveOnEnter)
-                CacheManager.Instance.Save();
+                CameraFader.Instance.TryEnableAnimator();
 
-            // Enable player
-            PlayerManager.Instance.SetDisable(false);
-            
+                // Just wait the end of the frame in order to have all the objects initialized
+                yield return new WaitForEndOfFrame();
+
+                // If true the game saves everytime you enter the room
+                if (GameManager.Instance.InGame && saveOnEnter)
+                    CacheManager.Instance.Save();
+
+                // Enable player
+                PlayerManager.Instance.SetDisable(false);
+            }
+
+
         }
     }
 
