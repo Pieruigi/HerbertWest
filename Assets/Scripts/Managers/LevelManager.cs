@@ -84,8 +84,14 @@ namespace Zom.Pie
             if(PlayerSpawner.Instance)
                 PlayerSpawner.Instance.Spawn();
             
+            
             // Set black screen and fade in
             CameraFader.Instance.ForceBlackScreen();
+
+            // Check if player started a new game and in that case keep the fade out and show some 
+            // message on the screen
+     
+
             yield return CameraFader.Instance.FadeInCoroutine(2f);
 
             // Just wait
@@ -97,7 +103,7 @@ namespace Zom.Pie
 
             // Enable player
             PlayerManager.Instance.SetDisable(false);
-
+            
         }
     }
 
