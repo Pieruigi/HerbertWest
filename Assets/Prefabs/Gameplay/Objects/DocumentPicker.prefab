@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 8306250501351587868}
   - component: {fileID: 7907712718857908988}
   - component: {fileID: 1407997856460912852}
+  - component: {fileID: 1521744416}
   m_Layer: 2
   m_Name: Picker
   m_TagString: Untagged
@@ -175,6 +176,7 @@ MonoBehaviour:
   interactionController: {fileID: 1417142367462947956}
   interactionCollider: {fileID: 276575011552061245}
   distance: 2
+  pivot: {fileID: 0}
 --- !u!114 &1296657978104162804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,7 +189,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e38142d46101c6b4097263b4fad77cca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneObject: {fileID: 1087617454873664114}
   document: {fileID: 11400000, guid: fdccd39cf73190248b457010417eb6be, type: 2}
 --- !u!114 &8306250501351587868
 MonoBehaviour:
@@ -202,18 +203,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   states:
-  - name: Picked
+  - name: Readable
     id: 0
     othersToSet: []
     commonStateErrorCode: 0
-    commonStateSucceedCode: 5
-  - name: Ready
+    commonStateSucceedCode: 0
+  - name: FirstTime
     id: 1
     othersToSet: []
     commonStateErrorCode: 0
     commonStateSucceedCode: 0
+  - name: NotReabable
+    id: 2
+    othersToSet: []
+    commonStateErrorCode: 0
+    commonStateSucceedCode: 0
   transitions:
-  - tag: Pick
+  - tag: FirstTimeRead
     fromStateId: 1
     toStateId: 0
     othersToCheck: []
@@ -245,7 +251,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 526a003e89f642044b1babb02d7b3dee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: empty
+  code: l001
+--- !u!114 &1521744416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6042297017955956368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b423446a75f6921419515695609e8378, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transitions:
+  - fromEveryState: 0
+    fromState: 1
+    toState: 0
+  - fromEveryState: 0
+    fromState: 2
+    toState: 1
 --- !u!1001 &276575011552061219
 PrefabInstance:
   m_ObjectHideFlags: 0

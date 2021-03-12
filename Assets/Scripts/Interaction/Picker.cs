@@ -57,7 +57,8 @@ namespace Zom.Pie
             {
                 if(fsm.CurrentStateId == pickedState)
                 {
-                    Destroy(sceneObject);
+                    if(sceneObject)
+                        Destroy(sceneObject);
                 }
             }
         }
@@ -70,7 +71,8 @@ namespace Zom.Pie
 
         public void SetSceneObjectAsPicked()
         {
-            Destroy(sceneObject);
+            if(sceneObject)
+                Destroy(sceneObject);
         }
 
         public IEnumerator Pick()
@@ -86,11 +88,15 @@ namespace Zom.Pie
 
             // Effect
             yield return PickEffect();
-          
-            // Insert into inventory, or library... or where ever else.
-            Insert(GetObject());
 
-            Destroy(sceneObject);
+            // Insert into inventory, or library... or where ever else.
+            if (sceneObject)
+            {
+                Insert(GetObject());
+
+                Destroy(sceneObject);
+            }
+            
 
             // If the player was already disabled when we start picking then we don't enable him back 
             // from here.

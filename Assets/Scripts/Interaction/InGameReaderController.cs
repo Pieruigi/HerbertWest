@@ -13,10 +13,18 @@ namespace Zom.Pie
     {
         [SerializeField]
         Document document;
+        protected Document Document
+        {
+            get { return document; }
+        }
 
         FiniteStateMachine fsm;
+        protected FiniteStateMachine FiniteStateMachine
+        {
+            get { return fsm; }
+        }
 
-        private void Awake()
+        protected virtual void Awake()
         {
             fsm = GetComponent<FiniteStateMachine>();
             // We avoid to configure the finite state machine and simply we handle the error.
@@ -24,7 +32,7 @@ namespace Zom.Pie
         }
 
         // Start is called before the first frame update
-        void Start()
+        protected virtual void Start()
         {
 
         }

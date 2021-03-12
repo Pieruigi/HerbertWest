@@ -7,22 +7,22 @@ using Zom.Pie.Collections;
 
 namespace Zom.Pie
 {
-    public class DocumentPicker : Picker
+    public class DocumentPicker : InGameReaderController
     {
-        [SerializeField]
-        Document document;
-
-        //[SerializeField]
-        //AuraLight  auraLight;
 
         // The internal finite state machine
         Bloom bloom;
+
+        int firstTimeState = 1;
+
+        int unreabableState = 2;
+
 
         protected override void Awake()
         {
             base.Awake();
 
-           
+            FiniteStateMachine.OnStateChange += HandleOnStateChange;
         }
 
         protected override void Start()
@@ -30,12 +30,22 @@ namespace Zom.Pie
             base.Start();
 
             // Destroy the light if the decument has been picked.
-            if(FiniteStateMachine && FiniteStateMachine.CurrentStateId == PickedState)
+            if(FiniteStateMachine && FiniteStateMachine.CurrentStateId == unreabableState)
             {
-                //Destroy(auraLight.gameObject);
+                // Set graphycs as unreadable
             }
-
-
+            else
+            {
+                if (FiniteStateMachine && FiniteStateMachine.CurrentStateId == firstTimeState)
+                {
+                    // Set graphycs as unreadable
+                }
+                else
+                {
+                    // We read at least once
+                }
+            }
+            
 
             Volume volume = GameObject.FindObjectOfType<Volume>();
             bloom = null;
@@ -44,14 +54,10 @@ namespace Zom.Pie
         }
 
 
-        protected override object GetObject()
+        protected IEnumerator PickEffect()
         {
-            return document;
-        }
+            PlayerManager.Instance.SetDisable(true);
 
-        protected override IEnumerator PickEffect()
-        {
-            
             // Increase post processing bloom.
             float time = 1.5f;
             float targetIntensity = 12000f;
@@ -74,14 +80,8 @@ namespace Zom.Pie
 
             yield return new WaitForSeconds(time);
 
-            // Destroy the book.
-            
-            time = 0.5f;
-            LeanTween.value(gameObject, OnScaleUpdate, SceneObject.transform.localScale, Vector3.zero, time);
-
-            
-
             // Decrease light strength.
+            time = 0.5f;
             if (bloom)
             {
                 LeanTween.value(gameObject, OnIntensityUpdate, targetIntensity, intensityDefault, time);
@@ -89,12 +89,11 @@ namespace Zom.Pie
             }
 
             yield return new WaitForSeconds(time);
-            Destroy(SceneObject);
 
-            //yield return new WaitForSeconds(time);
+            PlayerManager.Instance.SetDisable(false);
 
- 
-            
+            Zom.Pie.UI.InGameReaderUI.Instance.Open(Document);
+
         }
 
         void OnIntensityUpdate(float value)
@@ -108,9 +107,15 @@ namespace Zom.Pie
             bloom.threshold.value = value;
         }
 
-        void OnScaleUpdate(Vector3 value)
+
+
+        void HandleOnStateChange(FiniteStateMachine fsm)
         {
-            SceneObject.transform.localScale = value;
+            if(FiniteStateMachine.CurrentStateId == 0 && FiniteStateMachine.PreviousStateId == firstTimeState)
+            {
+                // Play effect and read
+                StartCoroutine(PickEffect());
+            }
         }
     }
 
