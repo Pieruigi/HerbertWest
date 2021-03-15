@@ -101,6 +101,8 @@ namespace Zom.Pie.UI
             if (open)
                 return;
 
+            VirtualInputUI.Instance.Show(false);
+
             PlayerManager.Instance.SetDisable(true);
 
             open = true;
@@ -130,6 +132,8 @@ namespace Zom.Pie.UI
         {
             if (!open)
                 return;
+
+            VirtualInputUI.Instance.Show(true);
 
             ClearAll();
 
