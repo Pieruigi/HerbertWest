@@ -82,11 +82,20 @@ namespace Zom.Pie.UI
             {
                 Debug.Log("Fire2");
                 if (!open)
-                    Open(false);
+                    GameManager.Instance.OpenInventory(false);
+                    //Open(false);
             }
         }
 
-        public void Open(bool useEnabled)
+        public void Open(bool useEnable)
+        {
+            if (open)
+                return;
+
+            GameManager.Instance.OpenInventory(useEnable);
+        }
+
+        public void DoOpen(bool useEnabled)
         {
             // If already open then return.
             if (open)
@@ -110,6 +119,14 @@ namespace Zom.Pie.UI
         }
 
         public void Close()
+        {
+            if (!open)
+                return;
+
+            GameManager.Instance.CloseInventory();
+        }
+
+        public void DoClose()
         {
             if (!open)
                 return;

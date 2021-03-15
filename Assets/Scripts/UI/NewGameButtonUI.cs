@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Zom.Pie.Collections;
 
 namespace Zom.Pie.UI
 {
@@ -31,7 +32,8 @@ namespace Zom.Pie.UI
             if (GameManager.Instance.IsSaveGameAvailable())
             {
                 // Show a message box to tell player that is deleting any save game.
-                MessageBox.Show(MessageBox.Type.YesNo, "L'attuale salvataggio verrà eliminato.\nContinuare?", CallbackYes, CallbackNo);
+                string text = TextFactory.Instance.GetText(TextFactory.Type.UIMessage, 0);
+                MessageBox.Show(MessageBox.Type.YesNo, text, CallbackYes, CallbackNo);
             }
             else
             {

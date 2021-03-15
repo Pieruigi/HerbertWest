@@ -178,10 +178,12 @@ namespace Zom.Pie
             if (disableAll)
                 return;
 
+            VirtualInputUI.Instance.Show(false);
+
             if (InventoryUI.Instance.IsOpen())
                 return;
 
-            InventoryUI.Instance.Open(useEnable);
+            InventoryUI.Instance.DoOpen(useEnable);
         }
 
         public void CloseInventory()
@@ -190,7 +192,9 @@ namespace Zom.Pie
             if (!InventoryUI.Instance.IsOpen())
                 return;
 
-            InventoryUI.Instance.Close();
+            InventoryUI.Instance.DoClose();
+
+            VirtualInputUI.Instance.Show(true);
 
         }
 

@@ -8,12 +8,17 @@ namespace Zom.Pie.UI
 {
     public class ExitButtonUI : MonoBehaviour
     {
-
+        [SerializeField]
+        bool exitDemoButton = false;
 
         private void Awake()
         {
-            // Add the listener to the button.
-            GetComponent<Button>().onClick.AddListener(Exit);
+            if (!exitDemoButton)
+            {
+                // Add the listener to the button.
+                GetComponent<Button>().onClick.AddListener(Exit);
+            }
+            
         }
 
         // Start is called before the first frame update
@@ -30,7 +35,8 @@ namespace Zom.Pie.UI
 
         public void Exit()
         {
-            // Get message to show.
+    
+                 // Get message to show.
             int id = 1;
             if (!GameManager.Instance.InGame)
                 id = 2;
@@ -40,8 +46,12 @@ namespace Zom.Pie.UI
 
             // Show a message box to ask the player if he really want to exit.
             MessageBox.Show(MessageBox.Type.YesNo, text, CallbackYes, CallbackNo);
+          
+        }
 
-
+        public void ExitDemo()
+        {
+            GameManager.Instance.ExitGame();
         }
 
         /// <summary>

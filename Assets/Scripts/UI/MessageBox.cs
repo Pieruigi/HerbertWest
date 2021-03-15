@@ -114,7 +114,7 @@ namespace Zom.Pie.UI
             }
 
             if (msgText != null)
-                instance.msgText.text = msgText;
+                instance.msgText.text = msgText.Replace("\\n","\n");
 
             instance.gameObject.SetActive(true);
 

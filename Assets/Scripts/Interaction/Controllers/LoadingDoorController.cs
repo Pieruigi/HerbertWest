@@ -107,6 +107,9 @@ namespace Zom.Pie
 
                 // Play audio
                 LevelManager.Instance.PlayClip(unlockClip);
+
+                // Show message
+                GetComponent<Messenger>().SendInGameMessage(26);
             }
             
         }

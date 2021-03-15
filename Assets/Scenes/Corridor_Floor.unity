@@ -2882,7 +2882,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "La demo \xE8 terminata, se vuoi puoi acquistare il gioco completo sullo
-    store.\n<href a=\"www.google.com\">Link</href>"
+    store."
 --- !u!222 &295628048
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8470,7 +8470,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1084106893}
         m_TargetAssemblyTypeName: Zom.Pie.UI.ExitButtonUI, Assembly-CSharp
-        m_MethodName: Exit
+        m_MethodName: ExitDemo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8530,6 +8530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4223149b2e55c640a344dfa8e203809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exitDemoButton: 1
 --- !u!1001 &1084234430
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12158,7 +12159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
