@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 namespace Zom.Pie.UI
 {
     public class ActionButtonUI : MonoBehaviour
@@ -15,12 +16,18 @@ namespace Zom.Pie.UI
 
         Image image;
 
-        
+        Vector3 sizeDefault;
+        Vector3 sizeAction;
+        float scaleTime = 0.2f;
+
 
         void Awake()
         {
             image = GetComponent<Image>();
             image.color = disabledColor;
+
+            sizeDefault = transform.localScale;
+            sizeAction = 1.5f * sizeDefault;
         }
 
         // Start is called before the first frame update
@@ -48,10 +55,21 @@ namespace Zom.Pie.UI
         void HandleOnTriggerEnter(Interactor interactor)
         {
             image.color = enabledColor;
+            //LeanTween
+            if (LeanTween.isTweening(gameObject))
+                LeanTween.cancel(gameObject);
+
+            transform.LeanScale(sizeAction, scaleTime);
+
         }
         void HandleOnTriggerExit(Interactor interactor)
         {
             image.color = disabledColor;
+
+            if (LeanTween.isTweening(gameObject))
+                LeanTween.cancel(gameObject);
+
+            transform.LeanScale(sizeDefault, scaleTime);
         }
     }
 
