@@ -64,7 +64,8 @@ namespace UnityStandardAssets.CrossPlatformInput
 #endif
         }
 
-		void CreateVirtualAxes()
+
+        void CreateVirtualAxes()
 		{
 			// set axes to use
 			m_UseX = (axesToUse == AxisOption.Both || axesToUse == AxisOption.OnlyHorizontal);
@@ -147,13 +148,13 @@ namespace UnityStandardAssets.CrossPlatformInput
 			UpdateVirtualAxes(Vector3.zero);
 		}
 
-		void OnDisable()
-		{
-			if (CrossPlatformInputManager.AxisExists(horizontalAxisName))
-				CrossPlatformInputManager.UnRegisterVirtualAxis(horizontalAxisName);
+        void OnDestroy()
+        {
+            if (CrossPlatformInputManager.AxisExists(horizontalAxisName))
+                CrossPlatformInputManager.UnRegisterVirtualAxis(horizontalAxisName);
 
-			if (CrossPlatformInputManager.AxisExists(verticalAxisName))
-				CrossPlatformInputManager.UnRegisterVirtualAxis(verticalAxisName);
-		}
-	}
+            if (CrossPlatformInputManager.AxisExists(verticalAxisName))
+                CrossPlatformInputManager.UnRegisterVirtualAxis(verticalAxisName);
+        }
+    }
 }
