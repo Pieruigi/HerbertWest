@@ -26,6 +26,12 @@ namespace Zom.Pie
             get { return loading; }
         }
 
+        bool disableAll = false;
+        public bool DisableAll
+        {
+            get { return disableAll; }
+            set { disableAll = value; }
+        }
         
         private Language language = Language.Italian; // Default
         public Language Language
@@ -169,6 +175,9 @@ namespace Zom.Pie
 
         public void OpenInventory(bool useEnable)
         {
+            if (disableAll)
+                return;
+
             if (InventoryUI.Instance.IsOpen())
                 return;
 
@@ -177,6 +186,7 @@ namespace Zom.Pie
 
         public void CloseInventory()
         {
+
             if (!InventoryUI.Instance.IsOpen())
                 return;
 
@@ -191,6 +201,9 @@ namespace Zom.Pie
         /// <param name="mode"></param>
         void HandleOnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
+
+            // Reset disable all
+            disableAll = false;
 
             // Skip the loading screen
             if (scene.buildIndex != loadingSceneIndex)
