@@ -9,9 +9,13 @@ namespace Zom.Pie
     {
         public static PlayerManager Instance { get; private set; }
 
+        [SerializeField]
+        Light playerLight;
+
         FirstPersonController playerController;
 
         bool disabled = false;
+        
         
         private void Awake()
         {
@@ -86,6 +90,14 @@ namespace Zom.Pie
                 SetDisable(false);
         }
 
+        public void SwitchPlayerLightOn()
+        {
+            playerLight.enabled = true;
+        }
+        public void SwitchPlayerLightOff()
+        {
+            playerLight.enabled = false;
+        }
     }
 
 }

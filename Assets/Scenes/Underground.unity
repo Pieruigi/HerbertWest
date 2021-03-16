@@ -199,8 +199,11 @@ PlayableDirector:
     value: {fileID: 1859555275}
   - key: {fileID: 8341652283218690348, guid: 929d00616167b7941a01047cd5848a54, type: 2}
     value: {fileID: 538780647}
+  - key: {fileID: 4120795176780290917, guid: 929d00616167b7941a01047cd5848a54, type: 2}
+    value: {fileID: 1502354021}
   m_ExposedReferences:
     m_References:
+    - b801eb7d85de3a749a698ffebfc5ec6a: {fileID: 1013940720}
     - b9cdc643ad9099040ac2e4fdcb550a77: {fileID: 1859555274}
 --- !u!4 &19846660
 Transform:
@@ -6050,6 +6053,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1011859094}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1013940720 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3567178128943197045, guid: f0a009e217396674083a7aa34eeb2b5e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1502354020}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1015102440
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9901,6 +9910,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0a009e217396674083a7aa34eeb2b5e, type: 3}
+--- !u!114 &1502354021 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1598300719457014659, guid: f0a009e217396674083a7aa34eeb2b5e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1502354020}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013940720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1515872280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10041,11 +10062,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DocumentPicker
-      objectReference: {fileID: 0}
-    - target: {fileID: 1087617455394664742, guid: c09e7e58fba1f6041a2fc42b3a0138c7,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c09e7e58fba1f6041a2fc42b3a0138c7, type: 3}

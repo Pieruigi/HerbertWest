@@ -137,6 +137,9 @@ namespace Zom.Pie
 
             PlayerManager.Instance.SetDisable(true);
 
+            // Switch player light off
+            PlayerManager.Instance.SwitchPlayerLightOff();
+
             // Enable lights.
             EnableLights(true);
 
@@ -172,6 +175,9 @@ namespace Zom.Pie
 
             // Disable lights.
             EnableLights(false);
+
+            // Switch player light on
+            PlayerManager.Instance.SwitchPlayerLightOn();
 
             // Reset music volume
             MusicManager.Instance?.LerpResetVolume(0.5f);

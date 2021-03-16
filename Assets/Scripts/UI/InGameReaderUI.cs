@@ -60,6 +60,9 @@ namespace Zom.Pie.UI
             // Disable cursor
             CursorUI.Instance.Show(false);
 
+            // Disable virtual joysticks
+            VirtualInputUI.Instance.Show(false);
+
             // Show the UI
             panel.SetActive(true);
 
@@ -78,6 +81,9 @@ namespace Zom.Pie.UI
 
             // Enable cursor
             CursorUI.Instance.Show(true);
+
+            // Enable virtual joysticks
+            VirtualInputUI.Instance.Show(true);
 
             panel.SetActive(false);
         }

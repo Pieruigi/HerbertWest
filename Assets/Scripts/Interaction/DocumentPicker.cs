@@ -9,6 +9,8 @@ namespace Zom.Pie
 {
     public class DocumentPicker : InGameReaderController
     {
+        [SerializeField]
+        GameObject book;
 
         // The internal finite state machine
         Bloom bloom;
@@ -17,12 +19,17 @@ namespace Zom.Pie
 
         int unreabableState = 2;
 
+        int materialId = 2;
+        Material[] mats;
 
         protected override void Awake()
         {
             base.Awake();
 
             FiniteStateMachine.OnStateChange += HandleOnStateChange;
+
+            mats = book.GetComponent<MeshRenderer>().materials;
+            mats[materialId] = new Material(mats[materialId]);
         }
 
         protected override void Start()
@@ -43,6 +50,9 @@ namespace Zom.Pie
                 else
                 {
                     // We read at least once
+                    // Switch color 
+                    mats[materialId].SetColor("_EmissionColor", Color.black);
+                    book.GetComponent<MeshRenderer>().materials = mats;
                 }
             }
             
@@ -76,10 +86,11 @@ namespace Zom.Pie
                 LeanTween.value(gameObject, OnThresholdUpdate, thresholdDefault, targetThreshold, time);
             }
 
-
-
             yield return new WaitForSeconds(time);
 
+            // Switch color 
+            mats[materialId].SetColor("_EmissionColor", Color.black);
+            book.GetComponent<MeshRenderer>().materials = mats;
             // Decrease light strength.
             time = 0.5f;
             if (bloom)
