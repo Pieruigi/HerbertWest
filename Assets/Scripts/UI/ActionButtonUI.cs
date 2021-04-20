@@ -9,25 +9,53 @@ namespace Zom.Pie.UI
     public class ActionButtonUI : MonoBehaviour
     {
         [SerializeField]
+        bool changeColor = false;
+
+        [SerializeField]
         Color32 enabledColor;
 
         [SerializeField]
         Color32 disabledColor;
+
+        [SerializeField]
+        bool scale = false;
+
+        [SerializeField]
+        float sizeActionScaleMultiplier = 1f;
+
+        [SerializeField]
+        bool changeSprite = false;
+
+        [SerializeField]
+        Sprite actionSprite;
 
         Image image;
 
         Vector3 sizeDefault;
         Vector3 sizeAction;
         float scaleTime = 0.2f;
+        Sprite defaultSprite;
 
 
         void Awake()
         {
             image = GetComponent<Image>();
-            image.color = disabledColor;
 
-            sizeDefault = transform.localScale;
-            sizeAction = 1.5f * sizeDefault;
+            if (changeColor)
+            {
+                image.color = disabledColor;
+            }
+
+            if (scale)
+            {
+                sizeDefault = transform.localScale;
+                sizeAction = sizeActionScaleMultiplier * sizeDefault;
+            }
+
+            if (changeSprite)
+            {
+                defaultSprite = image.sprite;
+            }
         }
 
         // Start is called before the first frame update
@@ -54,22 +82,36 @@ namespace Zom.Pie.UI
 
         void HandleOnTriggerEnter(Interactor interactor)
         {
-            image.color = enabledColor;
-            //LeanTween
-            if (LeanTween.isTweening(gameObject))
-                LeanTween.cancel(gameObject);
+            if (changeColor)
+            {
+                image.color = enabledColor;
+                //LeanTween
+                if (LeanTween.isTweening(gameObject))
+                    LeanTween.cancel(gameObject);
+            }
+            
+            if(scale)
+                transform.LeanScale(sizeAction, scaleTime);
 
-            transform.LeanScale(sizeAction, scaleTime);
+            if (changeSprite)
+                image.sprite = actionSprite;
 
         }
         void HandleOnTriggerExit(Interactor interactor)
         {
-            image.color = disabledColor;
+            if (changeColor)
+            {
+                image.color = disabledColor;
 
-            if (LeanTween.isTweening(gameObject))
-                LeanTween.cancel(gameObject);
+                if (LeanTween.isTweening(gameObject))
+                    LeanTween.cancel(gameObject);
+            }
+            
+            if(scale)
+                transform.LeanScale(sizeDefault, scaleTime);
 
-            transform.LeanScale(sizeDefault, scaleTime);
+            if (changeSprite)
+                image.sprite = defaultSprite;
         }
     }
 
