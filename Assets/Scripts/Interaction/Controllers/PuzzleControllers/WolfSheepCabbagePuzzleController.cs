@@ -49,6 +49,8 @@ namespace Zom.Pie
         int lastMoveId = -1;
 
         int errorMsgId = 4;
+        int wolfEatsSheepMsgId = 27;
+        int sheepEatsCabbageMsgId = 28;
 
         AudioSource audioSource;
 
@@ -219,11 +221,19 @@ namespace Zom.Pie
         {
             // We are moving the wolf but sheep and cabbage are already to the other side.
             if (lastMoveId == 0 && (handleValues[1] == handleValues[2]))
+            {
+                errorMsgId = sheepEatsCabbageMsgId;
                 return false;
+            }
+                
 
             // We are moving the cabbage but sheep and wolf are already to the other side.
             if (lastMoveId == 2 && (handleValues[0] == handleValues[1]))
+            {
+                errorMsgId = wolfEatsSheepMsgId;
                 return false;
+            }
+                
 
             // If wolf, sheep and cabbage are togheter return true.
             if (handleValues[0] == handleValues[1] && handleValues[1] == handleValues[2])
