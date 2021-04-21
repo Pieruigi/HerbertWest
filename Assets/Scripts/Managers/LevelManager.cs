@@ -49,6 +49,13 @@ namespace Zom.Pie
                 spawnOnly = onEnterFsm.CurrentStateId == 0 ? false : true;    
                 
             StartCoroutine(SpawnPlayer());
+
+
+            ///////////////////// TO REMOVE ///////////////
+#if UNITY_EDITOR
+            //Screen.brightness = 1;
+            
+#endif
         }
 
         // Update is called once per frame
