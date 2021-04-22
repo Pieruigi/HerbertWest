@@ -101,11 +101,11 @@ namespace Zom.Pie
                 whiteMaterial = tiles[1].GetComponent<MeshRenderer>().sharedMaterial;
                 // Create selection materials
                 selectionBlackMaterial = new Material(blackMaterial);
-                selectionBlackMaterial.color = new Color32(5, 44, 0, 255);
+                selectionBlackMaterial.color = new Color32(5, 128, 5, 255);
                 selectionWhiteMaterial = new Material(whiteMaterial);
-                selectionWhiteMaterial.color = new Color32(10,88,5, 255);
+                selectionWhiteMaterial.color = new Color32(5,128,5, 255);
                 deadMaterial = new Material(blackMaterial);
-                deadMaterial.color = new Color32(88, 10, 5, 255);
+                deadMaterial.color = new Color32(128, 5, 5, 255);
               
                 // Init horse
                 Vector3 pos = horse.transform.position;
@@ -147,7 +147,7 @@ namespace Zom.Pie
             if (YouFailed(interactor))
             {
                 yield return new WaitForSeconds(1f);
-                GetComponent<Messenger>().SendInGameMessage(6);
+                GetComponent<Messenger>().SendInGameMessage(29);
                 ResetTiles();
             }
             else

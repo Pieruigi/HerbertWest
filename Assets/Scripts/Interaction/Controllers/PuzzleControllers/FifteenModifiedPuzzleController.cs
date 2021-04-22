@@ -165,8 +165,8 @@ namespace Zom.Pie
             foreach(Tile tile in moveList)
             {
                 tile.col += dir;
-                float x = tile.tileObject.transform.position.x + dir * moveDisp;
-                LeanTween.moveX(tile.tileObject, x, moveTime).setEaseInOutExpo();
+                float x = tile.tileObject.transform.localPosition.x + dir * moveDisp;
+                LeanTween.moveLocalX(tile.tileObject, x, moveTime).setEaseInOutExpo();
                 
             }
 
@@ -197,8 +197,8 @@ namespace Zom.Pie
             foreach (Tile tile in moveList)
             {
                 tile.row -= dir;
-                float z = tile.tileObject.transform.position.z + dir * moveDisp;
-                LeanTween.moveZ(tile.tileObject, z, moveTime).setEaseInOutExpo();
+                float z = tile.tileObject.transform.localPosition.z + dir * moveDisp;
+                LeanTween.moveLocalZ(tile.tileObject, z, moveTime).setEaseInOutExpo();
                
             }
 
@@ -226,13 +226,13 @@ namespace Zom.Pie
 
         IEnumerator PressButton(GameObject button)
         {
-            float yDef = button.transform.position.y;
+            float yDef = button.transform.localPosition.y;
             float yNew = yDef - 0.01f;
             
-            float time = 0.2f;
-            LeanTween.moveY(button, yNew, time).setEaseOutExpo();
+            float time = 0.1f;
+            LeanTween.moveLocalY(button, yNew, time).setEaseOutExpo();
             yield return new WaitForSeconds(time);
-            LeanTween.moveY(button, yDef, time).setEaseOutExpo();
+            LeanTween.moveLocalY(button, yDef, time).setEaseOutExpo();
         }
     }
 
