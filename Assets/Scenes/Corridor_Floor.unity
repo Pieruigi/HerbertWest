@@ -1124,7 +1124,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.9548681, b: 0.8066038, a: 1}
-  m_Intensity: 0.27
+  m_Intensity: 0.45
   m_Range: 3.04
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -1163,7 +1163,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 8
@@ -2428,6 +2428,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3547252092087014712, guid: bbc74519059cd9e4fbe4f0d335714938,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: d4d1452dbcacc59498d47c80001ff87c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbc74519059cd9e4fbe4f0d335714938, type: 3}
 --- !u!4 &271861881 stripped
@@ -4605,6 +4610,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3547252092087014712, guid: bbc74519059cd9e4fbe4f0d335714938,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: d4d1452dbcacc59498d47c80001ff87c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbc74519059cd9e4fbe4f0d335714938, type: 3}
 --- !u!4 &567715496 stripped
@@ -5515,6 +5525,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3547252092087014712, guid: bbc74519059cd9e4fbe4f0d335714938,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: d4d1452dbcacc59498d47c80001ff87c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbc74519059cd9e4fbe4f0d335714938, type: 3}
 --- !u!1 &669069399
@@ -6255,6 +6270,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3547252092087014712, guid: bbc74519059cd9e4fbe4f0d335714938,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: d4d1452dbcacc59498d47c80001ff87c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbc74519059cd9e4fbe4f0d335714938, type: 3}
 --- !u!4 &773508034 stripped
@@ -6335,6 +6355,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3547252092087014712, guid: bbc74519059cd9e4fbe4f0d335714938,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: d4d1452dbcacc59498d47c80001ff87c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbc74519059cd9e4fbe4f0d335714938, type: 3}
 --- !u!4 &773867235 stripped
@@ -8175,6 +8200,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3547252092087014712, guid: bbc74519059cd9e4fbe4f0d335714938,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: d4d1452dbcacc59498d47c80001ff87c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbc74519059cd9e4fbe4f0d335714938, type: 3}
 --- !u!4 &1036758799 stripped
@@ -8957,6 +8987,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3547252092087014712, guid: bbc74519059cd9e4fbe4f0d335714938,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: d4d1452dbcacc59498d47c80001ff87c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbc74519059cd9e4fbe4f0d335714938, type: 3}
 --- !u!1001 &1149034190
@@ -9187,7 +9222,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.9548681, b: 0.8066038, a: 1}
-  m_Intensity: 0.27
+  m_Intensity: 0.45
   m_Range: 6.53
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -9226,7 +9261,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 8
@@ -9538,7 +9573,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.9548681, b: 0.8066038, a: 1}
-  m_Intensity: 0.27
+  m_Intensity: 0.45
   m_Range: 2.95
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -9577,7 +9612,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 8
@@ -9847,6 +9882,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3547252092087014712, guid: bbc74519059cd9e4fbe4f0d335714938,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: d4d1452dbcacc59498d47c80001ff87c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbc74519059cd9e4fbe4f0d335714938, type: 3}
 --- !u!4 &1231098459 stripped
@@ -10622,6 +10662,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3547252092087014712, guid: bbc74519059cd9e4fbe4f0d335714938,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: d4d1452dbcacc59498d47c80001ff87c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbc74519059cd9e4fbe4f0d335714938, type: 3}
 --- !u!1001 &1332779893
@@ -11612,6 +11657,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3547252092087014712, guid: bbc74519059cd9e4fbe4f0d335714938,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: d4d1452dbcacc59498d47c80001ff87c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbc74519059cd9e4fbe4f0d335714938, type: 3}
 --- !u!4 &1437586305 stripped
@@ -11758,7 +11808,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.9548681, b: 0.8066038, a: 1}
-  m_Intensity: 0.27
+  m_Intensity: 0.45
   m_Range: 2.62
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -11797,7 +11847,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 8
@@ -12122,7 +12172,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.9548681, b: 0.8066038, a: 1}
-  m_Intensity: 0.27
+  m_Intensity: 0.45
   m_Range: 5.97
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -12161,7 +12211,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 8
@@ -14488,7 +14538,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.9548681, b: 0.8066038, a: 1}
-  m_Intensity: 0.27
+  m_Intensity: 0.45
   m_Range: 3.22
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -14527,7 +14577,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 8

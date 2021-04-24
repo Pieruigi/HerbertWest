@@ -55,6 +55,8 @@ namespace Zom.Pie
 
                 // Open box
                 OpenDoor();
+
+                CacheManager.Instance.Save();
             }
             
         }
@@ -77,6 +79,8 @@ namespace Zom.Pie
 
             // Set door open
             door.GetComponent<FiniteStateMachine>().ForceState(1, false, false);
+
+            
         }
     }
 

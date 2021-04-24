@@ -10,7 +10,7 @@ namespace Zom.Pie
     public abstract class Cacher : MonoBehaviour
     {
         [SerializeField]
-        string code = "empty";
+        string code;
         public string Code
         {
             get { return code; }
@@ -35,7 +35,13 @@ namespace Zom.Pie
         /// </summary>
         protected virtual void Awake()
         {
-           
+
+            if (code == "empty")
+                code = null;
+
+            if (string.IsNullOrEmpty(code))
+                return;
+
             // First set the handle to manage updates.
             CacheManager.Instance.OnUpdate += HandleOnCacheUpdate;
 
@@ -55,6 +61,8 @@ namespace Zom.Pie
         /// </summary>
         void HandleOnCacheUpdate()
         {
+            if (string.IsNullOrEmpty(code))
+                return;
             CacheManager.Instance.UpdateValue(code, GetValue());
         }
 
@@ -64,6 +72,9 @@ namespace Zom.Pie
         /// </summary>
         protected virtual void OnDestroy()
         {
+            if (string.IsNullOrEmpty(code))
+                return;
+
             CacheManager.Instance.OnUpdate -= HandleOnCacheUpdate;
         }
     }

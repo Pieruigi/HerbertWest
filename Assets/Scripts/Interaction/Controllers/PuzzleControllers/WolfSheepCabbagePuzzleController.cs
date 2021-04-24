@@ -188,8 +188,7 @@ namespace Zom.Pie
 
                     yield return new WaitForSeconds(1f);
 
-                    // Set completed.
-                    SetStateCompleted();
+                    
 
                     // Open the box.
                     LeanTween.move(cover, cover.transform.position + cover.transform.right * 0.2f, 0.750f);
@@ -206,6 +205,9 @@ namespace Zom.Pie
 
                     // Wait a bit.
                     yield return new WaitForSeconds(0.5f);
+
+                    // Set completed.
+                    SetStateCompleted();
 
                     // Exit.
                     Exit();

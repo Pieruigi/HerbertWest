@@ -77,6 +77,8 @@ namespace Zom.Pie
 
         public IEnumerator Pick()
         {
+  
+
             // If the player has already been disabled by another script ( puzzle for example ), then we must
             // skip the SetDisable() method.
             bool playerdisabled = PlayerManager.Instance.IsDisabled();
@@ -93,9 +95,9 @@ namespace Zom.Pie
             if (sceneObject)
             {
                 Insert(GetObject());
-
                 Destroy(sceneObject);
             }
+                
             
 
             // If the player was already disabled when we start picking then we don't enable him back 
