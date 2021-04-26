@@ -36,20 +36,26 @@ namespace Zom.Pie
         {
             
             // No cache yet
-            if (missings == null)
+            if (fsm.CurrentStateId != completedState && missings == null)
             {
                 missings = new bool[items.Count];
+                
                 for (int i = 0; i < missings.Length; i++)
                 {
                     missings[i] = true;
                 }
+                
             }
-            
+
+
+
             // Update objects
-            for(int i=0; i<missings.Length; i++)
+            for (int i = 0; i < missings.Length; i++)
             {
                 sceneObjects[i].SetActive(!missings[i]);
             }
+        
+            
         }
 
         // Update is called once per frame

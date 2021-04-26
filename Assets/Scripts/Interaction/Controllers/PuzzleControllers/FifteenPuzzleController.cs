@@ -91,21 +91,25 @@ namespace Zom.Pie
                 // Remove the missing piece
                 tiles[missingTileId].tileObject.SetActive(false);
                 freePositionId = missingTileId;
+                //freePositionId = 8;
             }
             else
             {
                 // Puzzle has not been solved yet, so we must mix the tiles
                 // First create a list of indices from 0 to 15
-                List<int> indices = new List<int>();
-                for(int i=0; i<tiles.Count; i++)
-                    indices.Add(i);
+                //List<int> indices = new List<int>();
+                //for(int i=0; i<tiles.Count; i++)
+                //    indices.Add(i);
+                List<int> indices = GetStartingIndices();
                 
                 // Now get a new free position for each tile
                 for(int i=0; i<tiles.Count; i++)
                 {
                     // Get a random position
-                    int posId = indices[Random.Range(0, indices.Count)];
-                    indices.Remove(posId);
+                    //int posId = indices[Random.Range(0, indices.Count)];
+                    //indices.Remove(posId);
+
+                    int posId = indices[i];
 
                     // Set tile new position
                     MathUtility.ArrayIndexToMatrixCoords(posId, 4, out tiles[i].row, out tiles[i].col);
@@ -121,6 +125,29 @@ namespace Zom.Pie
             }
 
             
+        }
+
+        List<int> GetStartingIndices()
+        {
+            List<int> indices = new List<int>();
+            indices.Add(0);
+            indices.Add(5);
+            indices.Add(10);
+            indices.Add(13);
+            indices.Add(14);
+            indices.Add(7);
+            indices.Add(9);
+            indices.Add(11);
+            indices.Add(4);
+            indices.Add(3);
+            indices.Add(12);
+            indices.Add(6);
+            indices.Add(1);
+            indices.Add(2);
+            indices.Add(8);
+            indices.Add(15);
+
+            return indices;
         }
 
         public override void Interact(Interactor interactor)
