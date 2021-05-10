@@ -21,9 +21,9 @@ namespace Zom.Pie
 
         bool interacting = false;
 
-        int h = 1, m = 9;
+        int h = 1, m = 4;
 
-        int hSolved = 7, mSolved = 6;
+        int hSolved = 7, mSolved = 11;
 
         float angle = 30;
 

@@ -10,16 +10,29 @@ namespace Zom.Pie
         [SerializeField]
         float delay = 1f;
 
+        float delayDefault;
+
         FiniteStateMachine fsm;
 
         protected override void Awake()
         {
             base.Awake();
+            delayDefault = delay;
             fsm = GetComponent<FiniteStateMachine>();
             fsm.OnStateChange += HandleOnStateChange;
             fsm.OnFail += HandleOnFail;
         }
         
+        public void SetDelay(float delay)
+        {
+            this.delay = delay;
+        }
+
+        public void ResetDelay()
+        {
+            this.delay = delayDefault;
+        }
+
         void HandleOnStateChange(FiniteStateMachine fsm)
         {
             if(fsm.LastExitCode > 0)

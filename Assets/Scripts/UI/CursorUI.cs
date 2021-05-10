@@ -12,6 +12,7 @@ namespace Zom.Pie.UI
         [SerializeField]
         Image image;
 
+       
         private void Awake()
         {
             if (!Instance)
@@ -41,25 +42,34 @@ namespace Zom.Pie.UI
 
         }
 
+        private void LateUpdate()
+        {
+            
+        }
+
         public void Show(bool value)
         {
+            //hidden = !value;
             image.enabled = value;
         }
 
         public bool IsHidden()
         {
             return !image.enabled;
+            //return hidden;
         }
         
         void HandleOnEnterStart(PuzzleController puzzleController)
         {
+
             image.enabled = false;
+            //hidden = true; 
         }
 
         void HandleOnExit(PuzzleController puzzleController)
         {
             image.enabled = true;
-
+            //hidden = false;
         }
 
         

@@ -80,7 +80,17 @@ namespace Zom.Pie
             // Set door open
             door.GetComponent<FiniteStateMachine>().ForceState(1, false, false);
 
+            StartCoroutine(SendMessageDoorUnlocked());
+
             
+        }
+
+        IEnumerator SendMessageDoorUnlocked()
+        {
+            yield return new WaitForSeconds(1);
+
+            // Send message
+            door.GetComponent<FiniteStateMachineMessenger>().SendInGameMessage(10);
         }
     }
 

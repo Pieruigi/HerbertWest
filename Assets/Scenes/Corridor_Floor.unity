@@ -8791,6 +8791,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9626585, y: 2.9560168, z: 0.41404936}
   m_Center: {x: 0.9811135, y: -1.4780077, z: 0.1455812}
+--- !u!1 &1101953782 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6d994f0ded60af14e97ce606e7633b90,
+    type: 3}
+  m_PrefabInstance: {fileID: 1983378755}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1101953783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101953782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a90b7ea0126c43957735b66697ff4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerOnMaterial: {fileID: 2100000, guid: eaa588fb8dd14fd4bb43f82d20d20117, type: 2}
+  fsm: {fileID: 291061676}
 --- !u!1001 &1131331490
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16038,6 +16058,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: fee5ee9bc6ae2804e99ab3540a420843, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 6d994f0ded60af14e97ce606e7633b90,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: ca75a93120ff74248b36b9912e6291b1, type: 2}
     - target: {fileID: 919132149155446097, guid: 6d994f0ded60af14e97ce606e7633b90,
         type: 3}
       propertyPath: m_Name
