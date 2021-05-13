@@ -18,6 +18,8 @@ namespace Zom.Pie.UI
             if (!Instance)
             {
                 Instance = this;
+                //gameObject.SetActive(false);
+                Show(false); // Only for marketing
             }
             else
             {

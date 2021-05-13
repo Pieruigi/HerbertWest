@@ -15,6 +15,10 @@ namespace UnityStandardAssets.Utility
         private Text m_Text;
 
 
+        private void Awake()
+        {
+            transform.parent.gameObject.SetActive(false);
+        }
         private void Start()
         {
             m_FpsNextPeriod = Time.realtimeSinceStartup + fpsMeasurePeriod;
