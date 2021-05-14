@@ -21,6 +21,9 @@ namespace Zom.Pie
         [SerializeField]
         Picker picker;
 
+        [SerializeField]
+        Light pickerLight;
+
         //[SerializeField]
         float[] angles = new float[] { 0f, 14.7f, 33.1f, 51.6f, 70f, 103f, 
                                        127.5f, 166.5f, 208f, 245f, 263f, 287.1f, 305.8f,
@@ -45,6 +48,7 @@ namespace Zom.Pie
             base.Awake();
 
             OnPuzzleExit += HandleOnPuzzleExit;
+            pickerLight.enabled = false;
         }
 
         protected override void Start()
@@ -136,22 +140,35 @@ namespace Zom.Pie
 
                 // Check if puzzle is completed.
                 // We simply have to reach the last spot on the globe without changing direction anymore.
-                if(step == solution.Length - 1)
+                if (IsCompleted())
                 {
-                    if(currentAngleId == solution[step])
-                    {
-                        // Completed
-                        SetStateCompleted();
+                    // Completed
+                    SetStateCompleted();
 
-                        GetComponent<Messenger>().SendInGameMessage(12);
+                    GetComponent<Messenger>().SendInGameMessage(12);
 
-                        yield return new WaitForSeconds(1f);
+                    yield return new WaitForSeconds(1f);
 
-                        openBox = true;
+                    openBox = true;
 
-                        Exit();
-                    }
+                    Exit();
                 }
+                //if(step == solution.Length - 1)
+                //{
+                //    if(currentAngleId == solution[step])
+                //    {
+                //        // Completed
+                //        SetStateCompleted();
+
+                //        GetComponent<Messenger>().SendInGameMessage(12);
+
+                //        yield return new WaitForSeconds(1f);
+
+                //        openBox = true;
+
+                //        Exit();
+                //    }
+                //}
             }
 
 
@@ -159,6 +176,12 @@ namespace Zom.Pie
             interacting = false;
 
             OnPuzzleInteractionStop?.Invoke(this);
+        }
+
+        bool IsCompleted()
+        {
+            
+            return (step == solution.Length - 1) && (currentAngleId == solution[step]);
         }
 
         IEnumerator PushButton(GameObject button)
@@ -220,6 +243,7 @@ namespace Zom.Pie
         IEnumerator OpenBox()
         {
             PlayerManager.Instance.SetDisable(true);
+            pickerLight.enabled = true;
 
             yield return new WaitForSeconds(0.5f);
             float time = 1f;
@@ -230,6 +254,9 @@ namespace Zom.Pie
 
             yield return picker.Pick();
 
+            GetComponent<Messenger>().SendInGameMessage(36);
+
+            pickerLight.enabled = false;
             PlayerManager.Instance.SetDisable(false);
 
         }

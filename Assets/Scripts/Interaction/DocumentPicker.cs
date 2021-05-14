@@ -128,6 +128,15 @@ namespace Zom.Pie
                 StartCoroutine(PickEffect());
             }
         }
+
+        protected override void HandleOnFail(FiniteStateMachine fsm)
+        {
+            //base.HandleOnFail(fsm);
+            if (FiniteStateMachine.CurrentStateId == unreabableState)
+                return;
+
+            OpenUI();
+        }
     }
 
 }

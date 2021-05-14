@@ -43,7 +43,7 @@ namespace Zom.Pie
 
         }
 
-        void HandleOnFail(FiniteStateMachine fsm)
+        protected virtual void HandleOnFail(FiniteStateMachine fsm)
         {
             // This really should not be necessary... but you know.
             if (fsm.CurrentStateId < 0)
@@ -52,7 +52,7 @@ namespace Zom.Pie
             OpenUI();
         }
 
-        void OpenUI()
+        protected virtual void OpenUI()
         {
             // Open the in game UI
             InGameReaderUI.Instance.Open(document);

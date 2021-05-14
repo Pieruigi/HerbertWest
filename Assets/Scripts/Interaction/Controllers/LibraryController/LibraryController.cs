@@ -107,6 +107,8 @@ namespace Zom.Pie
             // the animation
             foreach (GameObject book in books)
                 book.GetComponent<FiniteStateMachine>().ForceState(-1, true, false);
+
+            GetComponent<Messenger>().SendInGameMessage(35);
         }
 
         IEnumerator Succeed()
@@ -118,6 +120,8 @@ namespace Zom.Pie
 
             // Move paint
             LeanTween.moveLocalX(paint, paint.transform.localPosition.x + paintDisp, 0.5f).setEaseOutExpo();
+
+            GetComponent<Messenger>().SendInGameMessage(34);
         }
     }
 

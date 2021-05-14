@@ -168,6 +168,8 @@ namespace Zom.Pie
 
                     // Just wait a bit and exit.
                     yield return new WaitForSeconds(0.5f);
+                    GetComponent<Messenger>().SendInGameMessage(33);
+
                     Exit();
                 }
                     
