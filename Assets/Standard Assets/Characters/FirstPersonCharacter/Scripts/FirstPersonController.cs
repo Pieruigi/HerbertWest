@@ -278,7 +278,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             // Added to allow the player to walk slower
             speed *= m_Input.magnitude;
-            
+           
             // handle speed change to give an fov kick
             // only if the player is going to a run, is running and the fovkick is to be used
             if (m_IsWalking != waswalking && m_UseFovKick && m_CharacterController.velocity.sqrMagnitude > 0)

@@ -83,10 +83,10 @@ namespace Zom.Pie
                 // Play audio
                 LevelManager.Instance.PlayClip(lockedClip);
 
-                // Open inventory to check for items.
                 inventoryUser.Open();
             }
         }
+
 
         void HandleOnItemChosen(Item item)
         {

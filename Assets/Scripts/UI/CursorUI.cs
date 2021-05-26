@@ -1,3 +1,4 @@
+//#define HIDE_CURSOR
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -41,7 +42,11 @@ namespace Zom.Pie.UI
         // Update is called once per frame
         void Update()
         {
-
+#if HIDE_CURSOR
+            
+            Cursor.lockState = CursorLockMode.Locked;
+            
+#endif
         }
 
         private void LateUpdate()
