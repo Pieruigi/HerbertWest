@@ -33,7 +33,7 @@ namespace Zom.Pie
             set { disableAll = value; }
         }
         
-        private Language language = Language.Italian; // Default
+        private Language language = Language.English; // Default
         public Language Language
         {
             get { return language; }
