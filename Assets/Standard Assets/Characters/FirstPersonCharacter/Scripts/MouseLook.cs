@@ -33,7 +33,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             m_CharacterTargetRot = character.localRotation;
             m_CameraTargetRot = camera.localRotation;
-            
+
+#if UNITY_STANDALONE
+            XSensitivity /= 10f;
+            YSensitivity /= 10f;
+#endif
 
 #if !MOBILE_INPUT
             XSensitivity *= 5f;

@@ -364,16 +364,22 @@ namespace Zom.Pie
             else
                 lastExitCode = -1;
 
+            if(currentStateId >= 0)
+            {
+                // Set others
+                states[currentStateId].SetOthers();
+            }
+
             // Call event
             OnStateChange?.Invoke(this);
             
-            if (currentStateId < 0)
-                return;
+            //if (currentStateId < 0)
+            //    return;
 
-            // Set others
-            states[currentStateId].SetOthers();
+            //// Set others
+            //states[currentStateId].SetOthers();
 
-            
+
         }
     }
 }
