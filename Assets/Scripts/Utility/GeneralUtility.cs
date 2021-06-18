@@ -29,6 +29,16 @@ namespace Zom.Pie
             CacheManager.Instance.Update();
             GameManager.Instance.LoadScene(sceneBuildIndex);
         }
+
+        public static float VolumeToDecibel(float volume)
+        {
+            return -80.0f + 80.0f * volume;
+        }
+
+        public static float DecibelToVolume(float decibel)
+        {
+            return (decibel + 80.0f) / 80.0f;
+        }
     }
 
 }

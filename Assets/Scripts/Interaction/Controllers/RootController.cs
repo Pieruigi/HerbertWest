@@ -39,10 +39,7 @@ namespace Zom.Pie
         // Update is called once per frame
         void Update()
         {
-#if UNITY_EDITOR
-            if(!Inventory.Instance.Items.Contains(itemToUse))
-                Inventory.Instance.Add(itemToUse);
-#endif
+
             
         }
 

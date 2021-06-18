@@ -9,23 +9,23 @@ namespace Zom.Pie.Audio
     {
         [SerializeField]
         AudioClip clip;
-        //public AudioClip Clip
-        //{ get { return clip; } }
+        public AudioClip Clip
+        { get { return clip; } }
 
 
         [SerializeField]
         float volume = 1;
-        //public float Volume
-        //{
-        //    get { return volume; }
-        //}
+        public float Volume
+        {
+            get { return volume; }
+        }
 
         [SerializeField]
         bool loop = false;
-        //public bool Loop
-        //{
-        //    get { return loop; }
-        //}
+        public bool Loop
+        {
+            get { return loop; }
+        }
 
         public void Play(AudioSource audioSource)
         {
@@ -46,6 +46,8 @@ namespace Zom.Pie.Audio
 
             audioSource.PlayDelayed(delay);
         }
+
+        
 
         void Init(AudioSource audioSource)
         {

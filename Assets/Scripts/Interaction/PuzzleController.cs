@@ -144,7 +144,7 @@ namespace Zom.Pie
             EnableLights(true);
 
             // Fade out music
-            MusicManager.Instance?.LerpSetVolume((PrefsManager.GetMusicVolume()-80f) * 0.125f, 0.5f);
+            MusicManager.Instance?.LerpSetVolume(MusicManager.Instance.MusicVolume * Constants.OnPuzzleMusicVolume, Constants.OnPuzzleMusicFade);
 
             // Deactivate the local interactor
             interactor.GetComponent<Interactor>().SetEnable(false);
@@ -180,7 +180,7 @@ namespace Zom.Pie
             PlayerManager.Instance.SwitchPlayerLightOn();
 
             // Reset music volume
-            MusicManager.Instance?.LerpResetVolume(0.5f);
+            MusicManager.Instance?.LerpResetVolume(Constants.OnPuzzleMusicFade);
 
             LeanTween.move(Camera.main.gameObject, cameraLastPosition, cameraMoveTime);
             LeanTween.rotate(Camera.main.gameObject, cameraLastEulers, cameraMoveTime);

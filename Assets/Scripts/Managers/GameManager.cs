@@ -48,6 +48,7 @@ namespace Zom.Pie
             {
                 Instance = this;
                 SceneManager.sceneLoaded += HandleOnSceneLoaded;
+                Application.targetFrameRate = 60;
                 DontDestroyOnLoad(gameObject);
             }
             else

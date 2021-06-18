@@ -7193,10 +7193,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f9679a92b61be745991c129d2d274f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameClip:
-    clip: {fileID: 8300000, guid: 5c9488506d9f11945a81f6bc741fe9be, type: 3}
-    volume: 0.5
+  clips:
+  - clip: {fileID: 8300000, guid: f03d34343baafed438ca1963e105f821, type: 3}
+    volume: 1
     loop: 1
+  - clip: {fileID: 8300000, guid: b791b4a7eb9fec44d86656fe5ba807e1, type: 3}
+    volume: 1
+    loop: 1
+  - clip: {fileID: 8300000, guid: 7d5730a47fd088b4e8c8aefecccdc8f3, type: 3}
+    volume: 1
+    loop: 1
+  currentClipId: 0
   mixer: {fileID: 24100000, guid: 954c373093155a0489699c415c33ad40, type: 2}
 --- !u!4 &1045518771
 Transform:

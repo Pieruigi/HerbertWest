@@ -16,6 +16,9 @@ namespace Zom.Pie
         public static readonly string DocumentResourceFolder = "Documents";
         public static readonly string ClueResourceFolder = "Clues";
 
+        // Audio
+        public static readonly float OnPuzzleMusicVolume = 0.75f;
+        public static readonly float OnPuzzleMusicFade = 1f;
     }
 
 }

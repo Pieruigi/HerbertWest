@@ -17,6 +17,12 @@ namespace Zom.Pie
         [SerializeField]
         FiniteStateMachine onEnterFsm;
 
+        [SerializeField]
+        int musicClipId = -1; // The music we want to play in this scene
+
+        [SerializeField]
+        bool muteMusicOnEnter = false;
+
         //[SerializeField]
         bool spawnOnly = false; // False if you want this manager to do other stuff as fade and save
 
@@ -46,8 +52,13 @@ namespace Zom.Pie
         void Start()
         {
             if(onEnterFsm)
-                spawnOnly = onEnterFsm.CurrentStateId == 0 ? false : true;    
-                
+                spawnOnly = onEnterFsm.CurrentStateId == 0 ? false : true;
+            
+            if(!muteMusicOnEnter)
+                MusicManager.Instance.PlayMusic(musicClipId);
+            else
+                MusicManager.Instance.PlayMusic(musicClipId);
+
             StartCoroutine(SpawnPlayer());
 
 
