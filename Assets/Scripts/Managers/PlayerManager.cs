@@ -53,8 +53,9 @@ namespace Zom.Pie
             disabled = value;
             if (!playerController) playerController = GetComponent<FirstPersonController>();
 
-            Debug.Log("PlayerController:" + playerController);
-            playerController.Disabled = value;
+            Debug.Log("PlayerController component:" + playerController);
+            if(playerController != null)
+                playerController.Disabled = value;
         }
 
         public bool IsDisabled()
@@ -70,7 +71,11 @@ namespace Zom.Pie
             SetDisable(true);
 
             transform.rotation = rotation;
-            playerController.InitMouseLook();
+            if (playerController != null)
+                playerController.GetComponent<FirstPersonController>();
+
+            if(playerController)
+                playerController.InitMouseLook();
 
             // If player was not disable we enable him
             if (!playerDisabled)

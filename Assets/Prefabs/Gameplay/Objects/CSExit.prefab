@@ -1,0 +1,120 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8574271402418004313
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8574271402418004317}
+  - component: {fileID: 8574271402418004316}
+  - component: {fileID: 8574271402418004315}
+  - component: {fileID: 8574271402418004314}
+  m_Layer: 0
+  m_Name: CSExit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8574271402418004317
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8574271402418004313}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &8574271402418004316
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8574271402418004313}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: a2390907e56a91d418c45046a5cbf85e, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 1617201546375635609, guid: 929d00616167b7941a01047cd5848a54, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -3244695119767602905, guid: 929d00616167b7941a01047cd5848a54, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 6853104324135496686, guid: 929d00616167b7941a01047cd5848a54, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 8341652283218690348, guid: 929d00616167b7941a01047cd5848a54, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 4120795176780290917, guid: 929d00616167b7941a01047cd5848a54, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -7030710598326361182, guid: a2390907e56a91d418c45046a5cbf85e, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 1291056157414737554, guid: a2390907e56a91d418c45046a5cbf85e, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 1704887523872542657, guid: a2390907e56a91d418c45046a5cbf85e, type: 2}
+    value: {fileID: 0}
+  m_ExposedReferences:
+    m_References:
+    - b801eb7d85de3a749a698ffebfc5ec6a: {fileID: 0}
+    - b9cdc643ad9099040ac2e4fdcb550a77: {fileID: 0}
+--- !u!114 &8574271402418004315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8574271402418004313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c87e44008d6644ba309cccc20345bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  states:
+  - name: Completed
+    id: 0
+    othersToSet: []
+    commonStateErrorCode: 0
+    commonStateSucceedCode: 0
+  - name: Playing
+    id: 1
+    othersToSet: []
+    commonStateErrorCode: 0
+    commonStateSucceedCode: 0
+  - name: Ready
+    id: 2
+    othersToSet: []
+    commonStateErrorCode: 0
+    commonStateSucceedCode: 0
+  transitions:
+  - tag: Play
+    fromStateId: 2
+    toStateId: 1
+    othersToCheck: []
+    errorCode: 0
+  currentStateName: 
+  currentStateId: 2
+--- !u!114 &8574271402418004314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8574271402418004313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0d9d6c1ef7232040a8412473f8be55d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  director: {fileID: 8574271402418004316}
+  playOnStart: 1

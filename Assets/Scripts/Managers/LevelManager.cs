@@ -108,7 +108,7 @@ namespace Zom.Pie
             if(PlayerSpawner.Instance)
                 PlayerSpawner.Instance.Spawn();
 
-            Debug.Log("SpaenOnly:" + spawnOnly);
+            Debug.Log("SpawnOnly:" + spawnOnly);
             if (!spawnOnly)
             {
                 // Spawn player and disable controller

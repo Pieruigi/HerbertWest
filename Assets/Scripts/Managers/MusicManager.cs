@@ -103,8 +103,17 @@ namespace Zom.Pie.Audio
             }
 
             Debug.Log("Is playing another clip:" + audioSource.clip);
-            // Is playing another clip 
-            StartCoroutine(SwitchMusic(clipId));
+            // Is playing another clip
+            if(clipId >= 0)
+            {
+                StartCoroutine(SwitchMusic(clipId));
+            }
+            else
+            {
+                mixer.SetFloat(musicVolumeParam, GeneralUtility.VolumeToDecibel(musicVolume));
+                audioSource.Stop();
+                audioSource.clip = null;
+            }
 
         }
 
