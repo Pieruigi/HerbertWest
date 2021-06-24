@@ -61,13 +61,16 @@ i001: fuse 2, the one in the kitchen
 c001: enter the game cut scene
 
 // Diaries blocks
-b001: underground 
-b002: lunch room 
-b003: kitchen
-b004: library
-b005: reading room
-b006: child room
-b007: parents room
-b008: study room
-b009: laboratory 
-b010: garden
+b001: underground door ( underground diary )
+b002_1: lunch room -> corridor ( lunch room diary )
+b002_2: lunch room -> kitchen door ( lunch room diary )
+b003_1: kitchen -> lunch room door ( kitchen diary )
+b003_2: kitchen -> corridor door ( kitchen diary )
+b004: library -> reading room ( library diary )
+b005_1: reading room -> corridor ( reading room )
+b005_2: reading room -> library ( reading room )
+b006: child room ( child room diary )
+b007: parents room ( parents room diary )
+b008: study room ( study room diary )
+b009: laboratory ( laboratory diary )
+b010: main door ( garder diary )
