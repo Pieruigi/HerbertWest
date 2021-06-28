@@ -20,6 +20,9 @@ namespace Zom.Pie
         [SerializeField]
         GameObject furniture;
 
+        [SerializeField]
+        AudioSource furnitureAudioSource;
+
         float furnitureX = -3.06f;
 
         List<Tile> tiles;
@@ -130,6 +133,9 @@ namespace Zom.Pie
 
                 // Move furniture
                 LeanTween.moveLocalX(furniture, furnitureX, 1).setEaseInOutExpo();
+
+                // Audio
+                furnitureAudioSource.Play();
 
                 Exit();
             }

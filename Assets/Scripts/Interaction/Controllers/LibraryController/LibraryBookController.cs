@@ -16,10 +16,14 @@ namespace Zom.Pie
 
         FiniteStateMachine fsm;
 
+        AudioSource audioSource;
+
         private void Awake()
         {
             fsm = GetComponent<FiniteStateMachine>();
             fsm.OnStateChange += HandleOnStateChange;
+
+            audioSource = GetComponent<AudioSource>();
         }
 
         // Start is called before the first frame update
@@ -54,6 +58,9 @@ namespace Zom.Pie
             {
                 // Move forward
                 LeanTween.moveLocalZ(bookObject, zDefault + disp, 1.0f).setEaseInOutExpo();
+
+                // Audio
+                audioSource.Play();
             }
             else
             {

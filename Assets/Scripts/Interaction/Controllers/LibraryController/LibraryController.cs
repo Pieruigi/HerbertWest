@@ -12,6 +12,11 @@ namespace Zom.Pie
         [SerializeField]
         GameObject paint;
 
+        [SerializeField]
+        AudioSource paintAudioSource;
+
+        AudioSource resetAudioSource;
+
         FiniteStateMachine fsm;
 
         int completedState = 0;
@@ -32,6 +37,8 @@ namespace Zom.Pie
             solution.Add(3);
             solution.Add(4);
             solution.Add(5);
+
+            resetAudioSource = GetComponent<AudioSource>();
         }
 
         // Start is called before the first frame update
@@ -108,6 +115,8 @@ namespace Zom.Pie
             foreach (GameObject book in books)
                 book.GetComponent<FiniteStateMachine>().ForceState(-1, true, false);
 
+            resetAudioSource.Play();
+
             GetComponent<Messenger>().SendInGameMessage(35);
         }
 
@@ -120,6 +129,9 @@ namespace Zom.Pie
 
             // Move paint
             LeanTween.moveLocalX(paint, paint.transform.localPosition.x + paintDisp, 0.5f).setEaseOutExpo();
+
+            // Audio
+            paintAudioSource.Play();
 
             GetComponent<Messenger>().SendInGameMessage(34);
         }

@@ -18,6 +18,9 @@ namespace Zom.Pie
         [SerializeField]
         Collider gateCollider;
 
+        [SerializeField]
+        AudioSource gateAudioSource;
+
         int[] solution;
 
         private void Awake()
@@ -71,6 +74,9 @@ namespace Zom.Pie
                 // Open gate
                 OpenGate();
 
+                // Play audio
+                gateAudioSource.Play();
+
                 CacheManager.Instance.Save();
             }
             
@@ -78,6 +84,7 @@ namespace Zom.Pie
 
         bool IsCompleted()
         {
+           
             for (int i = 0; i < chairs.Count; i++)
             {
                 if (chairs[i].GetComponentInChildren<ChairController>().GetSymbol() != solution[i])
@@ -93,7 +100,7 @@ namespace Zom.Pie
             gateCollider.enabled = false;
 
             // Open gate
-            LeanTween.moveLocalY(gate, -4.77f, 0.5f).setEaseInExpo();
+            LeanTween.moveLocalY(gate, -4.95f, 0.5f).setEaseInExpo();
         }
 
         void OpenDoor()

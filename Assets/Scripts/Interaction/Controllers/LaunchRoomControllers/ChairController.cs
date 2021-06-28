@@ -17,13 +17,14 @@ namespace Zom.Pie
 
         int stateAvailable = 0;
 
-
+        AudioSource audioSource;
 
         private void Awake()
         {
             fsm = GetComponent<FiniteStateMachine>();
             fsm.OnStateChange += HandleOnStateChange;
 
+            audioSource = GetComponent<AudioSource>();
            
         }
 
@@ -67,6 +68,9 @@ namespace Zom.Pie
             float angle = transform.localEulerAngles.z - 60.0f;
 
             LeanTween.rotateZ(gameObject, angle, 0.75f).setEaseInOutExpo().setEaseOutElastic();//.setEaseInOutElastic();
+
+            // Play audio
+            audioSource.Play();
         }
 
         public string GetData()
