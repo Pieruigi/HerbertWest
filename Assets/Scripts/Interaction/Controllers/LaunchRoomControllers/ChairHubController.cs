@@ -12,6 +12,12 @@ namespace Zom.Pie
         [SerializeField]
         GameObject door;
 
+        [SerializeField]
+        GameObject gate;
+
+        [SerializeField]
+        Collider gateCollider;
+
         int[] solution;
 
         private void Awake()
@@ -35,6 +41,12 @@ namespace Zom.Pie
             {
                 chair.GetComponentInChildren<FiniteStateMachine>().OnStateChange += HandleOnStateChange;
             }
+
+            // If is completed we open the gate
+            if (IsCompleted())
+            {
+                OpenGate();
+            }
         }
 
         // Update is called once per frame
@@ -53,8 +65,11 @@ namespace Zom.Pie
                     chair.GetComponentInChildren<FiniteStateMachine>().ForceStateDisabled();
 
 
-                // Open box
+                // Open door
                 OpenDoor();
+
+                // Open gate
+                OpenGate();
 
                 CacheManager.Instance.Save();
             }
@@ -70,6 +85,15 @@ namespace Zom.Pie
             }
 
             return true;
+        }
+
+        void OpenGate()
+        {
+            // Disable collider
+            gateCollider.enabled = false;
+
+            // Open gate
+            LeanTween.moveLocalY(gate, -4.77f, 0.5f).setEaseInExpo();
         }
 
         void OpenDoor()

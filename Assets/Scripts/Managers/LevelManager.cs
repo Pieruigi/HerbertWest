@@ -53,11 +53,15 @@ namespace Zom.Pie
         {
             if(onEnterFsm)
                 spawnOnly = onEnterFsm.CurrentStateId == 0 ? false : true;
+
+            if (MusicManager.Instance)
+            {
+                if (!muteMusicOnEnter)
+                    MusicManager.Instance.PlayMusic(musicClipId);
+                else
+                    MusicManager.Instance.ForceStopMusic();
+            }
             
-            if(!muteMusicOnEnter)
-                MusicManager.Instance.PlayMusic(musicClipId);
-            else
-                MusicManager.Instance.PlayMusic(musicClipId);
 
             StartCoroutine(SpawnPlayer());
 
