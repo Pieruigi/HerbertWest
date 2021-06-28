@@ -12,6 +12,8 @@ namespace Zom.Pie
         [SerializeField]
         GameObject book;
 
+        AudioSource audioSource;
+
         // The internal finite state machine
         Bloom bloom;
 
@@ -30,6 +32,8 @@ namespace Zom.Pie
 
             mats = book.GetComponent<MeshRenderer>().materials;
             mats[materialId] = new Material(mats[materialId]);
+
+            audioSource = GetComponent<AudioSource>();
         }
 
         protected override void Start()
@@ -68,8 +72,11 @@ namespace Zom.Pie
         {
             PlayerManager.Instance.SetDisable(true);
 
+            // Play audio
+            audioSource.Play();
+
             // Increase post processing bloom.
-            float time = 1.5f;
+            float time = 5f;
             float targetIntensity = 12000f;
             float targetThreshold = 0f;
 

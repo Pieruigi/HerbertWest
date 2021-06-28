@@ -15,6 +15,9 @@ namespace Zom.Pie
         [SerializeField]
         GameObject rootObject;
 
+        [SerializeField]
+        AudioSource audioSource;
+
         FiniteStateMachine fsm;
 
         bool interacting = false;
@@ -74,6 +77,7 @@ namespace Zom.Pie
 
         void HandleOnItemChosen(Item item)
         {
+            
             if(item == itemToUse)
             {
                 // Close inventory ui
@@ -110,7 +114,9 @@ namespace Zom.Pie
 
             rootObject.SetActive(false);
 
-            yield return new WaitForSeconds(3);
+            audioSource.Play();
+
+            yield return new WaitForSeconds(5);
 
             yield return CameraFader.Instance.FadeInCoroutine(1f);
             CameraFader.Instance.TryEnableAnimator();

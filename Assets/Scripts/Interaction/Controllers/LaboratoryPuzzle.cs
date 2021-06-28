@@ -9,6 +9,12 @@ namespace Zom.Pie
         [SerializeField]
         GameObject mixtureLevel;
 
+        [SerializeField]
+        AudioSource buttonAudioSource;
+
+        [SerializeField]
+        AudioSource liquidAudioSource;
+
         List<int> solution = new List<int>(4);
         List<int> currentMix = new List<int>(4);
         int currentCount = 0;
@@ -192,6 +198,11 @@ namespace Zom.Pie
             float z = button.transform.localPosition.z;
             z -= disp;
             LeanTween.moveLocalZ(button, z, buttonMoveTime).setEaseOutExpo();
+
+            // Audio
+            if(disp > 0)
+                buttonAudioSource.Play();
+
             yield return new WaitForSeconds(buttonMoveTime);
         }
 
@@ -215,6 +226,9 @@ namespace Zom.Pie
             float y = mixtureLevel.transform.localScale.y + 0.25f;
             float time = 3;
             LeanTween.scaleY(mixtureLevel, y, time);
+
+            liquidAudioSource.Play();
+
             yield return new WaitForSeconds(time);
         }
 
@@ -222,6 +236,9 @@ namespace Zom.Pie
         {
             float time = 3;
             LeanTween.scaleY(mixtureLevel, 0, time);
+
+            liquidAudioSource.Play();
+
             yield return new WaitForSeconds(time);
         }
     }

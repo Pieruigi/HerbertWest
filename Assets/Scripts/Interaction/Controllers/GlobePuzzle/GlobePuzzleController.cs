@@ -24,6 +24,12 @@ namespace Zom.Pie
         [SerializeField]
         Light pickerLight;
 
+        [SerializeField]
+        AudioSource lockAudioSource;
+
+        [SerializeField]
+        AudioSource globeAudioSource;
+
         //[SerializeField]
         float[] angles = new float[] { 0f, 14.7f, 33.1f, 51.6f, 70f, 103f, 
                                        127.5f, 166.5f, 208f, 245f, 263f, 287.1f, 305.8f,
@@ -84,6 +90,7 @@ namespace Zom.Pie
             // Push the button
             StartCoroutine(PushButton(interactor.gameObject));
 
+
             // Save the last angle id
             lastAngleId = currentAngleId;
 
@@ -93,6 +100,8 @@ namespace Zom.Pie
             float time = Mathf.Abs(angle) / speed;
             Debug.Log("NextAngle:" + angle);
             LeanTween.rotateAround(globe, Vector3.up, angle, time);
+
+            StartCoroutine(PlayGlobeAudio(time));
 
             yield return new WaitForSeconds(time);
 
@@ -114,9 +123,11 @@ namespace Zom.Pie
                     if (lastAngleId != solution[step])
                     {
                         // We failed, reset the globe
-                        yield return new WaitForSeconds(0.5f); // Wait a little bit
+                        lockAudioSource.Play();
+                        yield return new WaitForSeconds(1f); // Wait a little bit
                         time = 0.5f;
                         LeanTween.rotateLocal(globe, Vector3.zero, time);
+                        StartCoroutine(PlayGlobeAudio(time));
                         yield return new WaitForSeconds(time);
 
                         // Send error message
@@ -176,6 +187,13 @@ namespace Zom.Pie
             interacting = false;
 
             OnPuzzleInteractionStop?.Invoke(this);
+        }
+
+        IEnumerator PlayGlobeAudio(float time)
+        {
+            globeAudioSource.Play();
+            yield return new WaitForSeconds(time);
+            globeAudioSource.Stop();
         }
 
         bool IsCompleted()

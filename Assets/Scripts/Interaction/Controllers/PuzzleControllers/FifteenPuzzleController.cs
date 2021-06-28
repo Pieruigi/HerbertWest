@@ -28,6 +28,12 @@ namespace Zom.Pie
         GameObject tileContainer;
 
         [SerializeField]
+        AudioSource moveAudioSource;
+
+        [SerializeField]
+        AudioSource openAudioSource;
+
+        [SerializeField]
         Picker picker;
 
         Vector3[] positions; // Default positions
@@ -171,6 +177,9 @@ namespace Zom.Pie
            
             if (TryMoveTile(tile)) 
             {
+                // Audio
+                moveAudioSource.Play();
+
                 // Move tile
                 float time = 0.5f;
                 Vector3 newPos = positions[MathUtility.MatrixCoordsToArrayIndex(tile.row, tile.col, 4)];
@@ -305,6 +314,9 @@ namespace Zom.Pie
             float time = 0.5f;
             LeanTween.moveX(cover, cover.transform.position.x + coverMoveDisp, time);
             LeanTween.moveX(tileContainer, tileContainer.transform.position.x + coverMoveDisp, time);
+
+            // Audio
+            openAudioSource.Play();
 
             // Take whatever is inside
             yield return picker.Pick();

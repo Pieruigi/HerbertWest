@@ -17,6 +17,15 @@ namespace Zom.Pie
         [SerializeField]
         Transform chessContainer;
 
+        [SerializeField]
+        AudioSource clickAudioSource;
+
+        [SerializeField]
+        AudioSource resetAudioSource;
+
+        [SerializeField]
+        AudioSource openAudioSource;
+
         //[SerializeField]
         Material selectionBlackMaterial;
         Material selectionWhiteMaterial;
@@ -142,6 +151,9 @@ namespace Zom.Pie
 
             MoveTiles();
 
+            // Audio
+            clickAudioSource.Play();
+
             yield return new WaitForSeconds(0.3f);
 
             if (YouFailed(interactor))
@@ -149,6 +161,9 @@ namespace Zom.Pie
                 yield return new WaitForSeconds(1f);
                 GetComponent<Messenger>().SendInGameMessage(29);
                 ResetTiles();
+
+                // Audio
+                resetAudioSource.Play();
             }
             else
             {
@@ -158,6 +173,9 @@ namespace Zom.Pie
 
                     // Wait for tiles animation
                     yield return new WaitForSeconds(1f);
+
+                    // Audio
+                    openAudioSource.Play();
 
                     // Open the chest and wait for animation to complete.
                     OpenChest();
@@ -299,6 +317,7 @@ namespace Zom.Pie
             // Lower down tiles 
             foreach (GameObject tile in lowerDownList)
             {
+
                 if(deadEnemies.Contains(tile))
                 {
                     // Is a dead enemy, put it really down
