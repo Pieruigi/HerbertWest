@@ -17,7 +17,14 @@ namespace Zom.Pie.UI
         void Start()
         {
             if (!GameManager.Instance.IsSaveGameAvailable())
+            {
                 GetComponent<Button>().interactable = false;
+                Text text = GetComponentInChildren<Text>();
+                Color c = text.color;
+                c.a = 0.2f;
+                text.color = c;
+            }
+                
             //if (!GameManager.Instance.InGame)
             //{
             //    // Player is not in game yet.
